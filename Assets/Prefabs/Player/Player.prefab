@@ -74,7 +74,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joyStick: {fileID: 0}
   characterController: {fileID: 7431884371080084923}
+  cameraController: {fileID: 0}
   moveSpeed: 20
+  turnSpeed: 30
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0

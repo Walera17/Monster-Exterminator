@@ -8,7 +8,8 @@ namespace MonsterExterminator.Player
         [SerializeField] private JoyStick joyStick;
         [SerializeField] CharacterController characterController;
         [SerializeField] private CameraController cameraController;
-        [SerializeField] private float moveSpeed = 20;
+        [SerializeField] private float moveSpeed = 20f;
+        [SerializeField] private float turnSpeed = 30f;
 
         private Vector2 moveInput;
         private Camera mainCamera;
@@ -31,12 +32,19 @@ namespace MonsterExterminator.Player
 
         void Update()
         {
-            Vector3 rightDir = mainCamera.transform.right;                                                              // направление вправо персонажа
-            Vector3 upDir = Vector3.Cross(rightDir, Vector3.up);           	                                            // направление вперед персонажа
-            characterController.Move((rightDir * moveInput.x + upDir * moveInput.y) * (Time.deltaTime * moveSpeed));
+            Vector3 rightDir = mainCamera.transform.right; // направление вправо персонажа
+            Vector3 upDir = Vector3.Cross(rightDir, Vector3.up); // направление вперед персонажа
+            Vector3 moveDirection = rightDir * moveInput.x + upDir * moveInput.y; // направление движения персонажа
 
-            if (moveInput.magnitude != 0 && cameraController != null)
-                cameraController.AddYawInput(moveInput.x);
+            characterController.Move(moveDirection * (moveSpeed * Time.deltaTime));
+
+            if (moveInput.magnitude != 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveDirection, Vector3.up), turnSpeed * Time.deltaTime);
+
+                if (cameraController != null)
+                    cameraController.AddYawInput(moveInput.x);
+            }
         }
     }
 }
