@@ -40,27 +40,46 @@ namespace MonsterExterminator.Player
 
         Vector3 StickInputToWorldDirection(Vector2 inputValue)
         {
-            Vector3 rightDir = mainCamera.transform.right;                      // направление вправо персонажа
-            Vector3 upDir = Vector3.Cross(rightDir, Vector3.up);                // направление вперед персонажа
-            return rightDir * inputValue.x + upDir * inputValue.y;              // мировое направление движения персонажа
+            Vector3 rightDir = mainCamera.transform.right;                              // направление вправо персонажа
+            Vector3 upDir = Vector3.Cross(rightDir, Vector3.up);                        // направление вперед персонажа
+            return rightDir * inputValue.x + upDir * inputValue.y;                      // мировое направление движения персонажа
         }
 
         void Update()
         {
+            PerformMoveAndAim();
+
+            UpdateCamera();
+        }
+
+        private void PerformMoveAndAim()
+        {
             Vector3 moveDirection = StickInputToWorldDirection(moveInput);
-
-            if (aimInput.magnitude != 0)
-            {
-                Vector3 aimDirection = StickInputToWorldDirection(aimInput);
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(aimDirection, Vector3.up), turnSpeed * Time.deltaTime);
-            }
-            else if (moveInput.magnitude != 0)
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveDirection, Vector3.up), turnSpeed * Time.deltaTime);
-
             characterController.Move(moveDirection * (moveSpeed * Time.deltaTime));
 
-            if (moveInput.magnitude != 0 && cameraController != null)
+            UpdateAim(moveDirection);
+        }
+
+        private void UpdateAim(Vector3 moveDirection)
+        {
+            Vector3 aimDirection = moveDirection;
+
+            if (aimInput.magnitude != 0)
+                aimDirection = StickInputToWorldDirection(aimInput);
+
+            RotateToward(aimDirection);
+        }
+
+        private void UpdateCamera()
+        {
+            if (moveInput.magnitude != 0 && aimInput.magnitude == 0 && cameraController != null)
                 cameraController.AddYawInput(moveInput.x);
+        }
+
+        private void RotateToward(Vector3 aimDirection)
+        {
+            if (aimDirection.magnitude != 0)
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(aimDirection, Vector3.up), turnSpeed * Time.deltaTime);
         }
     }
 }
