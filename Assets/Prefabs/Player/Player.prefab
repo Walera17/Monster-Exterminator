@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 8639010547884748062}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7810604072945408526
 Animator:
@@ -96,9 +96,11 @@ MonoBehaviour:
   moveStick: {fileID: 0}
   aimStick: {fileID: 0}
   characterController: {fileID: 7431884371080084923}
+  animator: {fileID: 7810604072945408526}
   cameraController: {fileID: 0}
   moveSpeed: 5
-  turnSpeed: 30
+  turnSpeed: 8
+  animTurnSpeed: 15
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0
