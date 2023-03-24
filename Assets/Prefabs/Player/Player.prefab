@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 487262469}
   m_Layer: 0
   m_Name: RifleAttachSlot
-  m_TagString: Untagged
+  m_TagString: RifleAttachSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7810604072945408526}
   - component: {fileID: 7431884371080084923}
   - component: {fileID: 600972925448343216}
+  - component: {fileID: 2513006049675784915}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -132,6 +133,23 @@ MonoBehaviour:
   moveSpeed: 5
   turnSpeed: 8
   animTurnSpeed: 15
+--- !u!114 &2513006049675784915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290700382596798287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74eb7b9622bba4582213efe92927e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initWeaponsPrefabs:
+  - {fileID: 1007599489785031685, guid: cb1da7e3f34129040bd13cb077268add, type: 3}
+  weaponSlots:
+  - {fileID: 487262469}
+  defaultWeaponSlot: {fileID: 8639010547884747478}
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0

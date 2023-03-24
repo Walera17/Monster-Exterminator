@@ -16,6 +16,7 @@ namespace MonsterExterminator.Weapons
         public void Init(GameObject owner)
         {
             Owner = owner;
+            UnEquip();
         }
 
         public void Equip()
