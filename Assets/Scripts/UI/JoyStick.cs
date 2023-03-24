@@ -13,13 +13,20 @@ namespace MonsterExterminator.UI
 
         public event OnStickInputValueUpdate OnStickInputValueChanged;
 
+        private float maxOffset;
+
+        private void Start()
+        {
+            maxOffset = backgroundTransform.sizeDelta.x / 2;
+        }
+
         public void OnDrag(PointerEventData eventData)
         {
             Vector2 touchPosition = eventData.position;
             Vector2 centerPosition = backgroundTransform.position;
-
-            Vector2 localOffset = Vector2.ClampMagnitude(touchPosition - centerPosition, backgroundTransform.sizeDelta.x / 2);
-            Vector2 inputValue = localOffset / backgroundTransform.sizeDelta.x / 2;
+                
+            Vector2 localOffset = Vector2.ClampMagnitude(touchPosition - centerPosition, maxOffset);
+            Vector2 inputValue = localOffset / maxOffset;
 
             stickTransform.position = centerPosition + localOffset;
 

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8369222381359552518}
+  - component: {fileID: 7810604072945408526}
   - component: {fileID: 7431884371080084923}
   - component: {fileID: 600972925448343216}
   m_Layer: 0
@@ -32,8 +33,28 @@ Transform:
   m_Children:
   - {fileID: 8639010547884748062}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7810604072945408526
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290700382596798287}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8eecf84653d75924bb513aa7baf8eb34, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!143 &7431884371080084923
 CharacterController:
   m_ObjectHideFlags: 0
@@ -72,10 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97c86fb2583508418ffc39d3333e4ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joyStick: {fileID: 0}
+  moveStick: {fileID: 0}
+  aimStick: {fileID: 0}
   characterController: {fileID: 7431884371080084923}
   cameraController: {fileID: 0}
-  moveSpeed: 20
+  moveSpeed: 5
   turnSpeed: 30
 --- !u!1001 &8639010547884619320
 PrefabInstance:
@@ -133,7 +155,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
