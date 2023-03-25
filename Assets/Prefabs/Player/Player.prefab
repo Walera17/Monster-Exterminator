@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 8639010547884747478}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -7.95, y: 73.94, z: -85.1}
+--- !u!1 &855928828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 855928829}
+  m_Layer: 0
+  m_Name: PistolAttachSlot
+  m_TagString: PistolAttachSlot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &855928829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855928828}
+  m_LocalRotation: {x: 0.013591469, y: 0.7270927, z: -0.6845691, w: 0.05016621}
+  m_LocalPosition: {x: 0.046, y: -0.016, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8639010547884747478}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 94.54599, y: -43.285, z: -218.113}
 --- !u!1 &6290700382596798287
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,9 +177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initWeaponsPrefabs:
+  - {fileID: 6541715272194841544, guid: 5442004b40702974f81176881584dc5f, type: 3}
   - {fileID: 1007599489785031685, guid: cb1da7e3f34129040bd13cb077268add, type: 3}
   weaponSlots:
   - {fileID: 487262469}
+  - {fileID: 855928829}
   defaultWeaponSlot: {fileID: 8639010547884747478}
 --- !u!1001 &8639010547884619320
 PrefabInstance:
@@ -214,6 +247,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 487262469}
+    - targetCorrespondingSourceObject: {fileID: 400622, guid: a5674d01884853d4e8f2386a171e14d9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 855928829}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
 --- !u!4 &8639010547884747478 stripped
