@@ -5,6 +5,7 @@ namespace MonsterExterminator.Weapons
     public abstract class Weapon : MonoBehaviour
     {
         [SerializeField] private string attachSlotTag;
+        [SerializeField] private AnimatorOverrideController overrideController;
 
         public string GetAttachSlotTag()
         {
@@ -22,6 +23,7 @@ namespace MonsterExterminator.Weapons
         public void Equip()
         {
             gameObject.SetActive(true);
+            Owner.GetComponent<Animator>().runtimeAnimatorController = overrideController;
         }
 
         public void UnEquip()
