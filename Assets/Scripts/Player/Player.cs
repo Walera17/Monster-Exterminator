@@ -1,4 +1,5 @@
 using MonsterExterminator.UI;
+using MonsterExterminator.Weapons;
 using UnityEngine;
 
 namespace MonsterExterminator.Player
@@ -9,6 +10,7 @@ namespace MonsterExterminator.Player
         [SerializeField] private JoyStick aimStick;
         [SerializeField] CharacterController characterController;
         [SerializeField] Animator animator;
+        [SerializeField] Inventory inventory;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float turnSpeed = 8f;
@@ -26,12 +28,19 @@ namespace MonsterExterminator.Player
             mainCamera = Camera.main;
             moveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
             aimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
+            aimStick.OnTaped += AimStick_OnTaped;
         }
 
         private void OnDestroy()
         {
             moveStick.OnStickInputValueChanged -= MoveStick_OnStickInputValueChanged;
             aimStick.OnStickInputValueChanged -= AimStick_OnStickInputValueChanged;
+            aimStick.OnTaped -= AimStick_OnTaped;
+        }
+
+        private void AimStick_OnTaped()
+        {
+            inventory.NextWeapon();
         }
 
         private void MoveStick_OnStickInputValueChanged(Vector2 value)

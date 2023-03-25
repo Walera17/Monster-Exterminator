@@ -10,10 +10,13 @@ namespace MonsterExterminator.UI
         [SerializeField] RectTransform centerTransform;
 
         public delegate void OnStickInputValueUpdate(Vector2 value);
+        public delegate void OnStickTaped();
 
         public event OnStickInputValueUpdate OnStickInputValueChanged;
+        public event OnStickTaped OnTaped;
 
         private float maxOffset;
+        private bool isDragging;
 
         private void Start()
         {
@@ -31,12 +34,14 @@ namespace MonsterExterminator.UI
             stickTransform.position = centerPosition + localOffset;
 
             OnStickInputValueChanged?.Invoke(inputValue);
+            isDragging = true;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             backgroundTransform.position = eventData.position;
             stickTransform.position = eventData.position;
+            isDragging = false;
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -45,6 +50,9 @@ namespace MonsterExterminator.UI
             stickTransform.position = backgroundTransform.position;
 
             OnStickInputValueChanged?.Invoke(Vector2.zero);
+
+            if (!isDragging) 
+                OnTaped?.Invoke();
         }
     }
 }
