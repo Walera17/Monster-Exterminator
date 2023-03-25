@@ -22,23 +22,30 @@ namespace MonsterExterminator.Player
         private static readonly int ForwardSpeed = Animator.StringToHash("forwardSpeed");
         private static readonly int RightSpeed = Animator.StringToHash("rightSpeed");
         private static readonly int TurnSpeed = Animator.StringToHash("turnSpeed");
+        private static readonly int SwitchWeapon = Animator.StringToHash("switchWeapon");
+        private static readonly int Attacking = Animator.StringToHash("attacking");
 
         void Start()
         {
             mainCamera = Camera.main;
             moveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
             aimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
-            aimStick.OnTaped += AimStick_OnTaped;
+            aimStick.OnTaped += StartSwitchWeapon;
         }
 
         private void OnDestroy()
         {
             moveStick.OnStickInputValueChanged -= MoveStick_OnStickInputValueChanged;
             aimStick.OnStickInputValueChanged -= AimStick_OnStickInputValueChanged;
-            aimStick.OnTaped -= AimStick_OnTaped;
+            aimStick.OnTaped -= StartSwitchWeapon;
         }
 
-        private void AimStick_OnTaped()
+        private void StartSwitchWeapon()
+        {
+            animator.SetTrigger(SwitchWeapon);
+        }
+            
+        public void AnimatorSwitchWeapon()
         {
             inventory.NextWeapon();
         }
@@ -52,7 +59,7 @@ namespace MonsterExterminator.Player
         {
             aimInput = value;
 
-            animator.SetBool("attacking", aimInput.magnitude > 0);
+            animator.SetBool(Attacking, aimInput.magnitude > 0);
         }
 
         Vector3 StickInputToWorldDirection(Vector2 inputValue)
