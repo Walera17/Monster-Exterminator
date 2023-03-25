@@ -51,6 +51,8 @@ namespace MonsterExterminator.Player
         private void AimStick_OnStickInputValueChanged(Vector2 value)
         {
             aimInput = value;
+
+            animator.SetBool("attacking", aimInput.magnitude > 0);
         }
 
         Vector3 StickInputToWorldDirection(Vector2 inputValue)
