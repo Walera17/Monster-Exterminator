@@ -4,7 +4,7 @@ namespace MonsterExterminator.Common
 {
     public class HealthComponent : MonoBehaviour
     {
-        public delegate void OnHealthChangeDelegate(float health, float delta, float maxHealth);
+        public delegate void OnHealthChangeDelegate(float health,float maxHealth);
         public delegate void OnDeadDelegate();
 
         public event OnHealthChangeDelegate OnHealthChange, OnTakeDamage;
@@ -20,9 +20,9 @@ namespace MonsterExterminator.Common
             health += delta;
 
             if (delta < 0)
-                OnTakeDamage?.Invoke(health, delta, maxHealth);
+                OnTakeDamage?.Invoke(health,  maxHealth);
 
-            OnHealthChange?.Invoke(health, delta, maxHealth);
+            OnHealthChange?.Invoke(health,  maxHealth);
 
             if (health <= 0)
             {
