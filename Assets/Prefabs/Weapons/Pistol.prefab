@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd16b848dd911478398bb5f9c21f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachSlotTag: PistolAttachSlot
+  attackSlotTag: PistolAttackSlot
+  attackRateMult: 1
   overrideController: {fileID: 22100000, guid: 84c514f89858d594e87d7ff97ad38fc0, type: 2}
+  aimComponent: {fileID: 4653426040335247136}
 --- !u!114 &4653426040335247136
 MonoBehaviour:
   m_ObjectHideFlags: 0

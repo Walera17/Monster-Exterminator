@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1020016947826737083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358834652336322943}
+  m_Layer: 0
+  m_Name: muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358834652336322943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020016947826737083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.086, z: 0.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4845249969758292865}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1583699315813534817
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4845249969758292865}
   - component: {fileID: 1007599489785031685}
+  - component: {fileID: 8378826884117340295}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -481,6 +513,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 818922511323732174}
+  - {fileID: 1358834652336322943}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -496,5 +529,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109f827f143cc474a8ff3479cd1b537c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachSlotTag: RifleAttachSlot
+  attackSlotTag: RifleAttackSlot
+  attackRateMult: 1
   overrideController: {fileID: 22100000, guid: cea76b829547a854da7544cf8de9ac28, type: 2}
+  aimComponent: {fileID: 8378826884117340295}
+--- !u!114 &8378826884117340295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136981932297678114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7586a344467ad2946b448cadb852b9cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzle: {fileID: 1358834652336322943}
+  aimRange: 20
+  aimMask:
+    serializedVersion: 2
+    m_Bits: 4294967295

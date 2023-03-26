@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 487262469}
   m_Layer: 0
-  m_Name: RifleAttachSlot
-  m_TagString: RifleAttachSlot
+  m_Name: RifleAttackSlot
+  m_TagString: RifleAttackSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 855928829}
   m_Layer: 0
-  m_Name: PistolAttachSlot
-  m_TagString: PistolAttachSlot
+  m_Name: PistolAttackSlot
+  m_TagString: PistolAttackSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

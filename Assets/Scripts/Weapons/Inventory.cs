@@ -13,6 +13,8 @@ namespace MonsterExterminator.Weapons
         private Weapon currentWeapon;
         private int currentWeaponIndex = -1;
 
+        public Weapon CurrentWeapon => currentWeapon;
+
         private void Start()
         {
             InitializeWeapons();

@@ -4,12 +4,17 @@ namespace MonsterExterminator.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-        [SerializeField] private string attachSlotTag;
+        [SerializeField] private string attackSlotTag;
+        [SerializeField] private float attackRateMult = 1f;
         [SerializeField] private AnimatorOverrideController overrideController;
+
+        private static readonly int AttackRateMult = Animator.StringToHash("attackRateMult");
+
+        public abstract void Attack();
 
         public string GetAttachSlotTag()
         {
-            return attachSlotTag;
+            return attackSlotTag;
         }
 
         public GameObject Owner { get; private set; }
@@ -23,7 +28,9 @@ namespace MonsterExterminator.Weapons
         public void Equip()
         {
             gameObject.SetActive(true);
-            Owner.GetComponent<Animator>().runtimeAnimatorController = overrideController;
+            Animator animator = Owner.GetComponent<Animator>();
+            animator.runtimeAnimatorController = overrideController;
+            animator.SetFloat(AttackRateMult, attackRateMult);
         }
 
         public void UnEquip()

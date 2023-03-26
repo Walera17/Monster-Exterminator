@@ -40,20 +40,13 @@ namespace MonsterExterminator.Player
             aimStick.OnTaped -= StartSwitchWeapon;
         }
 
-        private void StartSwitchWeapon()
-        {
-            animator.SetTrigger(SwitchWeapon);
-        }
-            
-        public void AnimatorSwitchWeapon()
-        {
-            inventory.NextWeapon();
-        }
+        private void StartSwitchWeapon() => animator.SetTrigger(SwitchWeapon);
 
-        private void MoveStick_OnStickInputValueChanged(Vector2 value)
-        {
-            moveInput = value;
-        }
+        public void AnimatorSwitchWeapon() => inventory.NextWeapon();
+
+        public void AnimatorAttackPoint() => inventory.CurrentWeapon.Attack();
+
+        private void MoveStick_OnStickInputValueChanged(Vector2 value) => moveInput = value;
 
         private void AimStick_OnStickInputValueChanged(Vector2 value)
         {
