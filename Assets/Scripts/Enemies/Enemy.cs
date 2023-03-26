@@ -8,7 +8,6 @@ namespace MonsterExterminator.Enemies
     {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] Animator animator;
-        [SerializeField] private Transform healthBarAttachPoint;
 
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
@@ -17,18 +16,12 @@ namespace MonsterExterminator.Enemies
         {
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
             healthComponent.OnDead += HealthComponent_OnDead;
-            CreateHealthBar();
         }
 
         private void OnDestroy()
         {
             healthComponent.OnTakeDamage -= HealthComponent_OnTakeDamage;
             healthComponent.OnDead -= HealthComponent_OnDead;
-        }
-
-        private void CreateHealthBar()
-        {
-            FindObjectOfType<InGameUI>().CreateHealthBar(healthBarAttachPoint, healthComponent);
         }
 
         private void HealthComponent_OnDead()

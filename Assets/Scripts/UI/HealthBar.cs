@@ -9,13 +9,11 @@ namespace MonsterExterminator.UI
         [SerializeField] Slider slider;
 
         private Transform attachPoint;
-        Camera cam;
         HealthComponent _healthComponent;
+        Camera cam;
 
-        private void Start()
-        {
-            cam = Camera.main;
-        }
+        private void Start() 
+            => cam = Camera.main;
 
         public void Init(Transform owner, HealthComponent healthComponent)
         {
@@ -32,14 +30,10 @@ namespace MonsterExterminator.UI
             Destroy(gameObject);
         }
 
-        public void SetHealthValue(float health, float maxHealth)
-        {
-            slider.value = health / maxHealth;
-        }
+        public void SetHealthValue(float health, float maxHealth) 
+            => slider.value = health / maxHealth;
 
         private void Update()
-        {
-            transform.position = cam.WorldToScreenPoint(attachPoint.position);
-        }
+        => transform.position = cam.WorldToScreenPoint(attachPoint.position);
     }
 }

@@ -1,19 +1,6 @@
-﻿using UnityEngine;
-
-namespace MonsterExterminator.Weapons
+﻿namespace MonsterExterminator.Weapons
 {
-    public class Pistol : Weapon
+    public class Pistol : RangeWeapon
     {
-        [Header("Specific Weapon")]
-        [SerializeField] private AimComponent aimComponent;
-        [SerializeField] private float damage;
-
-        public override void Attack()
-        {
-            GameObject target = aimComponent.GetAimTarget();
-
-            if (target != null)
-                DamageGameObject(target, damage);
-        }
     }
 }
