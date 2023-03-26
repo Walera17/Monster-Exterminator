@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MonsterExterminator.Common;
+using UnityEngine;
 
 namespace MonsterExterminator.Weapons
 {
@@ -36,6 +37,12 @@ namespace MonsterExterminator.Weapons
         public void UnEquip()
         {
             gameObject.SetActive(false);
+        }
+
+        public void DamageGameObject(GameObject obj, float amt)
+        {
+            if (obj.TryGetComponent(out HealthComponent health))
+                health.ChangeHealth(-amt);
         }
     }
 }

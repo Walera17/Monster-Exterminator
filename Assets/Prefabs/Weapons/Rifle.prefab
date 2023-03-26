@@ -533,6 +533,7 @@ MonoBehaviour:
   attackRateMult: 1
   overrideController: {fileID: 22100000, guid: cea76b829547a854da7544cf8de9ac28, type: 2}
   aimComponent: {fileID: 8378826884117340295}
+  damage: 20
 --- !u!114 &8378826884117340295
 MonoBehaviour:
   m_ObjectHideFlags: 0

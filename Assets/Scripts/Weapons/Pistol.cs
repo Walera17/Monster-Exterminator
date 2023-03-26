@@ -6,11 +6,14 @@ namespace MonsterExterminator.Weapons
     {
         [Header("Specific Weapon")]
         [SerializeField] private AimComponent aimComponent;
+        [SerializeField] private float damage;
 
         public override void Attack()
         {
             GameObject target = aimComponent.GetAimTarget();
-            print($"target at : {target}");
+
+            if (target != null)
+                DamageGameObject(target, damage);
         }
     }
 }
