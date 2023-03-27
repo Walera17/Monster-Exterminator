@@ -2217,6 +2217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34ab16f2cd9ba043ae2ca227fdcdacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forgettingTime: 2
   awareDistance: 4
 --- !u!114 &1195545778478197545
 MonoBehaviour:
@@ -2230,8 +2231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7514d2ed318a9f4c865251c7ee34381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forgettingTime: 2
   sightDistance: 7
   sightHalfAngle: 45
+  eyeHeight: 1
 --- !u!1 &8056398509645479826
 GameObject:
   m_ObjectHideFlags: 0
