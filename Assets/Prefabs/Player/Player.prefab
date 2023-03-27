@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 7431884371080084923}
   - component: {fileID: 600972925448343216}
   - component: {fileID: 2513006049675784915}
+  - component: {fileID: 69499721966775657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -184,6 +185,18 @@ MonoBehaviour:
   - {fileID: 487262469}
   - {fileID: 855928829}
   defaultWeaponSlot: {fileID: 8639010547884747478}
+--- !u!114 &69499721966775657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290700382596798287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be7ac96ecf6cfa44bcccab582a1e303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0
