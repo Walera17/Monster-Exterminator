@@ -10,13 +10,13 @@ namespace MonsterExterminator.Common.AI.Perception
 
         public static void RegisterStimuli(PerceptionStimuli stimuli)
         {
-            if (!registerStimuliList.Contains(stimuli)) 
+            if (!registerStimuliList.Contains(stimuli))
                 registerStimuliList.Add(stimuli);
         }
 
         public static void UnRegisterStimuli(PerceptionStimuli stimuli)
         {
-            if (registerStimuliList.Contains(stimuli)) 
+            if (registerStimuliList.Contains(stimuli))
                 registerStimuliList.Remove(stimuli);
         }
 
@@ -31,13 +31,13 @@ namespace MonsterExterminator.Common.AI.Perception
                     if (!perceivableStimuliList.Contains(stimuli))
                     {
                         perceivableStimuliList.Add(stimuli);
-                        print($"Add STIMULI {stimuli}");
+                        print($"Add STIMULI {stimuli.name} To {this} {name}");
                     }
                 }
                 else if (perceivableStimuliList.Contains(stimuli))
                 {
                     perceivableStimuliList.Remove(stimuli);
-                    print($"Remove STIMULI {stimuli}");
+                    print($"Remove STIMULI {stimuli.name} From {this} {name}");
                 }
             }
         }

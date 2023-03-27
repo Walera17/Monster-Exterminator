@@ -11,6 +11,11 @@ namespace MonsterExterminator.Common.AI.Perception
             return (transform.position - stimuli.transform.position).sqrMagnitude < awareDistance * awareDistance;
         }
 
+        public override string ToString()
+        {
+            return "AlwaysAwareSense";
+        }
+
         protected override void DrawDebug()
         {
             Gizmos.color = Color.yellow;
