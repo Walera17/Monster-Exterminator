@@ -16,7 +16,7 @@ namespace MonsterExterminator.Common.AI.Perception
         private WaitForSeconds forgettingWaitForSeconds;
         private Coroutine forgettingCoroutine;
 
-        private void Start()
+        void Awake()
         {
             forgettingWaitForSeconds = new WaitForSeconds(forgettingTime);
         }
@@ -58,7 +58,7 @@ namespace MonsterExterminator.Common.AI.Perception
             }
         }
 
-        private IEnumerator ForgetStimuli(PerceptionStimuli stimuli)
+        protected IEnumerator ForgetStimuli(PerceptionStimuli stimuli)
         {
             yield return forgettingWaitForSeconds;
             forgettingCoroutine = null;

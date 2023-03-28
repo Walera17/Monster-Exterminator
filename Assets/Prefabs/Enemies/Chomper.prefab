@@ -2067,6 +2067,7 @@ GameObject:
   - component: {fileID: 5332033436384005220}
   - component: {fileID: 1447878861479084258}
   - component: {fileID: 2731250199034443886}
+  - component: {fileID: 6188246142629909283}
   - component: {fileID: 1195545778478197545}
   - component: {fileID: 8775259558992430366}
   m_Layer: 0
@@ -2092,7 +2093,7 @@ Transform:
   - {fileID: 8056398509644981176}
   - {fileID: 3757365981754602283}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -2221,6 +2222,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forgettingTime: 5
   awareDistance: 4
+--- !u!114 &6188246142629909283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8056398509645479824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4fadb42e480b448bf2cb7ac7bd554b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forgettingTime: 7
+  healthComponent: {fileID: 1954059283183157669}
 --- !u!114 &1195545778478197545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2252,6 +2267,7 @@ MonoBehaviour:
   senses:
   - {fileID: 2731250199034443886}
   - {fileID: 1195545778478197545}
+  - {fileID: 6188246142629909283}
 --- !u!1 &8056398509645479826
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,11 +20,6 @@ namespace MonsterExterminator.Common.AI.Perception
             return !Physics.Raycast(transform.position + Vector3.up * eyeHeight, stimuliDirection, out RaycastHit hitInfo, sightDistance) || hitInfo.collider.gameObject == stimuli.gameObject;
         }
 
-        public override string ToString()
-        {
-            return "SightSense";
-        }
-
         protected override void DrawDebug()
         {
             Gizmos.color = Color.cyan;

@@ -49,8 +49,6 @@ namespace MonsterExterminator.Common.AI.Perception
                 OnPerceptionTargetChanged?.Invoke(targetStimuli, false);
                 targetStimuli = null;
             }
-
-            print(currentlyPerceptionStimulus.Count);
         }
     }
 }

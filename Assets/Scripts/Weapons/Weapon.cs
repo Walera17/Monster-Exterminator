@@ -42,7 +42,7 @@ namespace MonsterExterminator.Weapons
         public void DamageGameObject(GameObject obj, float amt)
         {
             if (obj.TryGetComponent(out HealthComponent health))
-                health.ChangeHealth(-amt);
+                health.ChangeHealth(-amt, Owner);
         }
     }
 }
