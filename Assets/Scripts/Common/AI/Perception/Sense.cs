@@ -46,8 +46,9 @@ namespace MonsterExterminator.Common.AI.Perception
                         perceivableStimuliList.Add(stimuli);
                         if (forgettingCoroutine != null)
                             StopCoroutine(forgettingCoroutine);
+                        else
+                            OnPerceptionUpdate?.Invoke(stimuli, true);
                     }
-                    OnPerceptionUpdate?.Invoke(stimuli, true);
                 }
                 else if (perceivableStimuliList.Contains(stimuli))
                 {

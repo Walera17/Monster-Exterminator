@@ -1,5 +1,5 @@
 ﻿using MonsterExterminator.Common;
-using MonsterExterminator.UI;
+using MonsterExterminator.Common.AI.Perception;
 using UnityEngine;
 
 namespace MonsterExterminator.Enemies
@@ -8,6 +8,9 @@ namespace MonsterExterminator.Enemies
     {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] Animator animator;
+        [SerializeField] PerceptionComponent perceptionComponent;
+
+        private PerceptionStimuli target;
 
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
@@ -16,6 +19,12 @@ namespace MonsterExterminator.Enemies
         {
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
             healthComponent.OnDead += HealthComponent_OnDead;
+            perceptionComponent.OnPerceptionTargetChanged += PerceptionComponent_OnPerceptionTargetChanged;
+        }
+
+        private void PerceptionComponent_OnPerceptionTargetChanged(PerceptionStimuli targetStimuli, bool sensed)
+        {
+            target = sensed ? targetStimuli : null;
         }
 
         private void OnDestroy()
@@ -42,6 +51,17 @@ namespace MonsterExterminator.Enemies
         private void HealthComponent_OnTakeDamage(float health, float maxHealth)
         {
             animator.SetTrigger(Hit);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+
+            if (target == null) return;
+
+            Vector3 targetPos = target.transform.position + Vector3.up;
+            Gizmos.DrawWireSphere(targetPos, 0.7f);
+            Gizmos.DrawLine(transform.position + Vector3.up, targetPos);
         }
     }
 }
