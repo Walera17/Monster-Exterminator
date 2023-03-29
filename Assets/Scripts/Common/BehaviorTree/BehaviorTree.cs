@@ -4,6 +4,9 @@ namespace MonsterExterminator.Common.BehaviorTree
 {
     public abstract class BehaviorTree : MonoBehaviour
     {
+        readonly Blackboard blackboard = new();
+        public Blackboard Blackboard => blackboard;
+
         private Node rootNode;
 
         private void Start()
@@ -15,7 +18,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         private void Update()
         {
-            rootNode.UpdateNode();
+            //rootNode.UpdateNode();
         }
     }
 }

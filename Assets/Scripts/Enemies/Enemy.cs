@@ -1,5 +1,6 @@
 ﻿using MonsterExterminator.Common;
 using MonsterExterminator.Common.AI.Perception;
+using MonsterExterminator.Common.BehaviorTree;
 using UnityEngine;
 
 namespace MonsterExterminator.Enemies
@@ -9,8 +10,7 @@ namespace MonsterExterminator.Enemies
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] Animator animator;
         [SerializeField] PerceptionComponent perceptionComponent;
-
-        private PerceptionStimuli target;
+        [SerializeField] BehaviorTree behaviorsTree;
 
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
@@ -24,7 +24,10 @@ namespace MonsterExterminator.Enemies
 
         private void PerceptionComponent_OnPerceptionTargetChanged(PerceptionStimuli targetStimuli, bool sensed)
         {
-            target = sensed ? targetStimuli : null;
+            if (sensed)
+                behaviorsTree.Blackboard.SetOrAddData("Target", targetStimuli);
+            else
+                behaviorsTree.Blackboard.RemoveBlackboardData("Target");
         }
 
         private void OnDestroy()
@@ -57,11 +60,12 @@ namespace MonsterExterminator.Enemies
         {
             Gizmos.color = Color.red;
 
-            if (target == null) return;
-
-            Vector3 targetPos = target.transform.position + Vector3.up;
-            Gizmos.DrawWireSphere(targetPos, 0.7f);
-            Gizmos.DrawLine(transform.position + Vector3.up, targetPos);
+            if (behaviorsTree!= null && behaviorsTree.Blackboard.GetBlackboardData("Target", out PerceptionStimuli target))
+            {
+                Vector3 targetPos = target.transform.position + Vector3.up;
+                Gizmos.DrawWireSphere(targetPos, 0.7f);
+                Gizmos.DrawLine(transform.position + Vector3.up, targetPos);
+            }
         }
     }
 }

@@ -2195,6 +2195,7 @@ MonoBehaviour:
   healthComponent: {fileID: 1954059283183157669}
   animator: {fileID: 8056398509654854738}
   perceptionComponent: {fileID: 8775259558992430366}
+  behaviorsTree: {fileID: 6831997497096860838}
 --- !u!114 &1447878861479084258
 MonoBehaviour:
   m_ObjectHideFlags: 0
