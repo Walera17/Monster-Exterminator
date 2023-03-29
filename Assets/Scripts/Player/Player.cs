@@ -81,6 +81,9 @@ namespace MonsterExterminator.Player
 
             animator.SetFloat(ForwardSpeed, forward);
             animator.SetFloat(RightSpeed, right);
+
+            if (!characterController.isGrounded)
+                characterController.Move(Vector3.down * Time.deltaTime * moveSpeed);
         }
 
         private void UpdateAim(Vector3 moveDirection)
@@ -103,7 +106,7 @@ namespace MonsterExterminator.Player
         {
             float currentTurnSpeed = 0;
 
-            if (aimDirection.magnitude != 0)
+            if (Mathf.Abs(aimDirection.magnitude) > 0.01f)
             {
                 Quaternion prevRot = transform.rotation;
 

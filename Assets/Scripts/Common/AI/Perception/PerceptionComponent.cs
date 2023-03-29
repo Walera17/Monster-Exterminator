@@ -7,7 +7,7 @@ namespace MonsterExterminator.Common.AI.Perception
     {
         [SerializeField] private Sense[] senses;
 
-        public delegate void OnPerceptionTargetChangedDelegate(PerceptionStimuli target, bool sensed);
+        public delegate void OnPerceptionTargetChangedDelegate(Transform target, bool sensed);
         public event OnPerceptionTargetChangedDelegate OnPerceptionTargetChanged;
 
         private readonly LinkedList<PerceptionStimuli> currentlyPerceptionStimulus = new();
@@ -41,12 +41,12 @@ namespace MonsterExterminator.Common.AI.Perception
                 if (targetStimuli == null || targetStimuli != highestStimuli)
                 {
                     targetStimuli = highestStimuli;
-                    OnPerceptionTargetChanged?.Invoke(targetStimuli, true);
+                    OnPerceptionTargetChanged?.Invoke(targetStimuli.transform, true);
                 }
             }
             else if (targetStimuli != null)
             {
-                OnPerceptionTargetChanged?.Invoke(targetStimuli, false);
+                OnPerceptionTargetChanged?.Invoke(targetStimuli.transform, false);
                 targetStimuli = null;
             }
         }

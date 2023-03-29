@@ -18,7 +18,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         private void Update()
         {
-            //rootNode.UpdateNode();
+            rootNode.UpdateNode();
         }
     }
 }

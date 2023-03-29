@@ -22,10 +22,10 @@ namespace MonsterExterminator.Enemies
             perceptionComponent.OnPerceptionTargetChanged += PerceptionComponent_OnPerceptionTargetChanged;
         }
 
-        private void PerceptionComponent_OnPerceptionTargetChanged(PerceptionStimuli targetStimuli, bool sensed)
+        private void PerceptionComponent_OnPerceptionTargetChanged(Transform targetTransform, bool sensed)
         {
             if (sensed)
-                behaviorsTree.Blackboard.SetOrAddData("Target", targetStimuli);
+                behaviorsTree.Blackboard.SetOrAddData("Target", targetTransform);
             else
                 behaviorsTree.Blackboard.RemoveBlackboardData("Target");
         }
@@ -55,14 +55,14 @@ namespace MonsterExterminator.Enemies
         {
             animator.SetTrigger(Hit);
         }
-
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
 
-            if (behaviorsTree!= null && behaviorsTree.Blackboard.GetBlackboardData("Target", out PerceptionStimuli target))
+            if (behaviorsTree!= null && behaviorsTree.Blackboard.GetBlackboardData("Target", out Transform targetTransform))
             {
-                Vector3 targetPos = target.transform.position + Vector3.up;
+                Vector3 targetPos = targetTransform.position + Vector3.up;
                 Gizmos.DrawWireSphere(targetPos, 0.7f);
                 Gizmos.DrawLine(transform.position + Vector3.up, targetPos);
             }

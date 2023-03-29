@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using MonsterExterminator.Common.AI.Perception;
-using UnityEngine;
 
 namespace MonsterExterminator.Common.BehaviorTree
 {

@@ -65,7 +65,7 @@ namespace MonsterExterminator.Common.AI.Perception
             OnPerceptionUpdate?.Invoke(stimuli, false);
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             DrawDebug();
         }
