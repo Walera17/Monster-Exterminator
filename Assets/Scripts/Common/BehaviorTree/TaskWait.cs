@@ -2,12 +2,12 @@
 
 namespace MonsterExterminator.Common.BehaviorTree
 {
-    public class TaskWaitNode : Node
+    public class TaskWait : Node
     {
         private readonly float waitTime;
         private float timeElapsed;
 
-        public TaskWaitNode(float waitTime)
+        public TaskWait(float waitTime)
         {
             this.waitTime = waitTime;
         }
@@ -31,13 +31,8 @@ namespace MonsterExterminator.Common.BehaviorTree
                 return NodeResult.Success;
             }
 
-            Debug.Log($"Waiting for finished {timeElapsed}");
+            //Debug.Log($"Waiting for finished {timeElapsed}");
             return NodeResult.Inprogress;
-        }
-
-        protected override void End()
-        {
-            base.End();
         }
     }
 }

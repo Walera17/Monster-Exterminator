@@ -7,6 +7,13 @@ namespace MonsterExterminator.Common.BehaviorTree
         readonly LinkedList<Node> children = new();
         LinkedListNode<Node> currentChild;
 
+        public Node GetCurrentChild => currentChild.Value;
+
+        public void AddChild(Node node)
+        {
+            children.AddLast(node);
+        }
+
         protected override NodeResult Execute()
         {
             if (children.Count == 0)
