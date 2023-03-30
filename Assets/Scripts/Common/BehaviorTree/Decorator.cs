@@ -2,13 +2,11 @@
 {
     public abstract class Decorator : Node
     {
-        readonly Node child;
-
-        public Node Child => child;
+        public Node Child { get; }
 
         protected Decorator(Node child)
         {
-            this.child = child;
+            Child = child;
         }
     }
 }

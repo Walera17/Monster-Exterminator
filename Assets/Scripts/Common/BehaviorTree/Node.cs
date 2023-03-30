@@ -51,5 +51,10 @@
             started = false;
             End();
         }
+
+        public void Abort()
+        {
+            EndNode();
+        }
     }
 }
