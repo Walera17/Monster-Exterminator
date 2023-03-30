@@ -51,8 +51,7 @@ namespace MonsterExterminator.Common.BehaviorTree
             return NodeResult.Inprogress;
         }
 
-        bool IsTargetAcceptableDistance() => (targetTransform.position - agent.transform.position).sqrMagnitude <=
-                                             acceptableDistanceSqr;
+        bool IsTargetAcceptableDistance() => (targetTransform.position - agent.transform.position).sqrMagnitude <= acceptableDistanceSqr;
 
         void StopMovingAgent() => agent.ResetPath();
 

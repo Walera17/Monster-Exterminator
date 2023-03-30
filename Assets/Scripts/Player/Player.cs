@@ -82,7 +82,7 @@ namespace MonsterExterminator.Player
             animator.SetFloat(ForwardSpeed, forward);
             animator.SetFloat(RightSpeed, right);
 
-            if (!characterController.isGrounded)
+            if (characterController.transform.position.y > 0.1f)
                 characterController.Move(Vector3.down * Time.deltaTime * moveSpeed);
         }
 

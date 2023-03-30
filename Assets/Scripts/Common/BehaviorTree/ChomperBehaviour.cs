@@ -4,7 +4,7 @@
     {
         protected override void ConstructTree(out Node rootNode)
         {
-            //TaskWait taskWait = new TaskWait(2f);
+            TaskWait taskWait = new TaskWait(2f);
             //TaskLog taskLog = new TaskLog("Logging");
             //TaskAlwaysFall taskAlwaysFall = new TaskAlwaysFall();
 
@@ -16,7 +16,14 @@
             //rootNode = root;
 
             TaskMoveToTarget taskMoveToTarget = new TaskMoveToTarget(this, "Target", 1.8f);
-            rootNode = taskMoveToTarget;
+
+            TaskGetNextPatrolPoint taskGetNextPatrolPoint = new TaskGetNextPatrolPoint(this, "PointPatrol");
+            TaskMoveToTarget taskMoveToPointTarget = new TaskMoveToTarget(this, "PointPatrol", 0.25f);
+            Sequencer patrolSequencer = new Sequencer();
+            patrolSequencer.AddChild(taskGetNextPatrolPoint);
+            patrolSequencer.AddChild(taskMoveToPointTarget);
+            patrolSequencer.AddChild(taskWait);
+            rootNode = patrolSequencer;
         }
     }
 }

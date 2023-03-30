@@ -17,7 +17,7 @@ namespace MonsterExterminator.Common.BehaviorTree
             if (waitTime <= 0)
                 return NodeResult.Success;
 
-            Debug.Log($"wait started with duration {waitTime}");
+            //Debug.Log($"wait started with duration {waitTime}");
             timeElapsed = 0;
             return NodeResult.Inprogress;
         }
@@ -27,7 +27,7 @@ namespace MonsterExterminator.Common.BehaviorTree
             timeElapsed += Time.deltaTime;
             if (timeElapsed >= waitTime)
             {
-                Debug.Log($"Wait finished");
+                //Debug.Log($"Wait finished");
                 return NodeResult.Success;
             }
 
