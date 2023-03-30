@@ -1,8 +1,13 @@
-﻿namespace MonsterExterminator.Common.BehaviorTree
+﻿using UnityEngine;
+
+namespace MonsterExterminator.Common.BehaviorTree
 {
     public abstract class Node
     {
         private bool started;
+        private int priority;
+
+        public int Priority => priority;
 
         public NodeResult UpdateNode()
         {
@@ -55,6 +60,12 @@
         public void Abort()
         {
             EndNode();
+        }
+
+        public virtual void SortPriority(ref int priorityCounter)
+        {
+            priority = priorityCounter++;
+            Debug.Log($"{this} has priority = {priority}");
         }
     }
 }

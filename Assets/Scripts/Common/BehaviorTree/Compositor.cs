@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace MonsterExterminator.Common.BehaviorTree
 {
@@ -38,7 +39,20 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         protected override void End()
         {
+            if (currentChild == null) return;
+
+            currentChild.Value.Abort();
             currentChild = null;
+        }
+
+        public override void SortPriority(ref int priorityCounter)
+        {
+            base.SortPriority(ref priorityCounter);
+
+            foreach (Node child in children)
+            {
+                child.SortPriority(ref priorityCounter);
+            }
         }
     }
 }

@@ -4,7 +4,6 @@
     {
         protected override void ConstructTree(out Node rootNode)
         {
-            TaskWait taskWait = new TaskWait(2f);
             //TaskLog taskLog = new TaskLog("Logging");
             //TaskAlwaysFall taskAlwaysFall = new TaskAlwaysFall();
 
@@ -15,15 +14,30 @@
             //root.AddChild(taskWait);
             //rootNode = root;
 
+
+            Selector rootSelector = new Selector();
+            Sequencer attackTargetSequencer = new Sequencer();
             TaskMoveToTarget taskMoveToTarget = new TaskMoveToTarget(this, "Target", 1.8f);
+            attackTargetSequencer.AddChild(taskMoveToTarget);
+
+            BlackboardDecorator attackTarget = new BlackboardDecorator(this, attackTargetSequencer, "Target",
+                RunCondition.KeyExists, NotifyRule.RunConditionChange, NotifyAbort.both);
+
+            rootSelector.AddChild(attackTarget);
+
+            Sequencer patrolSequencer = new Sequencer();
 
             TaskGetNextPatrolPoint taskGetNextPatrolPoint = new TaskGetNextPatrolPoint(this, "PointPatrol");
             TaskMoveToTarget taskMoveToPointTarget = new TaskMoveToTarget(this, "PointPatrol", 0.25f);
-            Sequencer patrolSequencer = new Sequencer();
+            TaskWait taskWait = new TaskWait(2f);
+
             patrolSequencer.AddChild(taskGetNextPatrolPoint);
             patrolSequencer.AddChild(taskMoveToPointTarget);
             patrolSequencer.AddChild(taskWait);
-            rootNode = patrolSequencer;
+
+            rootSelector.AddChild(patrolSequencer);
+
+            rootNode = rootSelector;
         }
     }
 }
