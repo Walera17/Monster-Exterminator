@@ -2096,7 +2096,7 @@ Transform:
   - {fileID: 8056398509644981176}
   - {fileID: 3757365981754602283}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -2220,6 +2220,7 @@ MonoBehaviour:
   animator: {fileID: 8056398509654854738}
   perceptionComponent: {fileID: 8775259558992430366}
   behaviorsTree: {fileID: 6831997497096860838}
+  target: {fileID: 0}
 --- !u!114 &1447878861479084258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2318,7 +2319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d395df549c57884dadc3fa73bf25df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8056398509645479826
 GameObject:
   m_ObjectHideFlags: 0

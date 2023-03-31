@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 namespace MonsterExterminator.Common.BehaviorTree
 {
@@ -15,7 +14,7 @@ namespace MonsterExterminator.Common.BehaviorTree
         {
             blackboardData[key] = value;
             OnBlackboardValueChange?.Invoke(key, value);
-            Debug.Log(OnBlackboardValueChange?.GetInvocationList().Length);
+            //Debug.Log(OnBlackboardValueChange?.GetInvocationList().Length);
         }
 
         public bool GetBlackboardData<T>(string key, out T value)
@@ -36,7 +35,7 @@ namespace MonsterExterminator.Common.BehaviorTree
         {
             blackboardData.Remove(key);
             OnBlackboardValueChange?.Invoke(key, null);
-            Debug.Log(OnBlackboardValueChange?.GetInvocationList().Length);
+            //Debug.Log(OnBlackboardValueChange?.GetInvocationList().Length);
         }
     }
 }

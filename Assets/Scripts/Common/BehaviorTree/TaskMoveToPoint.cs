@@ -11,7 +11,7 @@ namespace MonsterExterminator.Common.BehaviorTree
         Transform targetTransform;
         protected readonly Blackboard blackboard;
 
-        public TaskMoveToPoint(BehaviorTree behaviorTree, string targetKey, float acceptableDistance)
+        public TaskMoveToPoint(BehaviorTree behaviorTree, string targetKey, float acceptableDistance=0.25f)
         {
             agent = behaviorTree.GetComponent<NavMeshAgent>();
             agent.stoppingDistance = acceptableDistance;

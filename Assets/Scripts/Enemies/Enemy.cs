@@ -11,6 +11,7 @@ namespace MonsterExterminator.Enemies
         [SerializeField] Animator animator;
         [SerializeField] PerceptionComponent perceptionComponent;
         [SerializeField] BehaviorTree behaviorsTree;
+        [SerializeField] private Transform target;
 
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
@@ -27,7 +28,11 @@ namespace MonsterExterminator.Enemies
             if (sensed)
                 behaviorsTree.Blackboard.SetOrAddData("Target", targetTransform);
             else
+            {
+                target.position =  targetTransform.position;
+                behaviorsTree.Blackboard.SetOrAddData("LastSeenLocation", target);
                 behaviorsTree.Blackboard.RemoveBlackboardData("Target");
+            }
         }
 
         private void OnDestroy()
@@ -55,12 +60,12 @@ namespace MonsterExterminator.Enemies
         {
             animator.SetTrigger(Hit);
         }
-        
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
 
-            if (behaviorsTree!= null && behaviorsTree.Blackboard.GetBlackboardData("Target", out Transform targetTransform))
+            if (behaviorsTree != null && behaviorsTree.Blackboard.GetBlackboardData("Target", out Transform targetTransform))
             {
                 Vector3 targetPos = targetTransform.position + Vector3.up;
                 Gizmos.DrawWireSphere(targetPos, 0.7f);
