@@ -25,5 +25,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
             return NodeResult.Failure;
         }
+
+        public override string ToString() => GetType().Name;
     }
 }

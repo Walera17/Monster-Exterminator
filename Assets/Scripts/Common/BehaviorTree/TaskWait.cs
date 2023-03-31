@@ -34,5 +34,7 @@ namespace MonsterExterminator.Common.BehaviorTree
             //Debug.Log($"Waiting for finished {timeElapsed}");
             return NodeResult.Inprogress;
         }
+
+        public override string ToString() => GetType().Name;
     }
 }

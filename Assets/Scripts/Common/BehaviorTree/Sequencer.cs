@@ -13,5 +13,7 @@
                 _ => NodeResult.Inprogress
             };
         }
+
+        public override string ToString() => GetType().Name;
     }
 }

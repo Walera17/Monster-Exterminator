@@ -2,17 +2,22 @@
 {
     public abstract class Decorator : Node
     {
-        public Node Child { get; }
+        public Node child { get; }
 
         protected Decorator(Node child)
-        {
-            Child = child;
+        {   
+            this.child = child;
         }
 
         public override void SortPriority(ref int priorityCounter)
         {
             base.SortPriority(ref priorityCounter);
-            Child.SortPriority(ref priorityCounter);
+            child.SortPriority(ref priorityCounter);
+        }
+
+        public override Node Get()
+        {
+            return child.Get();
         }
     }
 }

@@ -22,9 +22,29 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         protected abstract void ConstructTree(out Node rootNode);
 
+        //private Node prevNode;
+
+        //void ShowInConsole()
+        //{
+        //    Node currentNode = rootNode.Get();
+        //    if (currentNode != null && prevNode != currentNode)
+        //    {
+        //        prevNode = currentNode;
+        //        Debug.Log($"currentNode changed to = {currentNode}");
+        //    }
+        //}
+
         private void Update()
         {
             rootNode.UpdateNode();
+            //ShowInConsole();
+        }
+
+        public void AbortLowerThan(int priority)
+        {
+            Node currentNode = rootNode.Get();
+            if (currentNode.Priority > priority) 
+                rootNode.Abort();
         }
     }
 }

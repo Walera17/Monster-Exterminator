@@ -54,5 +54,13 @@ namespace MonsterExterminator.Common.BehaviorTree
                 child.SortPriority(ref priorityCounter);
             }
         }
+
+        public override Node Get()
+        {
+            if(currentChild == null)
+                return children.Count != 0 ? children.First.Value.Get() : this;
+
+            return currentChild.Value.Get();
+        }
     }
 }

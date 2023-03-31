@@ -9,11 +9,13 @@ namespace MonsterExterminator.Common.BehaviorTree
         private readonly RunCondition runCondition;
         private readonly NotifyRule notifyRule;
         private readonly NotifyAbort notifyAbort;
+        private readonly BehaviorTree behaviorTree;
         private Transform value;
 
         public BlackboardDecorator(BehaviorTree behaviorTree, Node child, string key, RunCondition runCondition,
             NotifyRule notifyRule, NotifyAbort notifyAbort) : base(child)
         {
+            this.behaviorTree = behaviorTree;
             blackboard = behaviorTree.Blackboard;
             this.key = key;
             this.runCondition = runCondition;
@@ -66,6 +68,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         private void AbortLower()
         {
+            behaviorTree.AbortLowerThan(Priority);
         }
 
         private void AbortSelf()
@@ -83,7 +86,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         protected override NodeResult Update()
         {
-            return Child.UpdateNode();
+            return child.UpdateNode();
         }
 
         private bool CheckRunCondition()
@@ -99,9 +102,10 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         protected override void End()
         {
-            Child.Abort();
-            base.End();
+            child.Abort();
         }
+
+        public override string ToString() => GetType().Name;
 
         ~BlackboardDecorator()
         {

@@ -65,7 +65,9 @@ namespace MonsterExterminator.Common.BehaviorTree
         public virtual void SortPriority(ref int priorityCounter)
         {
             priority = priorityCounter++;
-            Debug.Log($"{this} has priority = {priority}");
+            //Debug.Log($"{this} has priority = {priority}");
         }
+
+        public virtual Node Get() => this;
     }
 }

@@ -28,11 +28,11 @@
             Sequencer patrolSequencer = new Sequencer();
 
             TaskGetNextPatrolPoint taskGetNextPatrolPoint = new TaskGetNextPatrolPoint(this, "PointPatrol");
-            TaskMoveToTarget taskMoveToPointTarget = new TaskMoveToTarget(this, "PointPatrol", 0.25f);
+            TaskMoveToPoint taskMoveToPoint = new TaskMoveToPoint(this, "PointPatrol", 0.25f);
             TaskWait taskWait = new TaskWait(2f);
 
             patrolSequencer.AddChild(taskGetNextPatrolPoint);
-            patrolSequencer.AddChild(taskMoveToPointTarget);
+            patrolSequencer.AddChild(taskMoveToPoint);
             patrolSequencer.AddChild(taskWait);
 
             rootSelector.AddChild(patrolSequencer);
