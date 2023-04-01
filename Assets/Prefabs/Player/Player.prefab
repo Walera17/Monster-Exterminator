@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 7810604072945408526}
   - component: {fileID: 7431884371080084923}
   - component: {fileID: 600972925448343216}
+  - component: {fileID: 3424173937893214223}
   - component: {fileID: 2513006049675784915}
   - component: {fileID: 69499721966775657}
   m_Layer: 0
@@ -97,7 +98,7 @@ Transform:
   m_Children:
   - {fileID: 8639010547884748062}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7810604072945408526
 Animator:
@@ -160,12 +161,26 @@ MonoBehaviour:
   moveStick: {fileID: 0}
   aimStick: {fileID: 0}
   characterController: {fileID: 7431884371080084923}
+  movementComponent: {fileID: 3424173937893214223}
   animator: {fileID: 7810604072945408526}
   inventory: {fileID: 2513006049675784915}
   cameraController: {fileID: 0}
   moveSpeed: 5
   turnSpeed: 8
   animTurnSpeed: 15
+--- !u!114 &3424173937893214223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290700382596798287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b943f5e8462544db617ff4730a672f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 8
 --- !u!114 &2513006049675784915
 MonoBehaviour:
   m_ObjectHideFlags: 0

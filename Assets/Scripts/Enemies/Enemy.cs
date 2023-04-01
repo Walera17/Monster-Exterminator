@@ -1,15 +1,16 @@
-﻿using MonsterExterminator.Common;
-using MonsterExterminator.Common.AI.Perception;
-using MonsterExterminator.Common.BehaviorTree;
+﻿using MonsterExterminator.AI.BehaviorTree;
+using MonsterExterminator.AI.Perception;
+using MonsterExterminator.Health;
 using UnityEngine;
 
 namespace MonsterExterminator.Enemies
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IBehaviorTreeInterface
     {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] Animator animator;
         [SerializeField] PerceptionComponent perceptionComponent;
+        [SerializeField] MovementComponent movementComponent;
         [SerializeField] BehaviorTree behaviorsTree;
 
         private static readonly int Dead = Animator.StringToHash("dead");
@@ -69,6 +70,14 @@ namespace MonsterExterminator.Enemies
                 Gizmos.DrawWireSphere(targetPos, 0.7f);
                 Gizmos.DrawLine(transform.position + Vector3.up, targetPos);
             }
+        }
+
+        public void RotateToward(GameObject target, bool verticalAim = false)
+        {
+            Vector3 aimDir = target.transform.position - transform.position;
+            aimDir.y = verticalAim ? aimDir.y : 0;
+
+            movementComponent.RotateToward(aimDir.normalized);
         }
     }
 }

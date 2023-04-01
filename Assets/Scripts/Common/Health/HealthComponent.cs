@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MonsterExterminator.Common
+namespace MonsterExterminator.Health
 {
     public class HealthComponent : MonoBehaviour
     {

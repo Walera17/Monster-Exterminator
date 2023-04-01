@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MonsterExterminator.Common.AI.Perception
+namespace MonsterExterminator.AI.Perception
 {
     public abstract class Sense : MonoBehaviour
     {

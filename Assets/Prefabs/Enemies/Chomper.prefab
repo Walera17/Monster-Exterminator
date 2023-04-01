@@ -2073,6 +2073,7 @@ GameObject:
   - component: {fileID: 8775259558992430366}
   - component: {fileID: 6831997497096860838}
   - component: {fileID: 2721689003775664049}
+  - component: {fileID: 1108001990183046079}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -2096,7 +2097,7 @@ Transform:
   - {fileID: 8056398509644981176}
   - {fileID: 3757365981754602283}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -2219,6 +2220,7 @@ MonoBehaviour:
   healthComponent: {fileID: 1954059283183157669}
   animator: {fileID: 8056398509654854738}
   perceptionComponent: {fileID: 8775259558992430366}
+  movementComponent: {fileID: 1108001990183046079}
   behaviorsTree: {fileID: 6831997497096860838}
 --- !u!114 &1447878861479084258
 MonoBehaviour:
@@ -2318,10 +2320,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d395df549c57884dadc3fa73bf25df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRandom: 1
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &1108001990183046079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8056398509645479824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b943f5e8462544db617ff4730a672f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 8
 --- !u!1 &8056398509645479826
 GameObject:
   m_ObjectHideFlags: 0

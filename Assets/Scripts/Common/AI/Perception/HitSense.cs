@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using MonsterExterminator.Health;
+using UnityEngine;
 
-namespace MonsterExterminator.Common.AI.Perception
+namespace MonsterExterminator.AI.Perception
 {
     public class HitSense : Sense
     {

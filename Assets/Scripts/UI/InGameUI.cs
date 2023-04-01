@@ -1,4 +1,4 @@
-﻿using MonsterExterminator.Common;
+﻿using MonsterExterminator.Health;
 using UnityEngine;
 
 namespace MonsterExterminator.UI

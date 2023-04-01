@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace MonsterExterminator.Common.BehaviorTree
+namespace MonsterExterminator.AI.BehaviorTree
 {
     public class TaskMoveToTarget : Node
     {

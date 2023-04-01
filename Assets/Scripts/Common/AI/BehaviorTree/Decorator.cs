@@ -1,4 +1,4 @@
-﻿namespace MonsterExterminator.Common.BehaviorTree
+﻿namespace MonsterExterminator.AI.BehaviorTree
 {
     public abstract class Decorator : Node
     {

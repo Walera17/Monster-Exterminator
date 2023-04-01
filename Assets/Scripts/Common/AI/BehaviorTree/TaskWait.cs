@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Common.BehaviorTree
+namespace MonsterExterminator.AI.BehaviorTree
 {
     public class TaskWait : Node
     {

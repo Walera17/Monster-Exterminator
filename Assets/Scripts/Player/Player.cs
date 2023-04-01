@@ -9,11 +9,11 @@ namespace MonsterExterminator.Player
         [SerializeField] private JoyStick moveStick;
         [SerializeField] private JoyStick aimStick;
         [SerializeField] CharacterController characterController;
+        [SerializeField] MovementComponent movementComponent;
         [SerializeField] Animator animator;
         [SerializeField] Inventory inventory;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float turnSpeed = 8f;
         [SerializeField] private float animTurnSpeed = 5f;
 
         private Vector2 moveInput, aimInput;
@@ -104,19 +104,7 @@ namespace MonsterExterminator.Player
 
         private void RotateToward(Vector3 aimDirection)
         {
-            float currentTurnSpeed = 0;
-
-            if (Mathf.Abs(aimDirection.magnitude) > 0.01f)
-            {
-                Quaternion prevRot = transform.rotation;
-
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(aimDirection, Vector3.up), turnSpeed * Time.deltaTime);
-
-                Quaternion currentRot = transform.rotation;
-                float dir = Vector3.Dot(aimDirection, transform.right) > 0 ? 1 : -1;
-                float rotationDelta = Quaternion.Angle(prevRot, currentRot) * dir;
-                currentTurnSpeed = rotationDelta / Time.deltaTime;
-            }
+            float currentTurnSpeed = movementComponent.RotateToward(aimDirection);
 
             animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, animTurnSpeed * Time.deltaTime);
 

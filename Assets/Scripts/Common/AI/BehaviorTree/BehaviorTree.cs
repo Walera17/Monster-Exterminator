@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Common.BehaviorTree
+namespace MonsterExterminator.AI.BehaviorTree
 {
     public abstract class BehaviorTree : MonoBehaviour
     {
+        private IBehaviorTreeInterface behaviorTreeInterface;
+
         public Blackboard Blackboard { get; } = new();
 
         private Node rootNode;
 
         private void Start()
         {
+            behaviorTreeInterface = GetComponent<IBehaviorTreeInterface>();
             ConstructTree(out rootNode);
             SortTree();
         }

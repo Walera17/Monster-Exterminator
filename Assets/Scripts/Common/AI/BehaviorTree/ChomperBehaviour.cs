@@ -1,4 +1,4 @@
-﻿namespace MonsterExterminator.Common.BehaviorTree
+﻿namespace MonsterExterminator.AI.BehaviorTree
 {
     public class ChomperBehaviour : BehaviorTree
     {
@@ -23,7 +23,7 @@
             #region heckLastSeenLocation
 
             Sequencer checkLastSeenLocationSequencer = new Sequencer();
-            TaskMoveToLocation moveToLastSeenLocation = new TaskMoveToLocation(this, "LastSeenLocation", 3f);
+            TaskMoveToLocation moveToLastSeenLocation = new TaskMoveToLocation(this, "LastSeenLocation", 1f);
             TaskWait waitLastSeenLocation = new TaskWait(7f);
             TaskRemoveBlackboardData removeLastLocation = new TaskRemoveBlackboardData(Blackboard, "LastSeenLocation");
 

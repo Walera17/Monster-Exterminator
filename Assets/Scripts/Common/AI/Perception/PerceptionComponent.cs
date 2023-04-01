@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MonsterExterminator.Common.AI.Perception
+namespace MonsterExterminator.AI.Perception
 {
     public class PerceptionComponent : MonoBehaviour
     {
