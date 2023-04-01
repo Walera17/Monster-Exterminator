@@ -13,7 +13,7 @@ namespace MonsterExterminator.AI.BehaviorTree
 
         public TaskMoveToTarget(BehaviorTree behaviorTree, string targetKey, float acceptableDistance = 0.25f)
         {
-            agent = behaviorTree.GetComponent<NavMeshAgent>();
+            agent = behaviorTree.GetNavMeshAgent();
             agent.stoppingDistance = acceptableDistance;
             this.targetKey = targetKey;
             acceptableDistanceSqr = acceptableDistance * acceptableDistance;

@@ -10,7 +10,9 @@
 
             Sequencer attackTargetSequencer = new Sequencer();
             TaskMoveToTarget taskMoveToTarget = new TaskMoveToTarget(this, "Target", 1.8f);
+            TaskRotateTowardsTarget taskRotateTowardsTarget = new TaskRotateTowardsTarget(this, "Target", 10f);
             attackTargetSequencer.AddChild(taskMoveToTarget);
+            attackTargetSequencer.AddChild(taskRotateTowardsTarget);
 
             BlackboardDecorator attackTargetDecorator = new BlackboardDecorator(this,
                 attackTargetSequencer, "Target",

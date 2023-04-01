@@ -72,9 +72,9 @@ namespace MonsterExterminator.Enemies
             }
         }
 
-        public void RotateToward(GameObject target, bool verticalAim = false)
+        public void RotateToward(Transform target, bool verticalAim = false)
         {
-            Vector3 aimDir = target.transform.position - transform.position;
+            Vector3 aimDir = target.position - transform.position;
             aimDir.y = verticalAim ? aimDir.y : 0;
 
             movementComponent.RotateToward(aimDir.normalized);

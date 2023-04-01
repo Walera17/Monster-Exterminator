@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 namespace MonsterExterminator.AI.BehaviorTree
 {
     public abstract class BehaviorTree : MonoBehaviour
     {
         private IBehaviorTreeInterface behaviorTreeInterface;
+        NavMeshAgent agent;
 
         public Blackboard Blackboard { get; } = new();
 
@@ -12,6 +14,7 @@ namespace MonsterExterminator.AI.BehaviorTree
 
         private void Start()
         {
+            agent = GetComponent<NavMeshAgent>();
             behaviorTreeInterface = GetComponent<IBehaviorTreeInterface>();
             ConstructTree(out rootNode);
             SortTree();
@@ -53,5 +56,9 @@ namespace MonsterExterminator.AI.BehaviorTree
             if (currentNode.Priority > priority) 
                 rootNode.Abort();
         }
+
+        public IBehaviorTreeInterface GetBehaviorTreeInterface() => behaviorTreeInterface;
+
+        public NavMeshAgent GetNavMeshAgent() => agent;
     }
 }
