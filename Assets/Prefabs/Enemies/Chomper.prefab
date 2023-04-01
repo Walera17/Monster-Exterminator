@@ -2220,7 +2220,6 @@ MonoBehaviour:
   animator: {fileID: 8056398509654854738}
   perceptionComponent: {fileID: 8775259558992430366}
   behaviorsTree: {fileID: 6831997497096860838}
-  target: {fileID: 0}
 --- !u!114 &1447878861479084258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2247,7 +2246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34ab16f2cd9ba043ae2ca227fdcdacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forgettingTime: 5
+  forgettingTime: 2
   awareDistance: 4
 --- !u!114 &6188246142629909283
 MonoBehaviour:
@@ -2261,7 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4fadb42e480b448bf2cb7ac7bd554b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forgettingTime: 7
+  forgettingTime: 2
   healthComponent: {fileID: 1954059283183157669}
 --- !u!114 &1195545778478197545
 MonoBehaviour:

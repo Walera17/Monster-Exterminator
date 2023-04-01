@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace MonsterExterminator.Common.BehaviorTree
+﻿namespace MonsterExterminator.Common.BehaviorTree
 {
     public abstract class Node
     {
@@ -26,9 +24,7 @@ namespace MonsterExterminator.Common.BehaviorTree
             // time based - на основе времени
             NodeResult updateResult = Update();
             if (updateResult != NodeResult.Inprogress)
-            {
                 EndNode();
-            }
 
             return updateResult;
         }
@@ -48,7 +44,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         protected virtual void End()
         {
-            // clean up - приводить в порядок
+            // reset and clean up - приводить в порядок
         }
 
         private void EndNode()
@@ -57,16 +53,9 @@ namespace MonsterExterminator.Common.BehaviorTree
             End();
         }
 
-        public void Abort()
-        {
-            EndNode();
-        }
+        public void Abort() => EndNode();
 
-        public virtual void SortPriority(ref int priorityCounter)
-        {
-            priority = priorityCounter++;
-            //Debug.Log($"{this} has priority = {priority}");
-        }
+        public virtual void SortPriority(ref int priorityCounter) => priority = priorityCounter++;
 
         public virtual Node Get() => this;
     }

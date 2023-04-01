@@ -15,9 +15,6 @@
             child.SortPriority(ref priorityCounter);
         }
 
-        public override Node Get()
-        {
-            return child.Get();
-        }
+        public override Node Get() => child.Get();
     }
 }

@@ -1,16 +1,14 @@
-﻿using UnityEngine;
-
-namespace MonsterExterminator.Common.BehaviorTree
+﻿namespace MonsterExterminator.Common.BehaviorTree
 {
     public class BlackboardDecorator : Decorator
     {
         private readonly Blackboard blackboard;
         private readonly string key;
-        private readonly RunCondition runCondition;
-        private readonly NotifyRule notifyRule;
-        private readonly NotifyAbort notifyAbort;
+        private readonly RunCondition runCondition;                         // Условие выполнения
+        private readonly NotifyRule notifyRule;                             // Правило Уведомления
+        private readonly NotifyAbort notifyAbort;                           // Уведомить о прерывании
         private readonly BehaviorTree behaviorTree;
-        private Transform value;
+        private object value;
 
         public BlackboardDecorator(BehaviorTree behaviorTree, Node child, string key, RunCondition runCondition,
             NotifyRule notifyRule, NotifyAbort notifyAbort) : base(child)
@@ -21,7 +19,6 @@ namespace MonsterExterminator.Common.BehaviorTree
             this.runCondition = runCondition;
             this.notifyRule = notifyRule;
             this.notifyAbort = notifyAbort;
-            blackboard.OnBlackboardValueChange += Blackboard_OnBlackboardValueChange;
         }
 
         private void Blackboard_OnBlackboardValueChange(string keyParam, object valueParam)
@@ -37,7 +34,7 @@ namespace MonsterExterminator.Common.BehaviorTree
             }
             else if (notifyRule == NotifyRule.KeyValueChange)
             {
-                if (value != null) 
+                if (value != valueParam)
                     Notify();
             }
         }
@@ -60,33 +57,26 @@ namespace MonsterExterminator.Common.BehaviorTree
             }
         }
 
+        private void AbortSelf() => Abort();
+
+        private void AbortLower() => behaviorTree.AbortLowerThan(Priority);
+
         private void AbortBoth()
         {
             Abort();
             AbortLower();
         }
 
-        private void AbortLower()
-        {
-            behaviorTree.AbortLowerThan(Priority);
-        }
-
-        private void AbortSelf()
-        {
-            Abort();
-        }
-
         protected override NodeResult Execute()
         {
+            blackboard.OnBlackboardValueChange -= Blackboard_OnBlackboardValueChange;
+
+            blackboard.OnBlackboardValueChange += Blackboard_OnBlackboardValueChange;
+
             if (CheckRunCondition())
                 return NodeResult.Inprogress;
 
             return NodeResult.Failure;
-        }
-
-        protected override NodeResult Update()
-        {
-            return child.UpdateNode();
         }
 
         private bool CheckRunCondition()
@@ -100,16 +90,14 @@ namespace MonsterExterminator.Common.BehaviorTree
             };
         }
 
+        protected override NodeResult Update() => child.UpdateNode();
+
         protected override void End()
         {
             child.Abort();
+            base.End();
         }
 
         public override string ToString() => GetType().Name;
-
-        ~BlackboardDecorator()
-        {
-            blackboard.OnBlackboardValueChange -= Blackboard_OnBlackboardValueChange;
-        }
     }
 }

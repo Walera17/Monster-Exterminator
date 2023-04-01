@@ -11,7 +11,6 @@ namespace MonsterExterminator.Enemies
         [SerializeField] Animator animator;
         [SerializeField] PerceptionComponent perceptionComponent;
         [SerializeField] BehaviorTree behaviorsTree;
-        [SerializeField] private Transform target;
 
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
@@ -29,8 +28,7 @@ namespace MonsterExterminator.Enemies
                 behaviorsTree.Blackboard.SetOrAddData("Target", targetTransform);
             else
             {
-                target.position =  targetTransform.position;
-                behaviorsTree.Blackboard.SetOrAddData("LastSeenLocation", target);
+                behaviorsTree.Blackboard.SetOrAddData("LastSeenLocation", targetTransform.position);
                 behaviorsTree.Blackboard.RemoveBlackboardData("Target");
             }
         }

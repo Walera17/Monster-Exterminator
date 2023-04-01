@@ -3,59 +3,59 @@ using UnityEngine.AI;
 
 namespace MonsterExterminator.Common.BehaviorTree
 {
-    public class TaskMoveToPoint : Node
+    public class TaskMoveToLocation : Node
     {
-        readonly string targetKey;
+        readonly string locationKey;
         readonly float acceptableDistanceSqr;
         readonly NavMeshAgent agent;
-        Transform targetTransform;
+        Vector3 location;   
         protected readonly Blackboard blackboard;
 
-        public TaskMoveToPoint(BehaviorTree behaviorTree, string targetKey, float acceptableDistance=0.25f)
+        public TaskMoveToLocation(BehaviorTree behaviorTree, string locKey, float acceptableDistance = 0.25f)
         {
             agent = behaviorTree.GetComponent<NavMeshAgent>();
             agent.stoppingDistance = acceptableDistance;
-            this.targetKey = targetKey;
+            locationKey = locKey;
             acceptableDistanceSqr = acceptableDistance * acceptableDistance;
             blackboard = behaviorTree.Blackboard;
-            blackboard.OnBlackboardValueChange += Blackboard_OnBlackboardValueChange;
         }
 
         protected void Blackboard_OnBlackboardValueChange(string key, object value)
         {
-            if (key == targetKey)
-                targetTransform = (Transform)value;
+            if (key == locationKey)
+                location = (Vector3)value;
         }
 
         protected override NodeResult Execute()
         {
-            if (agent == null || targetTransform == null) return NodeResult.Failure;
+            if (agent == null || !blackboard.GetBlackboardData(locationKey, out location))
+                return NodeResult.Failure;
 
-            if (IsTargetAcceptableDistance()) return NodeResult.Success;
+            if (IsTargetAcceptableDistance())
+                return NodeResult.Success;
 
-            agent.SetDestination(targetTransform.position);
-
+            agent.SetDestination(location);
+            agent.isStopped = false;
             return NodeResult.Inprogress;
         }
 
         protected override NodeResult Update()
         {
-            if (targetTransform == null || !agent.hasPath)
+            if (!agent.hasPath)
                 return NodeResult.Failure;
 
             if (ReachedDestination() || IsTargetAcceptableDistance())
             {
-                StopMovingAgent();
+                agent.isStopped = true;
                 return NodeResult.Success;
             }
 
-            agent.SetDestination(targetTransform.position);
+            agent.SetDestination(location);
+
             return NodeResult.Inprogress;
         }
 
-        bool IsTargetAcceptableDistance() => (targetTransform.position - agent.transform.position).sqrMagnitude <= acceptableDistanceSqr;
-
-        protected void StopMovingAgent() => agent.ResetPath();
+        bool IsTargetAcceptableDistance() => (location - agent.transform.position).sqrMagnitude <= acceptableDistanceSqr;
 
         bool ReachedDestination()
         {
@@ -67,6 +67,8 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         protected override void End()
         {
+            agent.isStopped= true;
+            base.End();
         }
 
         public override string ToString() => GetType().Name;

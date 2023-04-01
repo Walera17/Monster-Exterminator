@@ -40,6 +40,10 @@ namespace MonsterExterminator.Common.BehaviorTree
             //ShowInConsole();
         }
 
+        /// <summary>
+        /// Прервать ниже, чем(У низших более высокий приоритет)
+        /// </summary>
+        /// <param name="priority"></param>
         public void AbortLowerThan(int priority)
         {
             Node currentNode = rootNode.Get();

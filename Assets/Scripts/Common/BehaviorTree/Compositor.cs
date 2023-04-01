@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 namespace MonsterExterminator.Common.BehaviorTree
 {
@@ -57,7 +56,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         public override Node Get()
         {
-            if(currentChild == null)
+            if (currentChild == null)
                 return children.Count != 0 ? children.First.Value.Get() : this;
 
             return currentChild.Value.Get();

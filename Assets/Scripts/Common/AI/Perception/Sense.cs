@@ -13,8 +13,9 @@ namespace MonsterExterminator.Common.AI.Perception
 
         static readonly List<PerceptionStimuli> registerStimuliList = new();        // зарегистрированные стимулы
         readonly List<PerceptionStimuli> perceivableStimuliList = new();            // воспринимаемые стимулы
+
+        private readonly Dictionary<PerceptionStimuli, Coroutine> forgettingCoroutines = new();
         private WaitForSeconds forgettingWaitForSeconds;
-        private Coroutine forgettingCoroutine;
 
         void Awake()
         {
@@ -44,8 +45,11 @@ namespace MonsterExterminator.Common.AI.Perception
                     if (!perceivableStimuliList.Contains(stimuli))
                     {
                         perceivableStimuliList.Add(stimuli);
-                        if (forgettingCoroutine != null)
-                            StopCoroutine(forgettingCoroutine);
+                        if (forgettingCoroutines.TryGetValue(stimuli, out Coroutine coroutine))
+                        {
+                            StopCoroutine(coroutine);
+                            forgettingCoroutines.Remove(stimuli);
+                        }
                         else
                             OnPerceptionUpdate?.Invoke(stimuli, true);
                     }
@@ -53,7 +57,7 @@ namespace MonsterExterminator.Common.AI.Perception
                 else if (perceivableStimuliList.Contains(stimuli))
                 {
                     perceivableStimuliList.Remove(stimuli);
-                    forgettingCoroutine = StartCoroutine(ForgetStimuli(stimuli));
+                    forgettingCoroutines.Add(stimuli, StartCoroutine(ForgetStimuli(stimuli)));
                 }
             }
         }
@@ -61,7 +65,7 @@ namespace MonsterExterminator.Common.AI.Perception
         protected IEnumerator ForgetStimuli(PerceptionStimuli stimuli)
         {
             yield return forgettingWaitForSeconds;
-            forgettingCoroutine = null;
+            forgettingCoroutines.Remove(stimuli);
             OnPerceptionUpdate?.Invoke(stimuli, false);
         }
 

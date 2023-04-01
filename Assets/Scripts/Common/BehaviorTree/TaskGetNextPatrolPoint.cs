@@ -17,7 +17,7 @@ namespace MonsterExterminator.Common.BehaviorTree
 
         protected override NodeResult Execute()
         {
-            if (patrolComponent.GetRandomPatrolPoint(out Transform point))
+            if (patrolComponent.GetRandomPatrolPoint(out Vector3 point))
             {
                 blackboard.SetOrAddData(patrolPointKey, point);
                 return NodeResult.Success;
