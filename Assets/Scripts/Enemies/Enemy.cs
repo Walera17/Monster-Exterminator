@@ -13,10 +13,12 @@ namespace MonsterExterminator.Enemies
         [SerializeField] MovementComponent movementComponent;
         [SerializeField] BehaviorTree behaviorsTree;
 
+        private Vector3 prevPosition;
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
+        private static readonly int Speed = Animator.StringToHash("speed");
 
-        public  Animator Animator
+        public Animator Animator
         {
             get => animator;
             private set => animator = value;
@@ -27,6 +29,7 @@ namespace MonsterExterminator.Enemies
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
             healthComponent.OnDead += HealthComponent_OnDead;
             perceptionComponent.OnPerceptionTargetChanged += PerceptionComponent_OnPerceptionTargetChanged;
+            prevPosition = transform.position;
         }
 
         private void PerceptionComponent_OnPerceptionTargetChanged(Transform targetTransform, bool sensed)
@@ -46,6 +49,20 @@ namespace MonsterExterminator.Enemies
             healthComponent.OnDead -= HealthComponent_OnDead;
         }
 
+        private void Update()
+        {
+            CalculateSpeed();
+        }
+
+        private void CalculateSpeed()
+        {
+            Vector3 posDelta = transform.position - prevPosition;
+            float deltaMagnitude = posDelta.magnitude / Time.deltaTime;
+        
+            animator.SetFloat(Speed, deltaMagnitude > 0.01f ? deltaMagnitude : 0);
+            prevPosition = transform.position;
+        }
+
         private void HealthComponent_OnDead()
         {
             TriggerDeathAnimation();
@@ -54,6 +71,11 @@ namespace MonsterExterminator.Enemies
         private void TriggerDeathAnimation()
         {
             animator.SetTrigger(Dead);
+        }
+
+        public void PlayStep()
+        {
+
         }
 
         public void AnimatorDestroyGameObject()
@@ -70,7 +92,8 @@ namespace MonsterExterminator.Enemies
         {
             Gizmos.color = Color.red;
 
-            if (behaviorsTree != null && behaviorsTree.Blackboard.GetBlackboardData("Target", out Transform targetTransform))
+            if (behaviorsTree != null &&
+                behaviorsTree.Blackboard.GetBlackboardData("Target", out Transform targetTransform))
             {
                 Vector3 targetPos = targetTransform.position + Vector3.up;
                 Gizmos.DrawWireSphere(targetPos, 0.7f);

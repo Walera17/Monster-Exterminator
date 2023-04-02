@@ -10,10 +10,12 @@ namespace MonsterExterminator.AI.BehaviorTree
         readonly NavMeshAgent agent;
         Transform targetTransform;
         protected readonly Blackboard blackboard;
+        private readonly float speedAgent;
 
         public TaskMoveToTarget(BehaviorTree behaviorTree, string targetKey, float acceptableDistance = 0.25f)
         {
             agent = behaviorTree.GetNavMeshAgent();
+            speedAgent = agent.speed;
             agent.stoppingDistance = acceptableDistance;
             this.targetKey = targetKey;
             acceptableDistanceSqr = acceptableDistance * acceptableDistance;
@@ -37,6 +39,7 @@ namespace MonsterExterminator.AI.BehaviorTree
             blackboard.OnBlackboardValueChange += Blackboard_OnBlackboardValueChange;
 
             agent.SetDestination(targetTransform.position);
+            SetChaseSpeed(true);
             agent.isStopped = false;
             return NodeResult.Inprogress;
         }
@@ -57,6 +60,7 @@ namespace MonsterExterminator.AI.BehaviorTree
                 return NodeResult.Success;
             }
 
+            SetChaseSpeed(true);
             return NodeResult.Inprogress;
         }
 
@@ -74,8 +78,14 @@ namespace MonsterExterminator.AI.BehaviorTree
         protected override void End()
         {
             agent.isStopped = true;
+            SetChaseSpeed(false);
             blackboard.OnBlackboardValueChange -= Blackboard_OnBlackboardValueChange;
             base.End();
+        }
+
+        private void SetChaseSpeed(bool chase)
+        {
+            agent.speed = chase ? speedAgent * 1.75f : speedAgent;
         }
     }
 }
