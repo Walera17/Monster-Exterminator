@@ -3520,6 +3520,7 @@ MonoBehaviour:
   perceptionComponent: {fileID: 8976505151664737105}
   movementComponent: {fileID: 735606281169126896}
   behaviorsTree: {fileID: 8215722457237752456}
+  teamRelation: 2
 --- !u!114 &8215722457237752456
 MonoBehaviour:
   m_ObjectHideFlags: 0

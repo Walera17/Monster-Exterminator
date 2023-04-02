@@ -98,7 +98,7 @@ Transform:
   m_Children:
   - {fileID: 8639010547884748062}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7810604072945408526
 Animator:
@@ -166,8 +166,8 @@ MonoBehaviour:
   inventory: {fileID: 2513006049675784915}
   cameraController: {fileID: 0}
   moveSpeed: 5
-  turnSpeed: 8
   animTurnSpeed: 15
+  teamRelation: 1
 --- !u!114 &3424173937893214223
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,11 @@
+using MonsterExterminator.Damage;
 using MonsterExterminator.UI;
 using MonsterExterminator.Weapons;
 using UnityEngine;
 
 namespace MonsterExterminator.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, ITeamInterface
     {
         [SerializeField] private JoyStick moveStick;
         [SerializeField] private JoyStick aimStick;
@@ -15,6 +16,7 @@ namespace MonsterExterminator.Player
         [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float animTurnSpeed = 5f;
+        [SerializeField] TeamRelation teamRelation;
 
         private Vector2 moveInput, aimInput;
         private Camera mainCamera;
@@ -24,6 +26,8 @@ namespace MonsterExterminator.Player
         private static readonly int TurnSpeed = Animator.StringToHash("turnSpeed");
         private static readonly int SwitchWeapon = Animator.StringToHash("switchWeapon");
         private static readonly int Attacking = Animator.StringToHash("attacking");
+
+        public int GetTeamID() => (int)teamRelation;
 
         void Start()
         {

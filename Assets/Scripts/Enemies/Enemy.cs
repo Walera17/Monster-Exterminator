@@ -1,22 +1,27 @@
 ﻿using MonsterExterminator.AI.BehaviorTree;
 using MonsterExterminator.AI.Perception;
+using MonsterExterminator.Damage;
 using MonsterExterminator.Health;
 using UnityEngine;
 
 namespace MonsterExterminator.Enemies
 {
-    public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface
+    public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterface
     {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] Animator animator;
         [SerializeField] PerceptionComponent perceptionComponent;
         [SerializeField] MovementComponent movementComponent;
         [SerializeField] BehaviorTree behaviorsTree;
+        [SerializeField] TeamRelation teamRelation;
 
+        private float speed;
         private Vector3 prevPosition;
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int Speed = Animator.StringToHash("speed");
+
+        public int GetTeamID() => (int)teamRelation;
 
         public Animator Animator
         {
@@ -58,8 +63,11 @@ namespace MonsterExterminator.Enemies
         {
             Vector3 posDelta = transform.position - prevPosition;
             float deltaMagnitude = posDelta.magnitude / Time.deltaTime;
-        
-            animator.SetFloat(Speed, deltaMagnitude > 0.01f ? deltaMagnitude : 0);
+
+            speed = Mathf.Lerp(speed, deltaMagnitude, 5f * Time.deltaTime);
+
+            animator.SetFloat(Speed, speed > 0.1f ? speed : 0);
+
             prevPosition = transform.position;
         }
 
