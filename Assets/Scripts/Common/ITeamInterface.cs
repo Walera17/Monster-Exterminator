@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Damage
+namespace MonsterExterminator
 {
     public interface ITeamInterface
     {
