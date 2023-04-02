@@ -9,10 +9,13 @@
             #region attackTarget
 
             Sequencer attackTargetSequencer = new Sequencer();
-            TaskMoveToTarget taskMoveToTarget = new TaskMoveToTarget(this, "Target", 1.8f);
+            TaskMoveToTarget taskMoveToTarget = new TaskMoveToTarget(this, "Target", 2.0f);
             TaskRotateTowardsTarget taskRotateTowardsTarget = new TaskRotateTowardsTarget(this, "Target", 10f);
+            TaskAttackTarget taskAttackTarget = new TaskAttackTarget(this, "Target");
+
             attackTargetSequencer.AddChild(taskMoveToTarget);
             attackTargetSequencer.AddChild(taskRotateTowardsTarget);
+            attackTargetSequencer.AddChild(taskAttackTarget);
 
             BlackboardDecorator attackTargetDecorator = new BlackboardDecorator(this,
                 attackTargetSequencer, "Target",

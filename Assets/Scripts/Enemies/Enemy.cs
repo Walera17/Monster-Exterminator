@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MonsterExterminator.Enemies
 {
-    public class Enemy : MonoBehaviour, IBehaviorTreeInterface
+    public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface
     {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] Animator animator;
@@ -15,6 +15,12 @@ namespace MonsterExterminator.Enemies
 
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
+
+        public  Animator Animator
+        {
+            get => animator;
+            private set => animator = value;
+        }
 
         private void Start()
         {
@@ -78,6 +84,10 @@ namespace MonsterExterminator.Enemies
             aimDir.y = verticalAim ? aimDir.y : 0;
 
             movementComponent.RotateToward(aimDir.normalized);
+        }
+
+        public virtual void AttackTarget(Transform target)
+        {
         }
     }
 }
