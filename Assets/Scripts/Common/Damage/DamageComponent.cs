@@ -10,9 +10,9 @@ namespace MonsterExterminator.Damage
 
         private ITeamInterface teamInterface;
 
-        private void Awake()
+        public  void SetTeamInterface(ITeamInterface teamInterfaceParam)
         {
-            teamInterface = GetComponent<ITeamInterface>();
+            teamInterface = teamInterfaceParam;
         }
 
         public bool ShouldDamage(GameObject other)

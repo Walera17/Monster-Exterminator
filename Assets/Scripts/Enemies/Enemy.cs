@@ -29,7 +29,7 @@ namespace MonsterExterminator.Enemies
             private set => animator = value;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
             healthComponent.OnDead += HealthComponent_OnDead;

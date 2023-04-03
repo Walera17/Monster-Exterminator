@@ -6,7 +6,7 @@ namespace MonsterExterminator.Damage
     public class TriggerDamageComponent : DamageComponent
     {
         [SerializeField] private float damage;
-        [SerializeField] private BoxCollider trigger;
+        [SerializeField] private Collider trigger;
         [SerializeField] private bool startedEnabled;
 
         private void Start()
