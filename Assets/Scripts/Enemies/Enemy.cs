@@ -91,7 +91,7 @@ namespace MonsterExterminator.Enemies
             Destroy(gameObject);
         }
 
-        private void HealthComponent_OnTakeDamage(float health, float maxHealth, GameObject instigator)
+        private void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
         {
             animator.SetTrigger(Hit);
         }

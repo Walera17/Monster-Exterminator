@@ -1,4 +1,5 @@
 using MonsterExterminator.Damage;
+using MonsterExterminator.Health;
 using MonsterExterminator.UI;
 using MonsterExterminator.Weapons;
 using UnityEngine;
@@ -18,6 +19,10 @@ namespace MonsterExterminator.Player
         [SerializeField] private float animTurnSpeed = 5f;
         [SerializeField] TeamRelation teamRelation;
 
+        [Header("Health and Damage")]
+        [SerializeField] HealthComponent healthComponent;
+        [SerializeField] PlayerHealthBar healthBar;
+
         private Vector2 moveInput, aimInput;
         private Camera mainCamera;
         private float animatorTurnSpeed;
@@ -35,6 +40,8 @@ namespace MonsterExterminator.Player
             moveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
             aimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
             aimStick.OnTaped += StartSwitchWeapon;
+            healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
+            healthComponent.BroadcastHealthValueImmediately();
         }
 
         private void OnDestroy()
@@ -42,6 +49,12 @@ namespace MonsterExterminator.Player
             moveStick.OnStickInputValueChanged -= MoveStick_OnStickInputValueChanged;
             aimStick.OnStickInputValueChanged -= AimStick_OnStickInputValueChanged;
             aimStick.OnTaped -= StartSwitchWeapon;
+            healthComponent.OnHealthChange -= HealthComponent_OnHealthChange;
+        }
+
+        private void HealthComponent_OnHealthChange(float health, float maxHealth, float delta, GameObject instigator)
+        {
+            healthBar.SetHealthValue(health , maxHealth, delta);
         }
 
         private void StartSwitchWeapon() => animator.SetTrigger(SwitchWeapon);

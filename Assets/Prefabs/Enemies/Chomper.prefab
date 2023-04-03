@@ -3377,7 +3377,7 @@ PrefabInstance:
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
@@ -3562,6 +3562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TriggerDamager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313663951685211237, guid: 6b52a2ca496839c43b1687276224f9c1,
+        type: 3}
+      propertyPath: damage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3313663951685211237, guid: 6b52a2ca496839c43b1687276224f9c1,
         type: 3}

@@ -13,7 +13,7 @@ namespace MonsterExterminator.AI.Perception
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
         }
 
-        private void HealthComponent_OnTakeDamage(float health, float maxHealth, GameObject instigator)
+        private void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
         {
             perceptionStimuli = instigator.GetComponent<PerceptionStimuli>();
         }

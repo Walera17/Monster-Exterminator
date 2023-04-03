@@ -30,7 +30,7 @@ namespace MonsterExterminator.UI
             Destroy(gameObject);
         }
 
-        public void SetHealthValue(float health, float maxHealth, GameObject instigator) 
+        public void SetHealthValue(float health, float maxHealth, float delta, GameObject instigator) 
             => slider.value = health / maxHealth;
 
         private void Update()
