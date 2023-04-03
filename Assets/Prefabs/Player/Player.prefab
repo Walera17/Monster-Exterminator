@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 2513006049675784915}
   - component: {fileID: 69499721966775657}
   - component: {fileID: 4040068305404968454}
+  - component: {fileID: 3406906796928019971}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -229,6 +230,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   maxHealth: 200
+--- !u!114 &3406906796928019971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290700382596798287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f92ab2ea8eecdc4caf14844c68d886a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 8639010547881409946}
+  damageEmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  blinkSpeed: 20
+  emissionColorPropertyName: _Addition
+  healthComponent: {fileID: 4040068305404968454}
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +317,12 @@ PrefabInstance:
       addedObject: {fileID: 855928829}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+--- !u!137 &8639010547881409946 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700002, guid: a5674d01884853d4e8f2386a171e14d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8639010547884619320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8639010547884747478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400622, guid: a5674d01884853d4e8f2386a171e14d9,

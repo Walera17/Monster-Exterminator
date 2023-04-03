@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 5360878233180416337}
-  aimRange: 10
+  aimRange: 30
   aimMask:
     serializedVersion: 2
     m_Bits: 4294967295
