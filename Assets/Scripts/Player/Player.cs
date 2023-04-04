@@ -31,6 +31,7 @@ namespace MonsterExterminator.Player
         private static readonly int TurnSpeed = Animator.StringToHash("turnSpeed");
         private static readonly int SwitchWeapon = Animator.StringToHash("switchWeapon");
         private static readonly int Attacking = Animator.StringToHash("attacking");
+        private static readonly int Death = Animator.StringToHash("death");
 
         public int GetTeamID() => (int)teamRelation;
 
@@ -41,6 +42,7 @@ namespace MonsterExterminator.Player
             aimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
             aimStick.OnTaped += StartSwitchWeapon;
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
+            healthComponent.OnDead += HealthComponent_OnDead;
             healthComponent.BroadcastHealthValueImmediately();
         }
 
@@ -50,6 +52,13 @@ namespace MonsterExterminator.Player
             aimStick.OnStickInputValueChanged -= AimStick_OnStickInputValueChanged;
             aimStick.OnTaped -= StartSwitchWeapon;
             healthComponent.OnHealthChange -= HealthComponent_OnHealthChange;
+            healthComponent.OnDead -= HealthComponent_OnDead;
+        }
+
+        private void HealthComponent_OnDead()
+        {
+            animator.SetLayerWeight(2,1);
+            animator.SetTrigger(Death);
         }
 
         private void HealthComponent_OnHealthChange(float health, float maxHealth, float delta, GameObject instigator)

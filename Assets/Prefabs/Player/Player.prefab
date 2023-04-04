@@ -247,6 +247,7 @@ MonoBehaviour:
   blinkSpeed: 20
   emissionColorPropertyName: _Addition
   healthComponent: {fileID: 4040068305404968454}
+  shaker: {fileID: 0}
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0
