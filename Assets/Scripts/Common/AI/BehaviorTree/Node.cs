@@ -53,6 +53,8 @@
             End();
         }
 
+        public virtual void Initialize() { }
+
         public void Abort() => EndNode();
 
         public virtual void SortPriority(ref int priorityCounter) => priority = priorityCounter++;

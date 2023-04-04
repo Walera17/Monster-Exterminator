@@ -15,6 +15,12 @@
             child.SortPriority(ref priorityCounter);
         }
 
+        public override void Initialize()
+        {
+            base.Initialize();
+            child.Initialize();
+        }
+
         public override Node Get() => child.Get();
     }
 }

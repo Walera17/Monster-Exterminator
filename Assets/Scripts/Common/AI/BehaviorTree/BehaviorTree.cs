@@ -23,6 +23,7 @@ namespace MonsterExterminator.AI.BehaviorTree
         private void SortTree()
         {
             int priorityCounter = 0;
+            rootNode.Initialize();
             rootNode.SortPriority(ref priorityCounter);
         }
 

@@ -54,6 +54,15 @@ namespace MonsterExterminator.AI.BehaviorTree
             }
         }
 
+        public override void Initialize()
+        {
+            base.Initialize();
+            foreach (Node child in children)
+            {
+                child.Initialize();
+            }
+        }
+
         public override Node Get()
         {
             if (currentChild == null)
