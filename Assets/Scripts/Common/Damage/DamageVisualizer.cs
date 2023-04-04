@@ -22,7 +22,9 @@ namespace MonsterExterminator.Damage
 
         private void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
         {
-            shaker.StartShake();
+            if (shaker != null)
+                shaker.StartShake();
+
             Color currentEmissionColor = mesh.material.GetColor(emissionColorPropertyName);
             if (Mathf.Abs((currentEmissionColor - originalEmissionColor).grayscale) < 0.1f)
                 mesh.material.SetColor(emissionColorPropertyName, damageEmissionColor);

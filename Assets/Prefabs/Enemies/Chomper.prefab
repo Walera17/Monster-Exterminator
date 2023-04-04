@@ -3377,7 +3377,7 @@ PrefabInstance:
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
@@ -3464,6 +3464,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8215722457237752456}
+    - targetCorrespondingSourceObject: {fileID: 8056398509645479824, guid: ef6b4f17eafe02a4498e48014f63c35b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 20964437986076794}
   m_SourcePrefab: {fileID: 100100000, guid: ef6b4f17eafe02a4498e48014f63c35b, type: 3}
 --- !u!114 &735606281169126896 stripped
 MonoBehaviour:
@@ -3538,6 +3542,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8c1a4662aa71b42823689d8aab8da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &20964437986076794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681764590091186655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f92ab2ea8eecdc4caf14844c68d886a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 5425755777440016754}
+  damageEmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  blinkSpeed: 20
+  emissionColorPropertyName: _Addition
+  healthComponent: {fileID: 2182901545057079274}
+  shaker: {fileID: 0}
 --- !u!114 &8976505151664737105 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8775259558992430366, guid: ef6b4f17eafe02a4498e48014f63c35b,
