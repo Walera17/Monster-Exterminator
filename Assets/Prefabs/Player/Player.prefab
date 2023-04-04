@@ -75,10 +75,10 @@ GameObject:
   - component: {fileID: 7431884371080084923}
   - component: {fileID: 600972925448343216}
   - component: {fileID: 3424173937893214223}
+  - component: {fileID: 2175611678815295973}
   - component: {fileID: 2513006049675784915}
   - component: {fileID: 69499721966775657}
   - component: {fileID: 4040068305404968454}
-  - component: {fileID: 3406906796928019971}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Transform:
   m_Children:
   - {fileID: 8639010547884748062}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7810604072945408526
 Animator:
@@ -160,18 +160,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97c86fb2583508418ffc39d3333e4ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveStick: {fileID: 0}
-  aimStick: {fileID: 0}
   characterController: {fileID: 7431884371080084923}
   movementComponent: {fileID: 3424173937893214223}
   animator: {fileID: 7810604072945408526}
   inventory: {fileID: 2513006049675784915}
+  damageVisualizerWithShake: {fileID: 2175611678815295973}
   cameraController: {fileID: 0}
   moveSpeed: 5
   animTurnSpeed: 15
   teamRelation: 1
   healthComponent: {fileID: 4040068305404968454}
-  healthBar: {fileID: 0}
+  uiManager: {fileID: 0}
 --- !u!114 &3424173937893214223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +184,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 8
+--- !u!114 &2175611678815295973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290700382596798287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b04f15e1cdd90b845ac97965b86a031e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 8639010547881409946}
+  damageEmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  blinkSpeed: 20
+  emissionColorPropertyName: _Addition
+  healthComponent: {fileID: 4040068305404968454}
 --- !u!114 &2513006049675784915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,24 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   maxHealth: 200
---- !u!114 &3406906796928019971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6290700382596798287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f92ab2ea8eecdc4caf14844c68d886a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mesh: {fileID: 8639010547881409946}
-  damageEmissionColor: {r: 1, g: 1, b: 1, a: 1}
-  blinkSpeed: 20
-  emissionColorPropertyName: _Addition
-  healthComponent: {fileID: 4040068305404968454}
-  shaker: {fileID: 0}
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,20 +8,21 @@ namespace MonsterExterminator.Player
 {
     public class Player : MonoBehaviour, ITeamInterface
     {
-        [SerializeField] private JoyStick moveStick;
-        [SerializeField] private JoyStick aimStick;
         [SerializeField] CharacterController characterController;
         [SerializeField] MovementComponent movementComponent;
         [SerializeField] Animator animator;
         [SerializeField] Inventory inventory;
+        [SerializeField] private DamageVisualizerWithShake damageVisualizerWithShake;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float animTurnSpeed = 5f;
         [SerializeField] TeamRelation teamRelation;
 
-        [Header("Health and Damage")]
-        [SerializeField] HealthComponent healthComponent;
-        [SerializeField] PlayerHealthBar healthBar;
+        [Header("Health and Damage")] [SerializeField]
+        HealthComponent healthComponent;
+
+        [Header("UIManager")]
+        [SerializeField] private UIManager uiManager;
 
         private Vector2 moveInput, aimInput;
         private Camera mainCamera;
@@ -38,32 +39,34 @@ namespace MonsterExterminator.Player
         void Start()
         {
             mainCamera = Camera.main;
-            moveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
-            aimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
-            aimStick.OnTaped += StartSwitchWeapon;
+            uiManager.MoveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
+            uiManager.AimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
+            uiManager.AimStick.OnTaped += StartSwitchWeapon;
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
             healthComponent.OnDead += HealthComponent_OnDead;
             healthComponent.BroadcastHealthValueImmediately();
+            damageVisualizerWithShake.Construct(cameraController.Shaker);
         }
 
         private void OnDestroy()
         {
-            moveStick.OnStickInputValueChanged -= MoveStick_OnStickInputValueChanged;
-            aimStick.OnStickInputValueChanged -= AimStick_OnStickInputValueChanged;
-            aimStick.OnTaped -= StartSwitchWeapon;
+            uiManager.MoveStick.OnStickInputValueChanged -= MoveStick_OnStickInputValueChanged;
+            uiManager.AimStick.OnStickInputValueChanged -= AimStick_OnStickInputValueChanged;
+            uiManager.AimStick.OnTaped -= StartSwitchWeapon;
             healthComponent.OnHealthChange -= HealthComponent_OnHealthChange;
             healthComponent.OnDead -= HealthComponent_OnDead;
         }
 
         private void HealthComponent_OnDead()
         {
-            animator.SetLayerWeight(2,1);
+            animator.SetLayerWeight(2, 1);
             animator.SetTrigger(Death);
+            uiManager.SetGamePlayControlEnabled(false);
         }
 
         private void HealthComponent_OnHealthChange(float health, float maxHealth, float delta, GameObject instigator)
         {
-            healthBar.SetHealthValue(health , maxHealth, delta);
+            uiManager.SetHealthValue(health, maxHealth, delta);
         }
 
         private void StartSwitchWeapon() => animator.SetTrigger(SwitchWeapon);

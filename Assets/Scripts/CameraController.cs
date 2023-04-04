@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MonsterExterminator.Damage;
+using UnityEngine;
 
 namespace MonsterExterminator
 {
@@ -6,6 +7,8 @@ namespace MonsterExterminator
     {
         [SerializeField] Transform followTransform;
         [SerializeField] private float turnSpeed = 2f;
+        [SerializeField] private Shaker shaker;
+        public Shaker Shaker => shaker;
 
         private void LateUpdate()
         {
