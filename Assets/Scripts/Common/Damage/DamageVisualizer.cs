@@ -7,23 +7,22 @@ namespace MonsterExterminator.Damage
     {
         [SerializeField] private Renderer mesh;
         [SerializeField] private Color damageEmissionColor;
-        [SerializeField] private float blinkSpeed = 2.0f;
+        [SerializeField] private float blinkSpeed = 20f;
         [SerializeField] private string emissionColorPropertyName = "_Addition";
         [SerializeField] HealthComponent healthComponent;
+        [SerializeField] private Shaker shaker;
 
         private Color originalEmissionColor;
 
         private void Start()
         {
-            Material material = mesh.material;
-            mesh.material = new Material(material);
-
             originalEmissionColor = mesh.material.GetColor(emissionColorPropertyName);
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
         }
 
         private void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
         {
+            shaker.StartShake();
             Color currentEmissionColor = mesh.material.GetColor(emissionColorPropertyName);
             if (Mathf.Abs((currentEmissionColor - originalEmissionColor).grayscale) < 0.1f)
                 mesh.material.SetColor(emissionColorPropertyName, damageEmissionColor);
@@ -34,6 +33,11 @@ namespace MonsterExterminator.Damage
             Color currentEmissionColor = mesh.material.GetColor(emissionColorPropertyName);
             Color newEmissionColor = Color.Lerp(currentEmissionColor, originalEmissionColor, Time.deltaTime * blinkSpeed);
             mesh.material.SetColor(emissionColorPropertyName, newEmissionColor);
+        }
+
+        private void OnDestroy()
+        {
+            healthComponent.OnTakeDamage -= HealthComponent_OnTakeDamage;
         }
     }
 }

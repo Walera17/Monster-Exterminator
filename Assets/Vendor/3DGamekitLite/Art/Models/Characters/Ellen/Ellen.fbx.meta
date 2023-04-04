@@ -2677,7 +2677,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ellen_Body_Mat
-    second: {fileID: 2100000, guid: 83584bea70fb64942afc77b15a5fdd78, type: 2}
+    second: {fileID: 2100000, guid: 46ba9be6c4545f148aeea969a1f0bc1b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
