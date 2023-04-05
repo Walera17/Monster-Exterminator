@@ -2,12 +2,12 @@
 {
     public abstract class TaskGroup : Node
     {
-        private Node root;
-        private BehaviorTree behaviorTree;
+        Node root;
+        protected BehaviorTree tree;
 
-        protected TaskGroup(BehaviorTree tree)
+        protected TaskGroup(BehaviorTree behaviorTree)
         {
-            behaviorTree = tree;
+            tree = behaviorTree;
         }
 
         protected abstract void ConstructTree(out Node root);
@@ -38,6 +38,11 @@
         {
             base.Initialize();
             ConstructTree(out root);
+        }
+
+        public override Node Get()
+        {
+            return root.Get();
         }
     }
 }

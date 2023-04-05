@@ -6,11 +6,10 @@ namespace MonsterExterminator.AI.BehaviorTree
     public class TaskMoveToTarget : Node
     {
         readonly string targetKey;
-        readonly float acceptableDistanceSqr;
+        readonly float acceptableDistance, acceptableDistanceSqr, speedAgent;
         readonly NavMeshAgent agent;
         Transform targetTransform;
         protected readonly Blackboard blackboard;
-        private readonly float speedAgent;
 
         public TaskMoveToTarget(BehaviorTree behaviorTree, string targetKey, float acceptableDistance = 0.25f)
         {
@@ -18,6 +17,7 @@ namespace MonsterExterminator.AI.BehaviorTree
             speedAgent = agent.speed;
             agent.stoppingDistance = acceptableDistance;
             this.targetKey = targetKey;
+            this.acceptableDistance = acceptableDistance;
             acceptableDistanceSqr = acceptableDistance * acceptableDistance;
             blackboard = behaviorTree.Blackboard;
         }
@@ -40,6 +40,7 @@ namespace MonsterExterminator.AI.BehaviorTree
 
             agent.SetDestination(targetTransform.position);
             SetChaseSpeed(true);
+            agent.stoppingDistance = acceptableDistance;
             agent.isStopped = false;
             return NodeResult.Inprogress;
         }
@@ -52,20 +53,18 @@ namespace MonsterExterminator.AI.BehaviorTree
                 return NodeResult.Failure;
             }
 
-            agent.SetDestination(targetTransform.position);
-
             if (ReachedDestination() || IsTargetAcceptableDistance())
             {
                 agent.isStopped = true;
                 return NodeResult.Success;
             }
 
-            SetChaseSpeed(true);
+            agent.SetDestination(targetTransform.position);
+
             return NodeResult.Inprogress;
         }
 
-        bool IsTargetAcceptableDistance() => (targetTransform.position - agent.transform.position).sqrMagnitude <=
-                                             acceptableDistanceSqr;
+        bool IsTargetAcceptableDistance() => (targetTransform.position - agent.transform.position).sqrMagnitude <= acceptableDistanceSqr;
 
         bool ReachedDestination()
         {

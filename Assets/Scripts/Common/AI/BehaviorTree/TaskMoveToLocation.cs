@@ -6,24 +6,18 @@ namespace MonsterExterminator.AI.BehaviorTree
     public class TaskMoveToLocation : Node
     {
         readonly string locationKey;
-        readonly float acceptableDistanceSqr;
+        readonly float acceptableDistance, acceptableDistanceSqr;
         readonly NavMeshAgent agent;
-        Vector3 location;   
+        Vector3 location;
         protected readonly Blackboard blackboard;
 
         public TaskMoveToLocation(BehaviorTree behaviorTree, string locKey, float acceptableDistance = 0.25f)
         {
             agent = behaviorTree.GetComponent<NavMeshAgent>();
-            agent.stoppingDistance = acceptableDistance;
             locationKey = locKey;
+            this.acceptableDistance = acceptableDistance;
             acceptableDistanceSqr = acceptableDistance * acceptableDistance;
             blackboard = behaviorTree.Blackboard;
-        }
-
-        protected void Blackboard_OnBlackboardValueChange(string key, object value)
-        {
-            if (key == locationKey)
-                location = (Vector3)value;
         }
 
         protected override NodeResult Execute()
@@ -35,6 +29,7 @@ namespace MonsterExterminator.AI.BehaviorTree
                 return NodeResult.Success;
 
             agent.SetDestination(location);
+            agent.stoppingDistance = acceptableDistance;
             agent.isStopped = false;
             return NodeResult.Inprogress;
         }
@@ -67,7 +62,7 @@ namespace MonsterExterminator.AI.BehaviorTree
 
         protected override void End()
         {
-            agent.isStopped= true;
+            agent.isStopped = true;
             base.End();
         }
 
