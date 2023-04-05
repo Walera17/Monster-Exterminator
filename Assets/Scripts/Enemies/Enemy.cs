@@ -20,6 +20,7 @@ namespace MonsterExterminator.Enemies
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int Speed = Animator.StringToHash("speed");
+        protected static readonly int Attack = Animator.StringToHash("attack");
 
         public int GetTeamID() => (int)teamRelation;
 

@@ -7,8 +7,6 @@ namespace MonsterExterminator.Enemies
     {
         [SerializeField] TriggerDamageComponent damageComponent;
 
-        private static readonly int Attack = Animator.StringToHash("attack");
-
         protected override void Start()
         {
             base.Start();

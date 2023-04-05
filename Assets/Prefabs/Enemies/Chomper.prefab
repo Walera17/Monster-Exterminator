@@ -1003,7 +1003,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5425755777443128382}
-  m_LocalRotation: {x: -0.37795106, y: -0.26131615, z: -0.511274, w: 0.72626835}
+  m_LocalRotation: {x: -0.3779511, y: -0.26131618, z: -0.51127404, w: 0.7262684}
   m_LocalPosition: {x: -0.00007979201, y: 0.027509086, z: -0.043945592}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3100,7 +3100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5425755777443128814}
-  m_LocalRotation: {x: -0.37795106, y: -0.26131615, z: -0.511274, w: 0.72626835}
+  m_LocalRotation: {x: -0.3779511, y: -0.26131618, z: -0.51127404, w: 0.7262684}
   m_LocalPosition: {x: 0.000079800004, y: -0.027509, z: 0.043944996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3374,6 +3374,11 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5955243954387921632, guid: ef6b4f17eafe02a4498e48014f63c35b,
+        type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 5425755777440016754}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_RootOrder
@@ -3436,14 +3441,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509654854738, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8802685865618916438, guid: ef6b4f17eafe02a4498e48014f63c35b,
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
+    - target: {fileID: 8056398509654854738, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
-      propertyPath: m_Speed
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 49f3a88b66343fd43bf4e611daf177db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3464,10 +3469,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8215722457237752456}
-    - targetCorrespondingSourceObject: {fileID: 8056398509645479824, guid: ef6b4f17eafe02a4498e48014f63c35b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 20964437986076794}
   m_SourcePrefab: {fileID: 100100000, guid: ef6b4f17eafe02a4498e48014f63c35b, type: 3}
 --- !u!114 &735606281169126896 stripped
 MonoBehaviour:
@@ -3542,24 +3543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8c1a4662aa71b42823689d8aab8da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &20964437986076794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681764590091186655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f92ab2ea8eecdc4caf14844c68d886a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mesh: {fileID: 5425755777440016754}
-  damageEmissionColor: {r: 1, g: 1, b: 1, a: 1}
-  blinkSpeed: 20
-  emissionColorPropertyName: _Addition
-  healthComponent: {fileID: 2182901545057079274}
-  shaker: {fileID: 0}
 --- !u!114 &8976505151664737105 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8775259558992430366, guid: ef6b4f17eafe02a4498e48014f63c35b,
