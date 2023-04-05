@@ -19,7 +19,7 @@ namespace MonsterExterminator.Damage
             trigger.enabled = enabledParam;
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (!ShouldDamage(other.gameObject)) return;
 

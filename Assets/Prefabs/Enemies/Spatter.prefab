@@ -3538,6 +3538,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: -8818019661079609882, guid: 30e07488b693d1c48a8da69bdc8b4f5f,
     type: 3}
   launchPoint: {fileID: 3489250311289727407}
+  flightHeight: 4
 --- !u!114 &1702997757204619431
 MonoBehaviour:
   m_ObjectHideFlags: 0
