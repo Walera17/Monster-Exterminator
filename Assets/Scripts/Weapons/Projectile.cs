@@ -8,6 +8,7 @@ namespace MonsterExterminator.Weapons
         [SerializeField] DamageComponent damageComponent;
         [SerializeField] Rigidbody body;
         [SerializeField] private float flightHeight;
+        [SerializeField] private ParticleSystem explosionVFX;
 
         private ITeamInterface instigatorInterface;
 
@@ -42,6 +43,8 @@ namespace MonsterExterminator.Weapons
 
         private void Explode()
         {
+            Vector3 position = transform.position;
+            Instantiate(explosionVFX, position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

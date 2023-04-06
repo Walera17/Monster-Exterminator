@@ -3535,10 +3535,9 @@ MonoBehaviour:
   movementComponent: {fileID: 5646519800554413862}
   behaviorsTree: {fileID: 1702997757204619431}
   teamRelation: 2
-  projectilePrefab: {fileID: -8818019661079609882, guid: 30e07488b693d1c48a8da69bdc8b4f5f,
+  projectilePrefab: {fileID: 8144702061887143726, guid: baf97e6b23d060e4392146e8237138be,
     type: 3}
   launchPoint: {fileID: 3489250311289727407}
-  flightHeight: 4
 --- !u!114 &1702997757204619431
 MonoBehaviour:
   m_ObjectHideFlags: 0

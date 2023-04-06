@@ -9,7 +9,7 @@ namespace MonsterExterminator.Enemies
         [SerializeField] private Transform launchPoint;
 
         private Vector3 destination;
-        
+
         public override void AttackTarget(Transform target)
         {
             Animator.SetTrigger(Attack);
