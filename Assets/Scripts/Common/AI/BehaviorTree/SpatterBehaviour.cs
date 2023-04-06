@@ -2,6 +2,7 @@
 {
     public class SpatterBehaviour : BehaviorTree
     {
+
         protected override void ConstructTree(out Node rootNode)
         {
             Selector rootSelector = new Selector();

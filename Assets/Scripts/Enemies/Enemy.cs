@@ -57,6 +57,8 @@ namespace MonsterExterminator.Enemies
 
         private void CalculateSpeed()
         {
+            if (movementComponent == null) return;
+
             Vector3 posDelta = transform.position - prevPosition;
             float deltaMagnitude = posDelta.magnitude / Time.deltaTime;
 
