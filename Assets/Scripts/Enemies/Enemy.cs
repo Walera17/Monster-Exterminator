@@ -1,6 +1,5 @@
 ﻿using MonsterExterminator.AI.BehaviorTree;
 using MonsterExterminator.AI.Perception;
-using MonsterExterminator.Damage;
 using MonsterExterminator.Health;
 using UnityEngine;
 
@@ -24,11 +23,7 @@ namespace MonsterExterminator.Enemies
 
         public int GetTeamID() => (int)teamRelation;
 
-        public Animator Animator
-        {
-            get => animator;
-            private set => animator = value;
-        }
+        public Animator Animator => animator;
 
         protected virtual void Start()
         {
@@ -84,7 +79,6 @@ namespace MonsterExterminator.Enemies
 
         public void PlayStep()
         {
-
         }
 
         public void AnimatorDestroyGameObject()

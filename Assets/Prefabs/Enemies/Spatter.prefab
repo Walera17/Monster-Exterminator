@@ -3401,12 +3401,12 @@ PrefabInstance:
     - target: {fileID: 1195545778478197545, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: sightDistance
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2731250199034443886, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: awareDistance
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5955243954387921632, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}

@@ -8,18 +8,18 @@ namespace MonsterExterminator.Enemies
         [SerializeField] private Projectile projectilePrefab;
         [SerializeField] private Transform launchPoint;
 
-        private Vector3 destination;
+        private Transform targetAttack;
 
         public override void AttackTarget(Transform target)
         {
             Animator.SetTrigger(Attack);
-            destination = target.position;
+            targetAttack = target;
         }
 
         public void AnimatorShoot()
         {
             Projectile newProjectile = Instantiate(projectilePrefab, launchPoint.position, launchPoint.rotation);
-            newProjectile.Launch(this, destination);
+            newProjectile.Launch(this, targetAttack);
         }
     }
 }

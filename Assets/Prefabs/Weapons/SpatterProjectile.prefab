@@ -108,6 +108,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 725748389856807712, guid: 4bda94453d2ca7444a0fff05b2d425f5,
         type: 3}
+    - target: {fileID: -8818019661079609882, guid: 30e07488b693d1c48a8da69bdc8b4f5f,
+        type: 3}
+      propertyPath: flightHeight
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3385432074516671768, guid: 30e07488b693d1c48a8da69bdc8b4f5f,
         type: 3}
       propertyPath: m_Name

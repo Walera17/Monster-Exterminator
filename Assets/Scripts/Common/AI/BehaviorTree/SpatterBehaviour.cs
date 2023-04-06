@@ -6,7 +6,7 @@
         {
             Selector rootSelector = new Selector();
 
-            rootSelector.AddChild(new AttackTargetTaskGroup(this, 5));
+            rootSelector.AddChild(new AttackTargetTaskGroup(this, 5, 4.5f));
 
             rootSelector.AddChild(new LastSeenLocationTaskGroup(this));
 

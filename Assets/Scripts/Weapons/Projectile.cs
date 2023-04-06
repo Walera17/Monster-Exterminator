@@ -12,21 +12,21 @@ namespace MonsterExterminator.Weapons
 
         private ITeamInterface instigatorInterface;
 
-        public void Launch(ITeamInterface instigator, Vector3 destination)
+        public void Launch(ITeamInterface instigator, Transform target)
         {
             instigatorInterface = instigator;
             damageComponent.SetTeamInterface(instigator);
 
-            body.AddForce(GetFlightVelocity(destination), ForceMode.VelocityChange);
+            body.AddForce(GetFlightVelocity(target), ForceMode.VelocityChange);
         }
 
-        private Vector3 GetFlightVelocity(Vector3 destination)
+        private Vector3 GetFlightVelocity(Transform target)
         {
             float gravity = Physics.gravity.magnitude;
             float halfFlightTime = Mathf.Sqrt((flightHeight * 2.0f) / gravity);
 
             float upSpeed = halfFlightTime * gravity;
-            Vector3 distance = destination - transform.position;
+            Vector3 distance = target.position - transform.position;
             distance.y = 0;
 
             float fmdSpeed = distance.magnitude / (2f * halfFlightTime);
