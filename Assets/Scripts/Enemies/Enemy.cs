@@ -86,7 +86,12 @@ namespace MonsterExterminator.Enemies
 
         public void AnimatorDestroyGameObject()
         {
+            DeadEnemy();
             Destroy(gameObject);
+        }
+
+        protected virtual void DeadEnemy()
+        {
         }
 
         private void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
@@ -123,9 +128,9 @@ namespace MonsterExterminator.Enemies
         {
             if (spawner.TryGetComponent(out BehaviorTree tree))
             {
-                tree.Blackboard.GetBlackboardData("Target", out Transform target);
-                if (perceptionComponent != null && target.TryGetComponent(out PerceptionStimuli stimuli))
-                    perceptionComponent.AssignPerceivedStimuli(stimuli);
+                if (tree.Blackboard.GetBlackboardData("Target", out Transform target))
+                    if (perceptionComponent != null && target.TryGetComponent(out PerceptionStimuli stimuli))
+                        perceptionComponent.AssignPerceivedStimuli(stimuli);
             }
         }
     }

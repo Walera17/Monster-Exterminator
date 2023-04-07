@@ -8,9 +8,16 @@ namespace MonsterExterminator.AI.BehaviorTree
         [SerializeField] private Transform[] patrolPoints;
         int currentPatrolPointIndex = -1;
 
+        private bool isValidatePatrolPoints;
+
+        private void Start()
+        {
+            isValidatePatrolPoints = CheckPatrolPoints();
+        }
+
         public bool GetRandomPatrolPoint(out Vector3 point)
         {
-            if (patrolPoints.Length == 0 || !ValidatePatrolPoints())
+            if (!isValidatePatrolPoints)
             {
                 point = transform.position;
                 return false;
@@ -35,13 +42,16 @@ namespace MonsterExterminator.AI.BehaviorTree
             return true;
         }
 
-        bool ValidatePatrolPoints()
+        bool CheckPatrolPoints()
         {
+            if (patrolPoints.Length == 0) return false;
+
             foreach (Transform point in patrolPoints)
             {
                 if (point == null)
                     return false;
             }
+
             return true;
         }
     }

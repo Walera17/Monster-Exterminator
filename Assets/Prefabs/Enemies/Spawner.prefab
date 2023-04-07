@@ -821,7 +821,7 @@ Transform:
   - {fileID: 3757365981754602283}
   - {fileID: 3022139350210905733}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -905,8 +905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e7d0211f5b8b4aaf31bb52790a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 150
+  maxHealth: 15
 --- !u!114 &1447878861479084258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,6 +1016,16 @@ MonoBehaviour:
   movementComponent: {fileID: 0}
   behaviorTree: {fileID: 2252663269267125706}
   teamRelation: 2
+  deathVFX:
+  - particleSystem: {fileID: 4021103657954561960, guid: 5c755f9bc5253ea418e919994537dcc7,
+      type: 3}
+    size: 3
+  - particleSystem: {fileID: 5515065002404772068, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c,
+      type: 3}
+    size: 2
+  - particleSystem: {fileID: 7226888052703040407, guid: 7ec363c8df426644ea85f8d6d570561c,
+      type: 3}
+    size: 3
 --- !u!114 &1843524759553470678
 MonoBehaviour:
   m_ObjectHideFlags: 0
