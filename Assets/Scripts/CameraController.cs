@@ -1,4 +1,4 @@
-﻿using MonsterExterminator.Damage;
+﻿using MonsterExterminator.Characters.Damage;
 using UnityEngine;
 
 namespace MonsterExterminator

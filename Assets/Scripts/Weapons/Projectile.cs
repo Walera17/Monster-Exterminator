@@ -1,4 +1,6 @@
-﻿using MonsterExterminator.Damage;
+﻿using MonsterExterminator.Characters;
+using MonsterExterminator.Characters.Damage;
+using MonsterExterminator.Characters.Enemies;
 using UnityEngine;
 
 namespace MonsterExterminator.Weapons

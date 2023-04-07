@@ -1,4 +1,4 @@
-﻿using MonsterExterminator.Health;
+﻿using MonsterExterminator.Characters.Health;
 using UnityEngine;
 using UnityEngine.UI;
 
