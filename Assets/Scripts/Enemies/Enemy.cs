@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace MonsterExterminator.Enemies
 {
-    public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterface
+    public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterface, ISpawnInterface
     {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] Animator animator;
         [SerializeField] PerceptionComponent perceptionComponent;
         [SerializeField] MovementComponent movementComponent;
-        [SerializeField] BehaviorTree behaviorsTree;
+        [SerializeField] BehaviorTree behaviorTree;
         [SerializeField] TeamRelation teamRelation;
 
         private float speed;
@@ -25,27 +25,28 @@ namespace MonsterExterminator.Enemies
 
         public Animator Animator => animator;
 
-        protected virtual void Start()
+        private void Awake()
         {
+            perceptionComponent.OnPerceptionTargetChanged += PerceptionComponent_OnPerceptionTargetChanged;
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
             healthComponent.OnDead += HealthComponent_OnDead;
-            perceptionComponent.OnPerceptionTargetChanged += PerceptionComponent_OnPerceptionTargetChanged;
             prevPosition = transform.position;
         }
 
         private void PerceptionComponent_OnPerceptionTargetChanged(Transform targetTransform, bool sensed)
         {
             if (sensed)
-                behaviorsTree.Blackboard.SetOrAddData("Target", targetTransform);
+                behaviorTree.Blackboard.SetOrAddData("Target", targetTransform);
             else
             {
-                behaviorsTree.Blackboard.SetOrAddData("LastSeenLocation", targetTransform.position);
-                behaviorsTree.Blackboard.RemoveBlackboardData("Target");
+                behaviorTree.Blackboard.SetOrAddData("LastSeenLocation", targetTransform.position);
+                behaviorTree.Blackboard.RemoveBlackboardData("Target");
             }
         }
 
         private void OnDestroy()
         {
+            perceptionComponent.OnPerceptionTargetChanged -= PerceptionComponent_OnPerceptionTargetChanged;
             healthComponent.OnTakeDamage -= HealthComponent_OnTakeDamage;
             healthComponent.OnDead -= HealthComponent_OnDead;
         }
@@ -97,8 +98,8 @@ namespace MonsterExterminator.Enemies
         {
             Gizmos.color = Color.red;
 
-            if (behaviorsTree != null &&
-                behaviorsTree.Blackboard.GetBlackboardData("Target", out Transform targetTransform))
+            if (behaviorTree != null &&
+                behaviorTree.Blackboard.GetBlackboardData("Target", out Transform targetTransform))
             {
                 Vector3 targetPos = targetTransform.position + Vector3.up;
                 Gizmos.DrawWireSphere(targetPos, 0.7f);
@@ -116,6 +117,16 @@ namespace MonsterExterminator.Enemies
 
         public virtual void AttackTarget(Transform target)
         {
+        }
+
+        public void SpawnedBy(GameObject spawner)
+        {
+            if (spawner.TryGetComponent(out BehaviorTree tree))
+            {
+                tree.Blackboard.GetBlackboardData("Target", out Transform target);
+                if (perceptionComponent != null && target.TryGetComponent(out PerceptionStimuli stimuli))
+                    perceptionComponent.AssignPerceivedStimuli(stimuli);
+            }
         }
     }
 }

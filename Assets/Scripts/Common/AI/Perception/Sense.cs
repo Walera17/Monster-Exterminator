@@ -77,5 +77,17 @@ namespace MonsterExterminator.AI.Perception
         protected virtual void DrawDebug()
         {
         }
+
+        public void AssignPerceivedStimuli(PerceptionStimuli stimuli)
+        {
+            perceivableStimuliList.Add(stimuli);
+            OnPerceptionUpdate?.Invoke(stimuli, true);
+
+            if (forgettingCoroutines.TryGetValue(stimuli, out Coroutine coroutine))
+            {
+                StopCoroutine(coroutine);
+                forgettingCoroutines.Remove(stimuli);
+            }
+        }
     }
 }

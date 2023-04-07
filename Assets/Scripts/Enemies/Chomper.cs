@@ -7,9 +7,8 @@ namespace MonsterExterminator.Enemies
     {
         [SerializeField] TriggerDamageComponent damageComponent;
 
-        protected override void Start()
+        void Start()
         {
-            base.Start();
             damageComponent.SetTeamInterface(this);
         }
 

@@ -3382,7 +3382,7 @@ PrefabInstance:
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
@@ -3528,7 +3528,7 @@ MonoBehaviour:
   animator: {fileID: 7681764590083785245}
   perceptionComponent: {fileID: 8976505151664737105}
   movementComponent: {fileID: 735606281169126896}
-  behaviorsTree: {fileID: 8215722457237752456}
+  behaviorTree: {fileID: 8215722457237752456}
   teamRelation: 2
   damageComponent: {fileID: 4172685394276947772}
 --- !u!114 &8215722457237752456

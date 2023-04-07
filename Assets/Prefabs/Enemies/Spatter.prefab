@@ -3533,7 +3533,7 @@ MonoBehaviour:
   animator: {fileID: 3382781549773510859}
   perceptionComponent: {fileID: 4106124199378047367}
   movementComponent: {fileID: 5646519800554413862}
-  behaviorsTree: {fileID: 1702997757204619431}
+  behaviorTree: {fileID: 1702997757204619431}
   teamRelation: 2
   projectilePrefab: {fileID: 8144702061887143726, guid: baf97e6b23d060e4392146e8237138be,
     type: 3}

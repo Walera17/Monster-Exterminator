@@ -5,6 +5,7 @@ namespace MonsterExterminator.Enemies
     public class SpawnerComponent : MonoBehaviour
     {
         [SerializeField] Transform spawnTransform;
+        [SerializeField] private Spawner spawner;
         [SerializeField] Animator animator;
         [SerializeField] GameObject[] objectsToSpawn;
 
@@ -12,7 +13,7 @@ namespace MonsterExterminator.Enemies
 
         public bool StartSpawn()
         {
-            if(objectsToSpawn.Length == 0) return false;
+            if (objectsToSpawn.Length == 0) return false;
 
             if (animator != null)
                 animator.SetTrigger(Spawn);
@@ -24,7 +25,10 @@ namespace MonsterExterminator.Enemies
 
         public void AnimatorSpawnImpl()
         {
-            Instantiate(objectsToSpawn[Random.Range(0, objectsToSpawn.Length)], spawnTransform.position, spawnTransform.rotation);
+            GameObject newSpawn = Instantiate(objectsToSpawn[Random.Range(0, objectsToSpawn.Length)], spawnTransform.position, spawnTransform.rotation);
+
+            if (newSpawn.TryGetComponent(out ISpawnInterface newSpawnInterface))
+                newSpawnInterface.SpawnedBy(gameObject);
         }
     }
 }

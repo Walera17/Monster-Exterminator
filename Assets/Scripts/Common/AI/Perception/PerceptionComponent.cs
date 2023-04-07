@@ -8,17 +8,22 @@ namespace MonsterExterminator.AI.Perception
         [SerializeField] private Sense[] senses;
 
         public delegate void OnPerceptionTargetChangedDelegate(Transform target, bool sensed);
+
         public event OnPerceptionTargetChangedDelegate OnPerceptionTargetChanged;
 
         private readonly LinkedList<PerceptionStimuli> currentlyPerceptionStimulus = new();
         private PerceptionStimuli targetStimuli;
 
-        private void Start()
+        private void Awake()
         {
-            foreach (Sense sense in senses)
-            {
+            foreach (Sense sense in senses) 
                 sense.OnPerceptionUpdate += Sense_OnPerceptionUpdate;
-            }
+        }
+
+        private void OnDestroy()
+        {
+            foreach (Sense sense in senses) 
+                sense.OnPerceptionUpdate -= Sense_OnPerceptionUpdate;
         }
 
         private void Sense_OnPerceptionUpdate(PerceptionStimuli stimuli, bool successfullySensed)
@@ -49,6 +54,12 @@ namespace MonsterExterminator.AI.Perception
                 OnPerceptionTargetChanged?.Invoke(targetStimuli.transform, false);
                 targetStimuli = null;
             }
+        }
+
+        public void AssignPerceivedStimuli(PerceptionStimuli stimuli)
+        {
+            if (senses.Length != 0)
+                senses[0].AssignPerceivedStimuli(stimuli);
         }
     }
 }

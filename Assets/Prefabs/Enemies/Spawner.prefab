@@ -1014,7 +1014,7 @@ MonoBehaviour:
   animator: {fileID: 8056398509654854738}
   perceptionComponent: {fileID: 8775259558992430366}
   movementComponent: {fileID: 0}
-  behaviorsTree: {fileID: 2252663269267125706}
+  behaviorTree: {fileID: 2252663269267125706}
   teamRelation: 2
 --- !u!114 &1843524759553470678
 MonoBehaviour:
@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTransform: {fileID: 3022139350210905733}
+  spawner: {fileID: 4568413508289383515}
   animator: {fileID: 8056398509654854738}
   objectsToSpawn:
   - {fileID: 7681764590091186655, guid: 6e54e9c752f5e184f81ef9c55a9bff74, type: 3}

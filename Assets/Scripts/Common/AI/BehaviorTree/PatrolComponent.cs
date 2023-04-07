@@ -10,7 +10,7 @@ namespace MonsterExterminator.AI.BehaviorTree
 
         public bool GetRandomPatrolPoint(out Vector3 point)
         {
-            if (patrolPoints.Length == 0)
+            if (patrolPoints.Length == 0 || !ValidatePatrolPoints())
             {
                 point = transform.position;
                 return false;
@@ -32,6 +32,16 @@ namespace MonsterExterminator.AI.BehaviorTree
                 point = patrolPoints[currentPatrolPointIndex].position;
             }
 
+            return true;
+        }
+
+        bool ValidatePatrolPoints()
+        {
+            foreach (Transform point in patrolPoints)
+            {
+                if (point == null)
+                    return false;
+            }
             return true;
         }
     }
