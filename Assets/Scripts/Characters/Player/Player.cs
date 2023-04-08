@@ -1,3 +1,4 @@
+using AbilitySystem;
 using Characters.Damage;
 using Characters.Enemies;
 using Characters.Health;
@@ -7,7 +8,7 @@ using Weapons;
 
 namespace Characters.Player
 {
-    public class Player : MonoBehaviour, ITeamInterface
+    public class Player : MonoBehaviour, ITeamInterface, IAbilityInterface
     {
         [SerializeField] CharacterController characterController;
         [SerializeField] MovementComponent movementComponent;
@@ -16,6 +17,7 @@ namespace Characters.Player
         [SerializeField] private DamageVisualWithShake damageVisualWithShake;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float maxMoveSpeed = 80f;
         [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
@@ -27,7 +29,7 @@ namespace Characters.Player
 
         private Vector2 moveInput, aimInput;
         private Camera mainCamera;
-        private float animatorTurnSpeed;
+        private float animatorTurnSpeed, currentMoveSpeed;
         private static readonly int ForwardSpeed = Animator.StringToHash("forwardSpeed");
         private static readonly int RightSpeed = Animator.StringToHash("rightSpeed");
         private static readonly int TurnSpeed = Animator.StringToHash("turnSpeed");
@@ -39,6 +41,7 @@ namespace Characters.Player
 
         void Start()
         {
+            currentMoveSpeed = moveSpeed;
             mainCamera = Camera.main;
             uiManager.MoveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
             uiManager.AimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
@@ -102,7 +105,7 @@ namespace Characters.Player
         private void PerformMoveAndAim()
         {
             Vector3 moveDirection = StickInputToWorldDirection(moveInput);
-            characterController.Move(moveDirection * (moveSpeed * Time.deltaTime));
+            characterController.Move(moveDirection * (currentMoveSpeed * Time.deltaTime));
 
             UpdateAim(moveDirection);
 
@@ -113,7 +116,7 @@ namespace Characters.Player
             animator.SetFloat(RightSpeed, right);
 
             if (characterController.transform.position.y > 0.1f)
-                characterController.Move(Vector3.down * Time.deltaTime * moveSpeed);
+                characterController.Move(Vector3.down * Time.deltaTime * currentMoveSpeed);
         }
 
         private void UpdateAim(Vector3 moveDirection)
@@ -142,6 +145,12 @@ namespace Characters.Player
                 animatorTurnSpeed = 0;
 
             animator.SetFloat(TurnSpeed, animatorTurnSpeed);
+        }
+
+        public void AddMoveSpeed(float boostAmt)
+        {
+            currentMoveSpeed += boostAmt;
+            currentMoveSpeed = Mathf.Clamp(currentMoveSpeed, moveSpeed, maxMoveSpeed);
         }
     }
 }

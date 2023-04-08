@@ -8,18 +8,22 @@ namespace AbilitySystem
         [SerializeField] Ability[] initialAbilities;
         [SerializeField] private float stamina = 200f;
         [SerializeField] private float maxStamina = 200f;
-
+        
         readonly List<Ability> abilities = new();
+        IAbilityInterface abilityInterface;
 
         public delegate void OnNewAbilityAddedDelegate(Ability ability);
         public delegate void OnAbilityChangeDelegate(float value, float maxValue);
         public event OnNewAbilityAddedDelegate OnNewAbilityAdded;
         public event OnAbilityChangeDelegate OnAbilityChange;
 
-        public float Stamina => stamina;
+        //public float Stamina => stamina;
+
+        public IAbilityInterface AbilityOwner => abilityInterface;
 
         private void Start()
         {
+            abilityInterface = GetComponent<IAbilityInterface>();
             foreach (Ability ability in initialAbilities)
                 GiveAbility(ability);
         }
