@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Characters.Enemies;
+﻿using Characters.Enemies;
 using UnityEngine;
 
-namespace MonsterExterminator.Characters.Damage
+namespace Characters.Damage
 {
     public abstract class DamageComponent : MonoBehaviour
     {

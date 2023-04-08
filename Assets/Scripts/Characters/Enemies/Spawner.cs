@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Characters.Enemies
+namespace Characters.Enemies
 {
     public class Spawner : Enemy
     {

@@ -1,22 +1,24 @@
 using UnityEngine;
 
-namespace MonsterExterminator.Characters.Health
+namespace Characters.Health
 {
     public class HealthComponent : MonoBehaviour
     {
         [SerializeField] float health = 100;
         [SerializeField] float maxHealth = 100;
 
-        public delegate void OnHealthChangeDelegate(float health, float maxHealth, float delta, GameObject instigator);
+        public delegate void OnHealthChangeDelegate(float health, float maxHealth, float delta);
+        public delegate void OnTakeDamageDelegate(GameObject instigator);
 
         public delegate void OnDeadDelegate();
 
-        public event OnHealthChangeDelegate OnHealthChange, OnTakeDamage;
+        public event OnHealthChangeDelegate OnHealthChange;
+        public event OnTakeDamageDelegate OnTakeDamage;
         public event OnDeadDelegate OnDead;
 
         public void BroadcastHealthValueImmediately()
         {
-            OnHealthChange?.Invoke(health, maxHealth, 0, null);
+            OnHealthChange?.Invoke(health, maxHealth, 0);
         }
 
         public void ChangeHealth(float delta, GameObject instigator)
@@ -26,9 +28,9 @@ namespace MonsterExterminator.Characters.Health
             health += delta;
 
             if (delta < 0)
-                OnTakeDamage?.Invoke(health, maxHealth, delta, instigator);
+                OnTakeDamage?.Invoke(instigator);
 
-            OnHealthChange?.Invoke(health, maxHealth, delta, instigator);
+            OnHealthChange?.Invoke(health, maxHealth, delta);
 
             if (health <= 0)
             {

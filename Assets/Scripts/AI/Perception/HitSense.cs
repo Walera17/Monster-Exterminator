@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Characters.Health;
+﻿using Characters.Health;
 using UnityEngine;
 
-namespace MonsterExterminator.AI.Perception
+namespace AI.Perception
 {
     public class HitSense : Sense
     {
@@ -13,7 +13,7 @@ namespace MonsterExterminator.AI.Perception
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
         }
 
-        private void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
+        private void HealthComponent_OnTakeDamage(GameObject instigator)
         {
             perceptionStimuli = instigator.GetComponent<PerceptionStimuli>();
         }

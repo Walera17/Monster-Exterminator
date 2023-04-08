@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Characters.Damage;
+﻿using Characters.Damage;
 using UnityEngine;
 
-namespace MonsterExterminator.Characters.Enemies
+namespace Characters.Enemies
 {
     public class Chomper : Enemy
     {

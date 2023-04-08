@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.AI
+namespace AI
 {
     public enum NodeResult
     {

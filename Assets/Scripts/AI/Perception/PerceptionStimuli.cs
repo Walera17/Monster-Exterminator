@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.AI.Perception
+namespace AI.Perception
 {
     public class PerceptionStimuli : MonoBehaviour
     {

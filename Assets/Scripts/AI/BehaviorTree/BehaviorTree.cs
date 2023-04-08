@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace MonsterExterminator.AI.BehaviorTree
+namespace AI.BehaviorTree
 {
     public abstract class BehaviorTree : MonoBehaviour
     {

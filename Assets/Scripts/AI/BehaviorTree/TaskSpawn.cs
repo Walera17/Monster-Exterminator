@@ -1,7 +1,6 @@
-﻿using MonsterExterminator.Characters;
-using MonsterExterminator.Characters.Enemies;
+﻿using Characters.Enemies;
 
-namespace MonsterExterminator.AI.BehaviorTree
+namespace AI.BehaviorTree
 {
     public class TaskSpawn : Node
     {

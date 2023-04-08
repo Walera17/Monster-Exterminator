@@ -1,9 +1,9 @@
-﻿using MonsterExterminator.Characters;
-using MonsterExterminator.Characters.Damage;
-using MonsterExterminator.Characters.Enemies;
+﻿using Characters;
+using Characters.Damage;
+using Characters.Enemies;
 using UnityEngine;
 
-namespace MonsterExterminator.Weapons
+namespace Weapons
 {
     public class Projectile : MonoBehaviour
     {

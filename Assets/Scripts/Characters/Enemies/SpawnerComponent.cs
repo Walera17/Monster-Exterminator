@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Characters.Enemies
+namespace Characters.Enemies
 {
     public class SpawnerComponent : MonoBehaviour
     {
         [SerializeField] Transform spawnTransform;
-        [SerializeField] private Spawner spawner;
         [SerializeField] Animator animator;
         [SerializeField] GameObject[] objectsToSpawn;
 

@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Characters.Health;
+﻿using Characters.Health;
 using UnityEngine;
 
-namespace MonsterExterminator.Characters.Damage
+namespace Characters.Damage
 {
     public class DamageVisualizer : MonoBehaviour
     {
@@ -11,7 +11,6 @@ namespace MonsterExterminator.Characters.Damage
         [SerializeField] private string emissionColorPropertyName = "_Addition";
         [SerializeField] HealthComponent healthComponent;
 
-
         private Color originalEmissionColor;
 
         private void Start()
@@ -20,7 +19,7 @@ namespace MonsterExterminator.Characters.Damage
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
         }
 
-        protected virtual void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
+        protected virtual void HealthComponent_OnTakeDamage(GameObject instigator)
         {
             Color currentEmissionColor = mesh.material.GetColor(emissionColorPropertyName);
             if (Mathf.Abs((currentEmissionColor - originalEmissionColor).grayscale) < 0.1f)
@@ -30,7 +29,8 @@ namespace MonsterExterminator.Characters.Damage
         private void Update()
         {
             Color currentEmissionColor = mesh.material.GetColor(emissionColorPropertyName);
-            Color newEmissionColor = Color.Lerp(currentEmissionColor, originalEmissionColor, Time.deltaTime * blinkSpeed);
+            Color newEmissionColor =
+                Color.Lerp(currentEmissionColor, originalEmissionColor, Time.deltaTime * blinkSpeed);
             mesh.material.SetColor(emissionColorPropertyName, newEmissionColor);
         }
 

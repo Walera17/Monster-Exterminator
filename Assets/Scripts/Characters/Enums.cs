@@ -1,4 +1,4 @@
-﻿namespace MonsterExterminator.Characters
+﻿namespace Characters
 {
     public enum TeamRelation
     {

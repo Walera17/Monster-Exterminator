@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace MonsterExterminator.UI
+namespace UI
 {
     public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {

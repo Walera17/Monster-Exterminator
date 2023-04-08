@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Characters.Health;
+﻿using Characters.Health;
 using UnityEngine;
 
-namespace MonsterExterminator.Weapons
+namespace Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.UI
+namespace UI
 {
     public class UIManager : MonoBehaviour
     {

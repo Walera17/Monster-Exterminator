@@ -1,8 +1,8 @@
-﻿using MonsterExterminator.Characters.Health;
+﻿using Characters.Health;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MonsterExterminator.UI
+namespace UI
 {
     public class HealthBar : MonoBehaviour
     {
@@ -30,7 +30,7 @@ namespace MonsterExterminator.UI
             Destroy(gameObject);
         }
 
-        public void SetHealthValue(float health, float maxHealth, float delta, GameObject instigator) 
+        public void SetHealthValue(float health, float maxHealth, float delta) 
             => slider.value = health / maxHealth;
 
         private void Update()

@@ -1,4 +1,4 @@
-﻿namespace MonsterExterminator.Weapons
+﻿namespace Weapons
 {
     public class Rifle : RangeWeapon
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MonsterExterminator.Weapons
+namespace Weapons
 {
     public class Inventory : MonoBehaviour
     {

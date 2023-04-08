@@ -1,11 +1,11 @@
-using MonsterExterminator.Characters.Damage;
-using MonsterExterminator.Characters.Enemies;
-using MonsterExterminator.Characters.Health;
-using MonsterExterminator.UI;
-using MonsterExterminator.Weapons;
+using Characters.Damage;
+using Characters.Enemies;
+using Characters.Health;
+using UI;
 using UnityEngine;
+using Weapons;
 
-namespace MonsterExterminator.Characters.Player
+namespace Characters.Player
 {
     public class Player : MonoBehaviour, ITeamInterface
     {
@@ -16,7 +16,7 @@ namespace MonsterExterminator.Characters.Player
         [SerializeField] private DamageVisualizerWithShake damageVisualizerWithShake;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float animTurnSpeed = 5f;
+        [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
         [Header("Health and Damage")] [SerializeField]
@@ -65,7 +65,7 @@ namespace MonsterExterminator.Characters.Player
             uiManager.SetGamePlayControlEnabled(false);
         }
 
-        private void HealthComponent_OnHealthChange(float health, float maxHealth, float delta, GameObject instigator)
+        private void HealthComponent_OnHealthChange(float health, float maxHealth, float delta)
         {
             uiManager.SetHealthValue(health, maxHealth, delta);
         }

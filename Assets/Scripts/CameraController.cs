@@ -1,23 +1,20 @@
-﻿using MonsterExterminator.Characters.Damage;
+﻿using Characters.Damage;
 using UnityEngine;
 
-namespace MonsterExterminator
+public class CameraController : MonoBehaviour
 {
-    public class CameraController : MonoBehaviour
+    [SerializeField] Transform followTransform;
+    [SerializeField] private float turnSpeed = 2f;
+    [SerializeField] private Shaker shaker;
+    public Shaker Shaker => shaker;
+
+    private void LateUpdate()
     {
-        [SerializeField] Transform followTransform;
-        [SerializeField] private float turnSpeed = 2f;
-        [SerializeField] private Shaker shaker;
-        public Shaker Shaker => shaker;
+        transform.position = followTransform.position;
+    }
 
-        private void LateUpdate()
-        {
-            transform.position = followTransform.position;
-        }
-
-        public void AddYawInput(float amt)
-        {
-            transform.Rotate(Vector3.up, amt * Time.deltaTime * turnSpeed);
-        }
+    public void AddYawInput(float amt)
+    {
+        transform.Rotate(Vector3.up, amt * Time.deltaTime * turnSpeed);
     }
 }

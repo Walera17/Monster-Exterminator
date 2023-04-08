@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.AI.BehaviorTree
+namespace AI.BehaviorTree
 {
     public class TaskAttackTarget : Node
     {

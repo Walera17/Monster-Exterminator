@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace MonsterExterminator.Characters.Damage
+namespace Characters.Damage
 {
     public class Shaker : MonoBehaviour
     {

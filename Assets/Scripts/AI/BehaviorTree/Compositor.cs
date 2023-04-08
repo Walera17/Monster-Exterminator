@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MonsterExterminator.AI.BehaviorTree
+namespace AI.BehaviorTree
 {
     public abstract class Compositor : Node
     {

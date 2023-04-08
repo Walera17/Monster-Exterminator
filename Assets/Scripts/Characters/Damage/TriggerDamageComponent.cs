@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Characters.Health;
+﻿using Characters.Health;
 using UnityEngine;
 
-namespace MonsterExterminator.Characters.Damage
+namespace Characters.Damage
 {
     public class TriggerDamageComponent : DamageComponent
     {

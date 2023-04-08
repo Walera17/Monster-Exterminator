@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Weapons
+namespace Weapons
 {
     public class RangeWeapon : Weapon
     {

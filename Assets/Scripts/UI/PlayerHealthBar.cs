@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MonsterExterminator.UI
+namespace UI
 {
     public class PlayerHealthBar : MonoBehaviour
     {

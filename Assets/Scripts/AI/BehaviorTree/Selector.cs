@@ -1,4 +1,4 @@
-﻿namespace MonsterExterminator.AI.BehaviorTree
+﻿namespace AI.BehaviorTree
 {
     public class Selector : Compositor
     {

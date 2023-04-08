@@ -1,9 +1,9 @@
-﻿using MonsterExterminator.AI.BehaviorTree;
-using MonsterExterminator.AI.Perception;
-using MonsterExterminator.Characters.Health;
+﻿using AI.BehaviorTree;
+using AI.Perception;
+using Characters.Health;
 using UnityEngine;
 
-namespace MonsterExterminator.Characters.Enemies
+namespace Characters.Enemies
 {
     public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterface, ISpawnInterface
     {
@@ -94,7 +94,7 @@ namespace MonsterExterminator.Characters.Enemies
         {
         }
 
-        private void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
+        private void HealthComponent_OnTakeDamage(GameObject instigator)
         {
             animator.SetTrigger(Hit);
         }

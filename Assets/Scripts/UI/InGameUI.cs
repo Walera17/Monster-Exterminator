@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Characters.Health;
+﻿using Characters.Health;
 using UnityEngine;
 
-namespace MonsterExterminator.UI
+namespace UI
 {
     public class InGameUI : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Characters.Damage
+namespace Characters.Damage
 {
     public class DamageVisualizerWithShake : DamageVisualizer
     {
@@ -11,9 +11,9 @@ namespace MonsterExterminator.Characters.Damage
             shaker = shakerParam;
         }
 
-        protected override void HealthComponent_OnTakeDamage(float health, float maxHealth, float delta, GameObject instigator)
+        protected override void HealthComponent_OnTakeDamage(GameObject instigator)
         {
-            base.HealthComponent_OnTakeDamage(health, maxHealth, delta, instigator);
+            base.HealthComponent_OnTakeDamage(instigator);
             if (shaker != null)
                 shaker.StartShake();
         }

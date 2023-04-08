@@ -1,7 +1,7 @@
-﻿using MonsterExterminator.Weapons;
-using UnityEngine;
+﻿using UnityEngine;
+using Weapons;
 
-namespace MonsterExterminator.Characters.Enemies
+namespace Characters.Enemies
 {
     public class Spatter : Enemy
     {

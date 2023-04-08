@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MonsterExterminator.Characters
+namespace Characters
 {
     public class MovementComponent : MonoBehaviour
     {
