@@ -1,19 +1,17 @@
-﻿using Characters.Enemies;
-
-namespace AI.BehaviorTree
+﻿namespace AI.BehaviorTree
 {
     public class TaskSpawn : Node
     {
-        private readonly SpawnerComponent spawnerComponent;
+        private readonly IBehaviorTreeInterface behaviorTreeInterface;
 
-        public TaskSpawn(SpawnerComponent spawnerComponent)
+        public TaskSpawn(BehaviorTree behaviorTree)
         {
-            this.spawnerComponent = spawnerComponent;
+            behaviorTreeInterface = behaviorTree.GetBehaviorTreeInterface();
         }
 
         protected override NodeResult Execute()
         {
-            if (spawnerComponent == null || !spawnerComponent.StartSpawn())
+            if (!behaviorTreeInterface.StartSpawn())
                 return NodeResult.Failure;
 
             return NodeResult.Success;

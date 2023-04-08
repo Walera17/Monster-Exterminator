@@ -13,7 +13,7 @@ namespace Characters.Player
         [SerializeField] MovementComponent movementComponent;
         [SerializeField] Animator animator;
         [SerializeField] Inventory inventory;
-        [SerializeField] private DamageVisualizerWithShake damageVisualizerWithShake;
+        [SerializeField] private DamageVisualWithShake damageVisualWithShake;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float animTurnSpeed = 15f;
@@ -46,7 +46,7 @@ namespace Characters.Player
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
             healthComponent.OnDead += HealthComponent_OnDead;
             healthComponent.BroadcastHealthValueImmediately();
-            damageVisualizerWithShake.Construct(cameraController.Shaker);
+            damageVisualWithShake.Construct(cameraController.Shaker);
         }
 
         private void OnDestroy()

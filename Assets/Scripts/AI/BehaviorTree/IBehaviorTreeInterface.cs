@@ -7,5 +7,7 @@ namespace AI.BehaviorTree
         public void RotateToward(Transform target, bool verticalAim = false);
 
         public void AttackTarget(Transform target);
+
+        public bool StartSpawn();
     }
 }

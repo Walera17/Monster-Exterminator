@@ -4,7 +4,13 @@ namespace Characters.Enemies
 {
     public class Spawner : Enemy
     {
+        [SerializeField] private SpawnerComponent spawnerComponent;
         [SerializeField] private VFXSpec[] deathVFX;
+
+        public override bool StartSpawn()
+        {
+            return spawnerComponent.StartSpawn();
+        }
 
         protected override void DeadEnemy()
         {

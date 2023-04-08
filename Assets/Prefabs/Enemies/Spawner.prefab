@@ -905,8 +905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e7d0211f5b8b4aaf31bb52790a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
-  maxHealth: 15
+  health: 50
+  maxHealth: 50
 --- !u!114 &1447878861479084258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,7 +948,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forgettingTime: 2
-  healthComponent: {fileID: 1954059283183157669}
 --- !u!114 &1195545778478197545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,6 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 1954059283183157669}
+  hitSense: {fileID: 6188246142629909283}
   animator: {fileID: 8056398509654854738}
   perceptionComponent: {fileID: 8775259558992430366}
   movementComponent: {fileID: 0}
@@ -1026,6 +1026,7 @@ MonoBehaviour:
   - particleSystem: {fileID: 7226888052703040407, guid: 7ec363c8df426644ea85f8d6d570561c,
       type: 3}
     size: 3
+  spawnerComponent: {fileID: 1843524759553470678}
 --- !u!114 &1843524759553470678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,7 +1040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTransform: {fileID: 3022139350210905733}
-  spawner: {fileID: 4568413508289383515}
   animator: {fileID: 8056398509654854738}
   objectsToSpawn:
   - {fileID: 7681764590091186655, guid: 6e54e9c752f5e184f81ef9c55a9bff74, type: 3}

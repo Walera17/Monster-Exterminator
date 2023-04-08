@@ -100,7 +100,7 @@ Transform:
   m_Children:
   - {fileID: 8639010547884748062}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7810604072945408526
 Animator:
@@ -164,7 +164,7 @@ MonoBehaviour:
   movementComponent: {fileID: 3424173937893214223}
   animator: {fileID: 7810604072945408526}
   inventory: {fileID: 2513006049675784915}
-  damageVisualizerWithShake: {fileID: 2175611678815295973}
+  damageVisualWithShake: {fileID: 2175611678815295973}
   cameraController: {fileID: 0}
   moveSpeed: 5
   animTurnSpeed: 15

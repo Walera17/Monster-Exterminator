@@ -8,6 +8,7 @@ namespace Characters.Enemies
     public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterface, ISpawnInterface
     {
         [SerializeField] private HealthComponent healthComponent;
+        [SerializeField] private HitSense hitSense;
         [SerializeField] Animator animator;
         [SerializeField] PerceptionComponent perceptionComponent;
         [SerializeField] MovementComponent movementComponent;
@@ -96,6 +97,7 @@ namespace Characters.Enemies
 
         private void HealthComponent_OnTakeDamage(GameObject instigator)
         {
+            hitSense.OnTakeDamage(instigator);
             animator.SetTrigger(Hit);
         }
 
@@ -122,6 +124,11 @@ namespace Characters.Enemies
 
         public virtual void AttackTarget(Transform target)
         {
+        }
+
+        public virtual bool StartSpawn()
+        {
+            return false;
         }
 
         public void SpawnedBy(GameObject spawner)

@@ -1,20 +1,13 @@
-﻿using Characters.Health;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AI.Perception
 {
     public class HitSense : Sense
     {
-        [SerializeField] HealthComponent healthComponent;
         PerceptionStimuli perceptionStimuli;
 
-        void Start()
-        {
-            healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
-        }
-
-        private void HealthComponent_OnTakeDamage(GameObject instigator)
-        {
+        public void OnTakeDamage(GameObject instigator)
+        {   
             perceptionStimuli = instigator.GetComponent<PerceptionStimuli>();
         }
 

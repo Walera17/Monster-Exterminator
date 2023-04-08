@@ -1,12 +1,10 @@
-﻿using Characters.Enemies;
-
-namespace AI.BehaviorTree
+﻿namespace AI.BehaviorTree
 {
     public class SpawnerBehaviour : BehaviorTree
     {
         protected override void ConstructTree(out Node rootNode)
         {
-            TaskSpawn taskSpawn = new TaskSpawn(GetComponent<SpawnerComponent>());
+            TaskSpawn taskSpawn = new TaskSpawn(this);
             CooldownDecorator spawnCooldownDecorator = new CooldownDecorator(taskSpawn, 7f);
             BlackboardDecorator spawnBlackboardDecorator = new BlackboardDecorator(this, spawnCooldownDecorator,
                 "Target", RunCondition.KeyExists, NotifyRule.RunConditionChange, NotifyAbort.both);
