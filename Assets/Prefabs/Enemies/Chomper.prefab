@@ -3489,6 +3489,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e7d0211f5b8b4aaf31bb52790a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5815306996777983340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6188246142629909283, guid: ef6b4f17eafe02a4498e48014f63c35b,
+    type: 3}
+  m_PrefabInstance: {fileID: 384230881187368527}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681764590091186655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4fadb42e480b448bf2cb7ac7bd554b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &7681764590083785245 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8056398509654854738, guid: ef6b4f17eafe02a4498e48014f63c35b,
@@ -3520,6 +3532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 2182901545057079274}
+  hitSense: {fileID: 5815306996777983340}
   animator: {fileID: 7681764590083785245}
   perceptionComponent: {fileID: 8976505151664737105}
   movementComponent: {fileID: 735606281169126896}

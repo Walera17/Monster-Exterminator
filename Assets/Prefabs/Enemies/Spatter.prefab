@@ -3505,6 +3505,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1702997757204619431}
   m_SourcePrefab: {fileID: 100100000, guid: ef6b4f17eafe02a4498e48014f63c35b, type: 3}
+--- !u!114 &1503374563942795194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6188246142629909283, guid: ef6b4f17eafe02a4498e48014f63c35b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4700665264357250201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3382781549764127497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4fadb42e480b448bf2cb7ac7bd554b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3382781549763639081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
@@ -3530,6 +3542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 6494798382256084284}
+  hitSense: {fileID: 1503374563942795194}
   animator: {fileID: 3382781549773510859}
   perceptionComponent: {fileID: 4106124199378047367}
   movementComponent: {fileID: 5646519800554413862}
