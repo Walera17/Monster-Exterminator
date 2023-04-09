@@ -1,5 +1,5 @@
-﻿using System;
-using AbilitySystem;
+﻿using AbilitySystem;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +14,19 @@ namespace UI
 
         public void Init(Ability abilityParam)
         {
-            ability = abilityParam; 
+            ability = abilityParam;
             abilityIcon.sprite = abilityParam.Icon;
             cooldownWheel.enabled = false;
             ability.OnCooldownStarted += Ability_OnCooldownStarted;
+        }
+
+        public void Activate()
+        {
+            if (ability != null && !ability.AbilityOnCooldown)
+            {
+                ability.Activate();
+                StartCoroutine(ShowDurationCoroutine(ability.BoostDuration, Color.green));
+            }
         }
 
         private void OnDestroy()
@@ -27,7 +36,23 @@ namespace UI
 
         private void Ability_OnCooldownStarted()
         {
-            throw new System.NotImplementedException();
+            StartCoroutine(ShowDurationCoroutine(ability.CooldownDuration, Color.white));
+        }
+
+        private IEnumerator ShowDurationCoroutine(float durationParam, Color color)
+        {
+            cooldownWheel.enabled = true;
+            cooldownWheel.color = color;
+            float counter = durationParam;
+            float duration = counter;
+            while (counter > 0 || ability.AbilityOnCooldown)
+            {
+                counter -= Time.deltaTime;
+                cooldownWheel.fillAmount = counter / duration;
+                yield return null;
+            }
+
+            cooldownWheel.enabled = false;
         }
     }
 }

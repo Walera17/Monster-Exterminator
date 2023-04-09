@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace AbilitySystem
@@ -20,6 +21,8 @@ namespace AbilitySystem
         {
             yield return boostDurationWaitForSeconds;
             AbilityComponent.AbilityOwner.AddMoveSpeed(-boostAmt);
+
+            StartAbilityCooldown();
         }
     }
 }

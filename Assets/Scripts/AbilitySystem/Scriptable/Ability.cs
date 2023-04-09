@@ -23,6 +23,12 @@ namespace AbilitySystem
 
         public Sprite Icon => icon;
 
+        public bool AbilityOnCooldown => abilityOnCooldown;
+
+        public float CooldownDuration => cooldownDuration;
+
+        public float BoostDuration => boostDuration;
+
         public void Init(AbilityComponent component)
         {
             abilityComponent = component;
@@ -38,12 +44,10 @@ namespace AbilitySystem
 
             if (abilityComponent == null || !abilityComponent.TryConsumeStamina(staminaCost)) return false;
 
-            StartAbilityCooldown();
-
             return true;
         }
 
-        void StartAbilityCooldown()
+        protected void StartAbilityCooldown()
         {
             abilityComponent.StartCoroutine(CooldownCoroutine());
         }
