@@ -21,6 +21,8 @@ namespace AbilitySystem
 
         public AbilityComponent AbilityComponent => abilityComponent;
 
+        public Sprite Icon => icon;
+
         public void Init(AbilityComponent component)
         {
             abilityComponent = component;

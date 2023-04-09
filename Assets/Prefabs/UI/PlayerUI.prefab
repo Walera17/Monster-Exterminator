@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 6162918993309318191}
   - component: {fileID: 4483114413179932918}
   - component: {fileID: 808566585175693901}
+  - component: {fileID: 157261451415660576}
   m_Layer: 5
   m_Name: AbilityDock
   m_TagString: Untagged
@@ -523,6 +524,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &157261451415660576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970680007865686156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c254c0db9df8f4cb81b74e17b3c55c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityUIPrefab: {fileID: -3642396214723913707, guid: b3ccd4a0d5fae634ea142a0e7d6d52fe,
+    type: 3}
 --- !u!1 &5996576576776285310
 GameObject:
   m_ObjectHideFlags: 0
