@@ -3,15 +3,21 @@ using UnityEngine;
 
 namespace Characters.Damage
 {
-    public abstract class DamageComponent : MonoBehaviour
+    public abstract class DamageComponent : MonoBehaviour, ITeamInterface
     {
         [SerializeField] private bool damageFriendly;
         [SerializeField] private bool damageEnemy;
         [SerializeField] private bool damageNeutral;
 
         private ITeamInterface teamInterface;
+        public int GetTeamID()
+        {
+            if (teamInterface != null)
+                return teamInterface.GetTeamID();
+            return -1;
+        }
 
-        public  void SetTeamInterface(ITeamInterface teamInterfaceParam)
+        public void SetTeamInterface(ITeamInterface teamInterfaceParam)
         {
             teamInterface = teamInterfaceParam;
         }

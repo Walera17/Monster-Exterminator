@@ -821,7 +821,7 @@ Transform:
   - {fileID: 3757365981754602283}
   - {fileID: 3022139350210905733}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -1042,7 +1042,6 @@ MonoBehaviour:
   spawnTransform: {fileID: 3022139350210905733}
   animator: {fileID: 8056398509654854738}
   objectsToSpawn:
-  - {fileID: 7681764590091186655, guid: 6e54e9c752f5e184f81ef9c55a9bff74, type: 3}
   - {fileID: 3382781549764127497, guid: f934a06b5c1a2bb48b24a21dba30817d, type: 3}
 --- !u!114 &2252663269267125706
 MonoBehaviour:

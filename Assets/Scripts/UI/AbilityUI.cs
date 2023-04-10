@@ -49,7 +49,17 @@ namespace UI
             while (counter > 0 || ability.AbilityOnCooldown)
             {
                 counter -= Time.deltaTime;
-                cooldownWheel.fillAmount = counter / duration;
+                if (ability is HealthRegenerateAbility && color == Color.green)
+                {
+                    cooldownWheel.fillAmount = 1 - (counter / duration);
+                    cooldownWheel.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    cooldownWheel.fillAmount = counter / duration;
+                    cooldownWheel.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+
                 yield return null;
             }
 

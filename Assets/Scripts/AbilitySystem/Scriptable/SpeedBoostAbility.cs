@@ -12,7 +12,7 @@ namespace AbilitySystem
         public override void Init(AbilityComponent component)
         {
             base.Init(component);
-            boostDurationWaitForSeconds = new WaitForSeconds(boostDuration);
+            SetBoostDuration(boostDuration);
         }
 
         public override void Activate()
