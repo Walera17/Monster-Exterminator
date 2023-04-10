@@ -21,7 +21,8 @@ namespace Characters.Player
         [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
-        [Header("Health and Damage")] [SerializeField]
+        [Header("Health and Damage")]
+        [SerializeField]
         HealthComponent healthComponent;
 
         [Header("UIManager")]
@@ -152,5 +153,11 @@ namespace Characters.Player
             currentMoveSpeed += boostAmt;
             currentMoveSpeed = Mathf.Clamp(currentMoveSpeed, moveSpeed, maxMoveSpeed);
         }
+
+        public void HealthRegenerate(float healthRegenerateAmount, float speedRegenerate) => 
+            healthComponent.HealthRegenerate(healthRegenerateAmount,speedRegenerate);
+
+        public float GetDeltaHealth(float healthRegenerateAmount) => 
+            healthComponent.GetDeltaHealth(healthRegenerateAmount);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace AbilitySystem
@@ -8,6 +7,13 @@ namespace AbilitySystem
     public class SpeedBoostAbility : Ability
     {
         [SerializeField] private float boostAmt = 20f;
+        [SerializeField] private float boostDuration = 2f;
+
+        public override void Init(AbilityComponent component)
+        {
+            base.Init(component);
+            boostDurationWaitForSeconds = new WaitForSeconds(boostDuration);
+        }
 
         public override void Activate()
         {

@@ -14,7 +14,7 @@ namespace UI
         {
             bar.fillAmount = amountHealth / maxHealth;
 
-            if (amountHealth > 0) health.text = amountHealth + "";
+            if (amountHealth > 0) health.text = (int)amountHealth + "";
             else health.text = "";
 
             if (delta != 0 && bar.fillAmount > 0)

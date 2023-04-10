@@ -262,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialAbilities:
   - {fileID: 11400000, guid: 77e3905c46d0de744aea222190e48e9e, type: 2}
+  - {fileID: 11400000, guid: 77a452aef90c6f04299b13107797a109, type: 2}
   stamina: 200
   maxStamina: 200
 --- !u!1001 &8639010547884619320

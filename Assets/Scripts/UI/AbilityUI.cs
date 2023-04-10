@@ -36,13 +36,14 @@ namespace UI
 
         private void Ability_OnCooldownStarted()
         {
-            StartCoroutine(ShowDurationCoroutine(ability.CooldownDuration, Color.white));
+            StartCoroutine(ShowDurationCoroutine(ability.CooldownDuration, Color.yellow));
         }
 
         private IEnumerator ShowDurationCoroutine(float durationParam, Color color)
         {
             cooldownWheel.enabled = true;
             cooldownWheel.color = color;
+            abilityIcon.color = color;
             float counter = durationParam;
             float duration = counter;
             while (counter > 0 || ability.AbilityOnCooldown)
@@ -53,6 +54,7 @@ namespace UI
             }
 
             cooldownWheel.enabled = false;
+            abilityIcon.color = Color.white;
         }
     }
 }

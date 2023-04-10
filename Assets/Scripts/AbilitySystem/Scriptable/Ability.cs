@@ -8,12 +8,11 @@ namespace AbilitySystem
         [SerializeField] private Sprite icon;
         [SerializeField] private float staminaCost = 10;
         [SerializeField] private float cooldownDuration = 2f;
-        [SerializeField] private float boostDuration = 2f;
 
         public delegate void OnCooldownStartedDelegate();
-
         public event OnCooldownStartedDelegate OnCooldownStarted;
 
+        private float boostDuration;
         AbilityComponent abilityComponent;
         private bool abilityOnCooldown;
         WaitForSeconds cooldownWaitForSeconds;
@@ -29,11 +28,15 @@ namespace AbilitySystem
 
         public float BoostDuration => boostDuration;
 
-        public void Init(AbilityComponent component)
+        public void SetBoostDuration(float value)
+        {
+            boostDurationWaitForSeconds = new WaitForSeconds(value);
+            boostDuration = value;
+        }
+        public virtual void Init(AbilityComponent component)
         {
             abilityComponent = component;
             cooldownWaitForSeconds = new WaitForSeconds(cooldownDuration);
-            boostDurationWaitForSeconds = new WaitForSeconds(boostDuration);
         }
 
         public abstract void Activate();

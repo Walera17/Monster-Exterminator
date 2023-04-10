@@ -49,6 +49,7 @@ MonoBehaviour:
   damageComponent: {fileID: 2069335639722608006}
   body: {fileID: 7827745861397504559}
   flightHeight: 4
+  explosionVFX: {fileID: 0}
 --- !u!54 &7827745861397504559
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92,7 +93,7 @@ PrefabInstance:
     - target: {fileID: 3313663951685211237, guid: 6b52a2ca496839c43b1687276224f9c1,
         type: 3}
       propertyPath: damage
-      value: 9
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3313663951685211237, guid: 6b52a2ca496839c43b1687276224f9c1,
         type: 3}
