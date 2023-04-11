@@ -821,7 +821,7 @@ Transform:
   - {fileID: 3757365981754602283}
   - {fileID: 3022139350210905733}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -1018,13 +1018,13 @@ MonoBehaviour:
   teamRelation: 2
   spawnerComponent: {fileID: 1843524759553470678}
   deathVFX:
-  - particleSystem: {fileID: 4021103657954561960, guid: 5c755f9bc5253ea418e919994537dcc7,
+  - particleSystem: {fileID: 4021103657954561960, guid: 75a6158003a14fb458242020f110fb4e,
       type: 3}
     size: 3
-  - particleSystem: {fileID: 5515065002404772068, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c,
+  - particleSystem: {fileID: 5515065002404772068, guid: 8324dd1def454744eb9dd2aa6698f117,
       type: 3}
     size: 2
-  - particleSystem: {fileID: 7226888052703040407, guid: 7ec363c8df426644ea85f8d6d570561c,
+  - particleSystem: {fileID: 7226888052703040407, guid: 49152ab61bf089949a28bf62108c58b0,
       type: 3}
     size: 3
 --- !u!114 &1843524759553470678

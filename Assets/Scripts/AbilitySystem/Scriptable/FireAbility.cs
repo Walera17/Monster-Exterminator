@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace AbilitySystem
 {
@@ -23,6 +24,15 @@ namespace AbilitySystem
             fireScanner.SetScanDuration(scanDuration);
             Instantiate(scanVFX, fireScanner.Pivot);
             fireScanner.StartScan();
+
+            AbilityComponent.StartCoroutine(StartCooldownFire());
+        }
+
+        private IEnumerator StartCooldownFire()
+        {
+            yield return boostDurationWaitForSeconds;
+
+            StartAbilityCooldown();
         }
 
         public void FireScannerOnScanDetectionUpdated(GameObject newDetection)
