@@ -8,11 +8,10 @@ namespace AbilitySystem
     {
         [SerializeField] private float healthRegenerateAmount = 50f;
         [SerializeField] private float speedRegenerate = 20f;
+        private float deltaHealth;
 
         public override void Activate()
         {
-            float deltaHealth = AbilityComponent.AbilityOwner.GetDeltaHealth(healthRegenerateAmount);
-            if (deltaHealth == 0) return;
             if (!CommitAbility()) return;
 
             SetBoostDuration(deltaHealth / speedRegenerate);
@@ -20,6 +19,14 @@ namespace AbilitySystem
             AbilityComponent.AbilityOwner.HealthRegenerate(healthRegenerateAmount, speedRegenerate);
 
             AbilityComponent.StartCoroutine(StartCooldownHealthRegenerate());
+        }
+
+        public override bool CommitAbility()
+        {
+            deltaHealth = AbilityComponent.AbilityOwner.GetDeltaHealth(healthRegenerateAmount);
+            if (deltaHealth == 0) return false;
+
+            return base.CommitAbility();
         }
 
         private IEnumerator StartCooldownHealthRegenerate()

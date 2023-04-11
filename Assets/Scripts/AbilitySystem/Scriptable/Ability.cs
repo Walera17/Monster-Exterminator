@@ -41,7 +41,7 @@ namespace AbilitySystem
 
         public abstract void Activate();
 
-        public bool CommitAbility()
+        public virtual bool CommitAbility()
         {
             if (abilityOnCooldown) return false;
 

@@ -9,18 +9,18 @@ namespace AbilitySystem
         [SerializeField] private float boostAmt = 20f;
         [SerializeField] private float boostDuration = 2f;
 
-        public override void Init(AbilityComponent component)
-        {
-            base.Init(component);
-            SetBoostDuration(boostDuration);
-        }
-
         public override void Activate()
         {
             if (!CommitAbility()) return;
 
             AbilityComponent.AbilityOwner.AddMoveSpeed(boostAmt);
             AbilityComponent.StartCoroutine(ResetSpeed());
+        }
+
+        public override void Init(AbilityComponent component)
+        {
+            base.Init(component);
+            SetBoostDuration(boostDuration);
         }
 
         private IEnumerator ResetSpeed()
