@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace AbilitySystem
@@ -9,12 +8,14 @@ namespace AbilitySystem
         [SerializeField] Ability[] initialAbilities;
         [SerializeField] private float stamina = 200f;
         [SerializeField] private float maxStamina = 200f;
-        
+
         readonly List<Ability> abilities = new();
         IAbilityInterface abilityInterface;
 
         public delegate void OnNewAbilityAddedDelegate(Ability ability);
+
         public delegate void OnAbilityChangeDelegate(float value, float maxValue);
+
         public event OnNewAbilityAddedDelegate OnNewAbilityAdded;
         public event OnAbilityChangeDelegate OnAbilityChange;
 
