@@ -1,5 +1,4 @@
-﻿using Characters.Enemies;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Characters.Damage
 {
@@ -10,6 +9,7 @@ namespace Characters.Damage
         [SerializeField] private bool damageNeutral;
 
         private ITeamInterface teamInterface;
+
         public int GetTeamID()
         {
             if (teamInterface != null)

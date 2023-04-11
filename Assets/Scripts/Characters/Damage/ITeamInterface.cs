@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Characters.Enemies
+namespace Characters.Damage
 {
     public interface ITeamInterface
     {

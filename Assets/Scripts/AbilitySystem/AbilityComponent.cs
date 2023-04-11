@@ -48,7 +48,7 @@ namespace AbilitySystem
 
         public bool TryConsumeStamina(float value)
         {
-            if (stamina <= value) return false;
+            if (stamina < value) return false;
 
             stamina -= value;
             OnAbilityChange?.Invoke(stamina, maxStamina);

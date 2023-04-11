@@ -17,7 +17,9 @@ MonoBehaviour:
   cooldownDuration: 8
   scannerPrefab: {fileID: 2623346021581351417, guid: f22c7f6acf707984c902b0b029ec6757,
     type: 3}
-  scanRange: 20
-  scanDuration: 0.5
+  fireRadius: 20
+  fireDuration: 0.5
+  damageDuration: 3
+  fireDamage: 60
   scanVFX: {fileID: 5518439375687053246, guid: f799fc3b23ad1db4bb8d3dc1f55b1aaa, type: 3}
   damageVFX: {fileID: 100004, guid: d68747259ab9dac44b084a03509c6267, type: 3}

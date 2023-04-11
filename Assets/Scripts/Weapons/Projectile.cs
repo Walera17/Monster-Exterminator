@@ -1,6 +1,5 @@
 ﻿using Characters;
 using Characters.Damage;
-using Characters.Enemies;
 using UnityEngine;
 
 namespace Weapons

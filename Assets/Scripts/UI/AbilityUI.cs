@@ -22,7 +22,7 @@ namespace UI
 
         public void Activate()
         {
-            if (ability != null && !ability.AbilityOnCooldown)
+            if (ability != null && !ability.AbilityOnCooldown && ability.CommitAbility())
             {
                 ability.Activate();
                 StartCoroutine(ShowDurationCoroutine(ability.BoostDuration, Color.green));
