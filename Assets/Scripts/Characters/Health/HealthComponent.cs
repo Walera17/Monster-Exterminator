@@ -8,12 +8,11 @@ namespace Characters.Health
         [SerializeField] float health = 100;
         [SerializeField] float maxHealth = 100;
 
-        public delegate void OnHealthChangeDelegate(float health, float maxHealth, float delta);
+        public delegate void OnChangeDelegate(float value, float maxValue, float delta);
         public delegate void OnTakeDamageDelegate(GameObject instigator);
-
         public delegate void OnDeadDelegate();
-
-        public event OnHealthChangeDelegate OnHealthChange;
+            
+        public event OnChangeDelegate OnHealthChange;
         public event OnTakeDamageDelegate OnTakeDamage;
         public event OnDeadDelegate OnDead;
 

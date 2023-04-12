@@ -1,6 +1,5 @@
 using AbilitySystem;
 using Characters.Damage;
-using Characters.Enemies;
 using Characters.Health;
 using UI;
 using UnityEngine;
@@ -21,12 +20,12 @@ namespace Characters.Player
         [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
-        [Header("Health and Damage")]
-        [SerializeField]
+        [Header("Health and Ability")] [SerializeField]
         HealthComponent healthComponent;
 
-        [Header("UIManager")]
-        [SerializeField] private UIManager uiManager;
+        [SerializeField] AbilityComponent abilityComponent;
+
+        [Header("UIManager")] [SerializeField] private UIManager uiManager;
 
         private Vector2 moveInput, aimInput;
         private Camera mainCamera;
@@ -49,7 +48,9 @@ namespace Characters.Player
             uiManager.AimStick.OnTaped += StartSwitchWeapon;
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
             healthComponent.OnDead += HealthComponent_OnDead;
+            abilityComponent.OnAbilityChange += AbilityComponent_OnAbilityChange;
             healthComponent.BroadcastHealthValueImmediately();
+            abilityComponent.BroadcastStaminaValueImmediately();
             damageVisualWithShake.Construct(cameraController.Shaker);
         }
 
@@ -60,6 +61,7 @@ namespace Characters.Player
             uiManager.AimStick.OnTaped -= StartSwitchWeapon;
             healthComponent.OnHealthChange -= HealthComponent_OnHealthChange;
             healthComponent.OnDead -= HealthComponent_OnDead;
+            abilityComponent.OnAbilityChange -= AbilityComponent_OnAbilityChange;
         }
 
         private void HealthComponent_OnDead()
@@ -67,6 +69,11 @@ namespace Characters.Player
             animator.SetLayerWeight(2, 1);
             animator.SetTrigger(Death);
             uiManager.SetGamePlayControlEnabled(false);
+        }
+
+        private void AbilityComponent_OnAbilityChange(float value, float maxValue, float delta)
+        {
+            uiManager.SetAbilityValue(value, maxValue, delta);
         }
 
         private void HealthComponent_OnHealthChange(float health, float maxHealth, float delta)
@@ -154,10 +161,10 @@ namespace Characters.Player
             currentMoveSpeed = Mathf.Clamp(currentMoveSpeed, moveSpeed, maxMoveSpeed);
         }
 
-        public void HealthRegenerate(float healthRegenerateAmount, float speedRegenerate) => 
-            healthComponent.HealthRegenerate(healthRegenerateAmount,speedRegenerate);
+        public void HealthRegenerate(float healthRegenerateAmount, float speedRegenerate) =>
+            healthComponent.HealthRegenerate(healthRegenerateAmount, speedRegenerate);
 
-        public float GetDeltaHealth(float healthRegenerateAmount) => 
+        public float GetDeltaHealth(float healthRegenerateAmount) =>
             healthComponent.GetDeltaHealth(healthRegenerateAmount);
     }
 }

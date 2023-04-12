@@ -6,7 +6,7 @@ namespace UI
     {
         [SerializeField] private CanvasGroup gamePlayControl;
         [SerializeField] private CanvasGroup gamePlayMenu;
-        [SerializeField] PlayerHealthBar healthBar;
+        [SerializeField] PlayerStatisticUI statisticUI;
         [SerializeField] private JoyStick moveStick;
         [SerializeField] private JoyStick aimStick;
         public JoyStick MoveStick => moveStick;
@@ -29,7 +29,12 @@ namespace UI
 
         public void SetHealthValue(float health, float maxHealth, float delta)
         {
-            healthBar.SetHealthValue(health, maxHealth, delta);
+            statisticUI.SetHealthValue(health, maxHealth, delta);
+        }
+
+        public void SetAbilityValue(float value, float maxValue, float delta)
+        {
+            statisticUI.SetAbilityValue(value, maxValue, delta);
         }
     }
 }

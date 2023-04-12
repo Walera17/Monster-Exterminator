@@ -7,12 +7,10 @@ namespace AbilitySystem
     public class SpeedBoostAbility : Ability
     {
         [SerializeField] private float boostAmt = 20f;
-        [SerializeField] private float boostDuration = 2f;
+        [SerializeField] private float durationBoost = 2f;
 
         public override void Activate()
         {
-            if (!CommitAbility()) return;
-
             AbilityComponent.AbilityOwner.AddMoveSpeed(boostAmt);
             AbilityComponent.StartCoroutine(ResetSpeed());
         }
@@ -20,7 +18,7 @@ namespace AbilitySystem
         public override void Init(AbilityComponent component)
         {
             base.Init(component);
-            SetBoostDuration(boostDuration);
+            SetBoostDuration(durationBoost);
         }
 
         private IEnumerator ResetSpeed()

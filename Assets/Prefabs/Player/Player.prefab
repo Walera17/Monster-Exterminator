@@ -172,6 +172,7 @@ MonoBehaviour:
   animTurnSpeed: 15
   teamRelation: 1
   healthComponent: {fileID: 4040068305404968454}
+  abilityComponent: {fileID: 4056283712627685523}
   uiManager: {fileID: 0}
 --- !u!114 &3424173937893214223
 MonoBehaviour:

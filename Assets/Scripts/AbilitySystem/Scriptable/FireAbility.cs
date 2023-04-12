@@ -19,8 +19,6 @@ namespace AbilitySystem
 
         public override void Activate()
         {
-            if (!CommitAbility()) return;
-
             SetBoostDuration(fireDuration);
 
             Scanner fireScanner = Instantiate(scannerPrefab, AbilityComponent.transform);

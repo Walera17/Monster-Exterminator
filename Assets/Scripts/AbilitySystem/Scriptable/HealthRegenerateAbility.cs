@@ -12,8 +12,6 @@ namespace AbilitySystem
 
         public override void Activate()
         {
-            if (!CommitAbility()) return;
-
             SetBoostDuration(deltaHealth / speedRegenerate);
 
             AbilityComponent.AbilityOwner.HealthRegenerate(healthRegenerateAmount, speedRegenerate);

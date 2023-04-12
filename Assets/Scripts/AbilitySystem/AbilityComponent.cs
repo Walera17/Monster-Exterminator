@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Characters.Health;
 using UnityEngine;
 
 namespace AbilitySystem
@@ -14,12 +15,8 @@ namespace AbilitySystem
 
         public delegate void OnNewAbilityAddedDelegate(Ability ability);
 
-        public delegate void OnAbilityChangeDelegate(float value, float maxValue);
-
         public event OnNewAbilityAddedDelegate OnNewAbilityAdded;
-        public event OnAbilityChangeDelegate OnAbilityChange;
-
-        //public float Stamina => stamina;
+        public event HealthComponent.OnChangeDelegate OnAbilityChange;
 
         public IAbilityInterface AbilityOwner => abilityInterface;
 
@@ -28,6 +25,11 @@ namespace AbilitySystem
             abilityInterface = GetComponent<IAbilityInterface>();
             foreach (Ability ability in initialAbilities)
                 GiveAbility(ability);
+        }
+
+        public void BroadcastStaminaValueImmediately()
+        {
+            OnAbilityChange?.Invoke(stamina, maxStamina, 0);
         }
 
         void GiveAbility(Ability ability)
@@ -46,12 +48,12 @@ namespace AbilitySystem
             }
         }
 
-        public bool TryConsumeStamina(float value)
+        public bool TryConsumeStamina(float deltaValue)
         {
-            if (stamina < value) return false;
+            if (stamina < deltaValue) return false;
 
-            stamina -= value;
-            OnAbilityChange?.Invoke(stamina, maxStamina);
+            stamina -= deltaValue;
+            OnAbilityChange?.Invoke(stamina, maxStamina, -deltaValue);
             return true;
         }
     }
