@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Shop;
+﻿using Shop;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Weapons
@@ -69,8 +69,8 @@ namespace Weapons
 
         public bool HandlePurchase(Object purchaseItem)
         {
-            GameObject item= purchaseItem as GameObject;
-            if(item == null) return false;
+            GameObject item = purchaseItem as GameObject;
+            if (item == null) return false;
 
             Weapon weapon = item.GetComponent<Weapon>();
             if (weapon == null) return false;
