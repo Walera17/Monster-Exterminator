@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using Characters.Health;
+﻿using Characters.Health;
+using Shop;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AbilitySystem
 {
-    public class AbilityComponent : MonoBehaviour
+    public class AbilityComponent : MonoBehaviour, IPurchaseListener
     {
         [SerializeField] Ability[] initialAbilities;
         [SerializeField] private float stamina = 200f;
@@ -54,6 +55,15 @@ namespace AbilitySystem
 
             stamina -= deltaValue;
             OnAbilityChange?.Invoke(stamina, maxStamina, -deltaValue);
+            return true;
+        }
+
+        public bool HandlePurchase(Object purchaseItem)
+        {
+            Ability ability = purchaseItem as Ability;
+            if (ability == null) return false;
+
+            GiveAbility(ability);
             return true;
         }
     }

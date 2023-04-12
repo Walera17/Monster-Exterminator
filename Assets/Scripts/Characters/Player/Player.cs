@@ -1,6 +1,7 @@
 using AbilitySystem;
 using Characters.Damage;
 using Characters.Health;
+using Shop;
 using UI;
 using UnityEngine;
 using Weapons;
@@ -20,12 +21,22 @@ namespace Characters.Player
         [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
-        [Header("Health and Ability")] [SerializeField]
+        [Header("Health and Ability")]
+        [SerializeField]
         HealthComponent healthComponent;
 
         [SerializeField] AbilityComponent abilityComponent;
+        [SerializeField] private CreditComponent creditComponent;
 
-        [Header("UIManager")] [SerializeField] private UIManager uiManager;
+        [Header("UIManager")][SerializeField] private UIManager uiManager;
+
+        [SerializeField] ShopSystem shopSystem;
+
+        void TestShop()
+        {
+            shopSystem.TryPurchase(shopSystem.ShopItems[0], creditComponent);
+            shopSystem.TryPurchase(shopSystem.ShopItems[1], creditComponent);
+        }
 
         private Vector2 moveInput, aimInput;
         private Camera mainCamera;
@@ -52,6 +63,7 @@ namespace Characters.Player
             healthComponent.BroadcastHealthValueImmediately();
             abilityComponent.BroadcastStaminaValueImmediately();
             damageVisualWithShake.Construct(cameraController.Shaker);
+            Invoke(nameof(TestShop), 3f);
         }
 
         private void OnDestroy()

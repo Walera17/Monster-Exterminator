@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ShopSystem
+namespace Shop
 {
     [CreateAssetMenu(menuName = "Shop/ShopSystem")]
     public class ShopSystem : ScriptableObject
@@ -9,9 +9,7 @@ namespace ShopSystem
 
         public ShopItem[] ShopItems => shopItems;
 
-        public bool TryPurchase(ShopItem item)
-        {
-            return false;
-        }
+        public bool TryPurchase(ShopItem selectedItem, CreditComponent purchaser) => 
+            purchaser.Purchase(selectedItem.price, selectedItem.item);
     }
 }

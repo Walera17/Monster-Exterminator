@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764aeb455cb1702498c20bb75af91d62, type: 3}
-  m_Name: New Shop Item
+  m_Script: {fileID: 11500000, guid: 902bbbcdd7d807946a633ca9b497d6da, type: 3}
+  m_Name: Shop
   m_EditorClassIdentifier: 
-  title: 
-  icon: {fileID: 0}
-  price: 0
-  item: {fileID: 0}
-  description: 
+  shopItems:
+  - {fileID: 11400000, guid: aaba79cf3a8921e46a6cb38d75cd263f, type: 2}
+  - {fileID: 11400000, guid: 2a968730a52d1a247a33005c08169e44, type: 2}

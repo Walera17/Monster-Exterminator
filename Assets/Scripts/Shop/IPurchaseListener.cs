@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace ShopSystem
+namespace Shop
 {
     public interface IPurchaseListener
     {
-        void HandlePurchase(GameObject purchase);
+        bool HandlePurchase(Object purchaseItem);
     }
 }

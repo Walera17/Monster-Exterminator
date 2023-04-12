@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace ShopSystem
+namespace Shop
 {
     public class CreditComponent : MonoBehaviour
     {
@@ -19,12 +19,12 @@ namespace ShopSystem
         {
             foreach (Component component in purchaseListenerComponents)
             {
-                if (component != null && component.TryGetComponent(out IPurchaseListener listener))
+                if (component != null && component is IPurchaseListener listener)
                     purchaseListeners.Add(listener);
             }
         }
 
-        public bool Purchase(int price, GameObject item)
+        public bool Purchase(int price, Object item)
         {
             if (credit < price) return false;
 
@@ -37,10 +37,13 @@ namespace ShopSystem
             return true;
         }
 
-        void BroadcastPurchase(GameObject item)
+        void BroadcastPurchase(Object item)
         {
-            foreach (IPurchaseListener listener in purchaseListeners) 
-                listener.HandlePurchase(item);
+            foreach (IPurchaseListener listener in purchaseListeners)
+            {
+                if (listener.HandlePurchase(item))
+                    return;
+            }
         }
     }
 }

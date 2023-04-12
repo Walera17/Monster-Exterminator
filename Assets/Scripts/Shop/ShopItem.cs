@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ShopSystem
+namespace Shop
 {
     [CreateAssetMenu(menuName = "Shop/ShopItem")]
     public class ShopItem : ScriptableObject
@@ -8,7 +8,7 @@ namespace ShopSystem
         public string title;
         public Sprite icon;
         public int price;
-        public GameObject item;
+        public Object item;
         [TextArea(3, 10)] public string description;
     }
 }

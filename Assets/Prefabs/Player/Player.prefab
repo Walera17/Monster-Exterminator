@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 69499721966775657}
   - component: {fileID: 4040068305404968454}
   - component: {fileID: 4056283712627685523}
+  - component: {fileID: 3958636288691184433}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -173,7 +174,9 @@ MonoBehaviour:
   teamRelation: 1
   healthComponent: {fileID: 4040068305404968454}
   abilityComponent: {fileID: 4056283712627685523}
+  creditComponent: {fileID: 3958636288691184433}
   uiManager: {fileID: 0}
+  shopSystem: {fileID: 11400000, guid: c270bcbd90f58c44a81156dc53c58e13, type: 2}
 --- !u!114 &3424173937893214223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initWeaponsPrefabs:
   - {fileID: 6541715272194841544, guid: 5442004b40702974f81176881584dc5f, type: 3}
-  - {fileID: 1007599489785031685, guid: cb1da7e3f34129040bd13cb077268add, type: 3}
   weaponSlots:
   - {fileID: 487262469}
   - {fileID: 855928829}
@@ -264,9 +266,24 @@ MonoBehaviour:
   initialAbilities:
   - {fileID: 11400000, guid: 77e3905c46d0de744aea222190e48e9e, type: 2}
   - {fileID: 11400000, guid: 77a452aef90c6f04299b13107797a109, type: 2}
-  - {fileID: 11400000, guid: acc36d6b9ae07924b90d12974e1aa29f, type: 2}
   stamina: 200
   maxStamina: 200
+--- !u!114 &3958636288691184433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290700382596798287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2082ba4cb04b305479a2c5c85be3dc30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  credit: 200
+  purchaseListenerComponents:
+  - {fileID: 4056283712627685523}
+  - {fileID: 2513006049675784915}
 --- !u!1001 &8639010547884619320
 PrefabInstance:
   m_ObjectHideFlags: 0
