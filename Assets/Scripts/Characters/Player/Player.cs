@@ -57,7 +57,7 @@ namespace Characters.Player
             uiManager.MoveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
             uiManager.AimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
             uiManager.AimStick.OnTaped += StartSwitchWeapon;
-            uiManager.InitShopUI(shopSystem,creditComponent);
+            uiManager.InitShop(shopSystem,creditComponent);
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
             healthComponent.OnDead += HealthComponent_OnDead;
             abilityComponent.OnAbilityChange += AbilityComponent_OnAbilityChange;

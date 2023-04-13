@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2082ba4cb04b305479a2c5c85be3dc30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credit: 100
+  credit: 250
   purchaseListenerComponents:
   - {fileID: 4056283712627685523}
   - {fileID: 2513006049675784915}

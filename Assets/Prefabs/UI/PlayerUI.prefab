@@ -1140,7 +1140,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1266481217668315807}
-  - component: {fileID: 1042359070466707607}
   m_Layer: 5
   m_Name: PlayerStaminaBar
   m_TagString: Untagged
@@ -1169,22 +1168,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &1042359070466707607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9127849054309909712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b36b2e5f12772a4d93dccbf3aebb8f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  health: {fileID: 2161917683225488595}
-  deltaHealth: {fileID: 0}
-  staminaBar: {fileID: 0}
-  stamina: {fileID: 0}
-  deltaStamina: {fileID: 0}
-  showDelta: 0.5

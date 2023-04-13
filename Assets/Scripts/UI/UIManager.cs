@@ -1,4 +1,5 @@
 ﻿using Shop;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UI
@@ -7,17 +8,54 @@ namespace UI
     {
         [SerializeField] private CanvasGroup gamePlayControl;
         [SerializeField] private CanvasGroup gamePlayMenu;
+        [SerializeField] private CanvasGroup shop;
         [SerializeField] PlayerStatisticUI statisticUI;
         [SerializeField] private ShopUI shopUI;
+        [SerializeField] private PlayerCreditUI playerCreditUI;
         [SerializeField] private JoyStick moveStick;
         [SerializeField] private JoyStick aimStick;
         public JoyStick MoveStick => moveStick;
         public JoyStick AimStick => aimStick;
 
+        readonly List<CanvasGroup> allChildren = new();
+        private CanvasGroup currentCanvasGroup;
+
+        private void Start()
+        {
+            List<CanvasGroup> allCanvasGroups = new List<CanvasGroup>();
+            GetComponentsInChildren(true, allCanvasGroups);
+            foreach (CanvasGroup child in allCanvasGroups)
+            {
+                if (child.transform.parent == transform) 
+                    allChildren.Add(child);
+            }
+
+            SetCurrentActiveGroup(gamePlayControl);
+        }
+
+        public void SetCurrentActiveGroup(CanvasGroup group)
+        {
+            foreach (CanvasGroup child in allChildren)
+            {
+                if (child == group)
+                    SetVisibleGroup(child, true, true);
+                else 
+                    SetVisibleGroup(child, false, false);
+            }
+        }
+
+        private void SetVisibleGroup(CanvasGroup canvasGroup, bool interactable, bool visible)
+        {
+            canvasGroup.interactable = interactable;
+            canvasGroup.blocksRaycasts = interactable;
+            canvasGroup.alpha = visible ? 1 : 0;
+        }
+
         public void SetGamePlayControlEnabled(bool enabledParam)
         {
             SetCanvasGroupEnabled(gamePlayControl, enabledParam);
         }
+
         public void SetGamePlayMenuEnabled(bool enabledParam)
         {
             SetCanvasGroupEnabled(gamePlayControl, enabledParam);
@@ -39,9 +77,15 @@ namespace UI
             statisticUI.SetAbilityValue(value, maxValue, delta);
         }
 
-        public void InitShopUI(ShopSystem shopSystem, CreditComponent component)
+        public void InitShop(ShopSystem shopSystem, CreditComponent component)
         {
-            shopUI.Init(shopSystem,component);
+            shopUI.Init(shopSystem, component);
+            playerCreditUI.Init(this);
+        }
+
+        public void SwitchToShop()
+        {
+            SetCurrentActiveGroup(shop);
         }
     }
 }
