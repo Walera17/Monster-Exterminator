@@ -1,6 +1,8 @@
 ﻿using Shop;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -8,22 +10,36 @@ namespace UI
     {
         [SerializeField] ShopItemUI shopItemUIPrefab;
         [SerializeField] private RectTransform content;
+        [SerializeField] private TMP_Text creditText;
+        [SerializeField] private Button backButton;
+        [SerializeField] private Button buyButton;
 
+        private UIManager uiManager;
         ShopSystem shopSystem;
         private CreditComponent creditComponent;
         readonly List<ShopItemUI> shopItems = new();
 
-        public void Init(ShopSystem system, CreditComponent creditComp)
+        public void Init(UIManager manager, ShopSystem system, CreditComponent creditComp)
         {
+            uiManager = manager;
             shopSystem = system;
             creditComponent = creditComp;
             InitShopItems();
+            backButton.onClick.AddListener(uiManager.SwitchToGamePlayControl);
+            creditComponent.OnCreditChanged += RefreshShop;
         }
 
-        public void RefreshShop()
+        private void OnDestroy()
         {
+            creditComponent.OnCreditChanged -= RefreshShop;
+        }
+
+        public void RefreshShop(int credit)
+        {
+            creditText.text = credit.ToString();
+
             foreach (ShopItemUI shopItemUI in shopItems)
-                shopItemUI.Refresh(creditComponent.Credit);
+                shopItemUI.Refresh(credit);
         }
 
         private void InitShopItems()
@@ -31,7 +47,7 @@ namespace UI
             foreach (ShopItem shopItem in shopSystem.ShopItems)
                 AddShopItem(shopItem);
 
-            RefreshShop();
+            RefreshShop(creditComponent.Credit);
         }
 
         private void AddShopItem(ShopItem shopItem)
@@ -40,5 +56,6 @@ namespace UI
             shopItemUI.Init(shopItem);
             shopItems.Add(shopItemUI);
         }
+        
     }
 }

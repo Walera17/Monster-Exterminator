@@ -79,13 +79,18 @@ namespace UI
 
         public void InitShop(ShopSystem shopSystem, CreditComponent component)
         {
-            shopUI.Init(shopSystem, component);
-            playerCreditUI.Init(this);
-        }
+            shopUI.Init(this,shopSystem, component);
+            playerCreditUI.Init(this, component);
+       }
 
         public void SwitchToShop()
         {
             SetCurrentActiveGroup(shop);
         }
+
+        public void SwitchToGamePlayControl()
+        {
+            SetCurrentActiveGroup(gamePlayControl);
+        }   
     }
 }
