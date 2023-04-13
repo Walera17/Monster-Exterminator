@@ -12,11 +12,15 @@ namespace UI
         [SerializeField] private TMP_Text titleText;
         [SerializeField] private TMP_Text priceText;
         [SerializeField] private TMP_Text descriptionText;
-        [SerializeField] private Button button;
+        [SerializeField] private Button selectItemButton;
         [SerializeField] private Color validateCredit;
         [SerializeField] private Color failedCredit;
 
         private ShopItem item;
+        public ShopItem Item => item;
+
+        public delegate void OnItemSelectedDelegate(ShopItemUI selectedItem);
+        public event OnItemSelectedDelegate OnItemSelected;
 
         public void Init(ShopItem shopItem)
         {
@@ -25,6 +29,7 @@ namespace UI
             titleText.text = shopItem.title;
             priceText.text = "$" + shopItem.price;
             descriptionText.text = shopItem.description;
+            selectItemButton.onClick.AddListener(() => OnItemSelected?.Invoke(this));
         }
 
         public void Refresh(int currentCredit)
@@ -33,13 +38,13 @@ namespace UI
             {
                 validateCreditFrame.color = failedCredit;
                 priceText.color = failedCredit;
-                button.interactable = false;
+                selectItemButton.interactable = false;
             }
             else
             {
                 validateCreditFrame.color = validateCredit;
                 priceText.color = validateCredit;
-                button.interactable = true;
+                selectItemButton.interactable = true;
             }
         }
     }

@@ -30,12 +30,6 @@ namespace Characters.Player
         private UIManager uiManager;
         CameraController cameraController;
 
-        void TestShop()
-        {
-            shopSystem.TryPurchase(shopSystem.ShopItems[0], creditComponent);
-            shopSystem.TryPurchase(shopSystem.ShopItems[1], creditComponent);
-        }
-
         private Vector2 moveInput, aimInput;
         private Camera mainCamera;
         private float animatorTurnSpeed, currentMoveSpeed;
@@ -57,14 +51,13 @@ namespace Characters.Player
             uiManager.MoveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
             uiManager.AimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
             uiManager.AimStick.OnTaped += StartSwitchWeapon;
-            uiManager.InitShop(shopSystem,creditComponent);
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
             healthComponent.OnDead += HealthComponent_OnDead;
             abilityComponent.OnAbilityChange += AbilityComponent_OnAbilityChange;
+            uiManager.InitShop(shopSystem,creditComponent);
             healthComponent.BroadcastHealthValueImmediately();
             abilityComponent.BroadcastStaminaValueImmediately();
             damageVisualWithShake.Construct(cameraController.Shaker);
-            Invoke(nameof(TestShop), 3f);
         }
 
         private void OnDestroy()

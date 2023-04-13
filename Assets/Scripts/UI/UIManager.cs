@@ -86,11 +86,13 @@ namespace UI
         public void SwitchToShop()
         {
             SetCurrentActiveGroup(shop);
+            GamePlayStatics.SetGamePaused(false);
         }
 
         public void SwitchToGamePlayControl()
         {
             SetCurrentActiveGroup(gamePlayControl);
+            GamePlayStatics.SetGamePaused(true);
         }   
     }
 }
