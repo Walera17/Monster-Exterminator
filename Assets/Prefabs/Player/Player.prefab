@@ -167,7 +167,6 @@ MonoBehaviour:
   animator: {fileID: 7810604072945408526}
   inventory: {fileID: 2513006049675784915}
   damageVisualWithShake: {fileID: 2175611678815295973}
-  cameraController: {fileID: 0}
   moveSpeed: 5
   maxMoveSpeed: 80
   animTurnSpeed: 15
@@ -175,7 +174,6 @@ MonoBehaviour:
   healthComponent: {fileID: 4040068305404968454}
   abilityComponent: {fileID: 4056283712627685523}
   creditComponent: {fileID: 3958636288691184433}
-  uiManager: {fileID: 0}
   shopSystem: {fileID: 11400000, guid: c270bcbd90f58c44a81156dc53c58e13, type: 2}
 --- !u!114 &3424173937893214223
 MonoBehaviour:
@@ -280,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2082ba4cb04b305479a2c5c85be3dc30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credit: 200
+  credit: 100
   purchaseListenerComponents:
   - {fileID: 4056283712627685523}
   - {fileID: 2513006049675784915}

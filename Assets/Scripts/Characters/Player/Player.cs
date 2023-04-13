@@ -15,22 +15,20 @@ namespace Characters.Player
         [SerializeField] Animator animator;
         [SerializeField] Inventory inventory;
         [SerializeField] private DamageVisualWithShake damageVisualWithShake;
-        [SerializeField] private CameraController cameraController;
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float maxMoveSpeed = 80f;
         [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
-        [Header("Health and Ability")]
-        [SerializeField]
+        [Header("Health and Ability")] [SerializeField]
         HealthComponent healthComponent;
 
         [SerializeField] AbilityComponent abilityComponent;
         [SerializeField] private CreditComponent creditComponent;
-
-        [Header("UIManager")][SerializeField] private UIManager uiManager;
-
         [SerializeField] ShopSystem shopSystem;
+
+        private UIManager uiManager;
+        CameraController cameraController;
 
         void TestShop()
         {
@@ -52,11 +50,14 @@ namespace Characters.Player
 
         void Start()
         {
+            uiManager = FindObjectOfType<UIManager>();
+            cameraController = FindObjectOfType<CameraController>();
             currentMoveSpeed = moveSpeed;
             mainCamera = Camera.main;
             uiManager.MoveStick.OnStickInputValueChanged += MoveStick_OnStickInputValueChanged;
             uiManager.AimStick.OnStickInputValueChanged += AimStick_OnStickInputValueChanged;
             uiManager.AimStick.OnTaped += StartSwitchWeapon;
+            uiManager.InitShopUI(shopSystem,creditComponent);
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
             healthComponent.OnDead += HealthComponent_OnDead;
             abilityComponent.OnAbilityChange += AbilityComponent_OnAbilityChange;

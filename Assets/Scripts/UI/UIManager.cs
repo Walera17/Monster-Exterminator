@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Shop;
+using UnityEngine;
 
 namespace UI
 {
@@ -7,10 +8,11 @@ namespace UI
         [SerializeField] private CanvasGroup gamePlayControl;
         [SerializeField] private CanvasGroup gamePlayMenu;
         [SerializeField] PlayerStatisticUI statisticUI;
+        [SerializeField] private ShopUI shopUI;
         [SerializeField] private JoyStick moveStick;
         [SerializeField] private JoyStick aimStick;
         public JoyStick MoveStick => moveStick;
-        public JoyStick AimStick => aimStick;   
+        public JoyStick AimStick => aimStick;
 
         public void SetGamePlayControlEnabled(bool enabledParam)
         {
@@ -21,7 +23,7 @@ namespace UI
             SetCanvasGroupEnabled(gamePlayControl, enabledParam);
         }
 
-        public void SetCanvasGroupEnabled(CanvasGroup canvasGroup,bool enabledParam)
+        public void SetCanvasGroupEnabled(CanvasGroup canvasGroup, bool enabledParam)
         {
             canvasGroup.interactable = enabledParam;
             canvasGroup.blocksRaycasts = enabledParam;
@@ -35,6 +37,11 @@ namespace UI
         public void SetAbilityValue(float value, float maxValue, float delta)
         {
             statisticUI.SetAbilityValue(value, maxValue, delta);
+        }
+
+        public void InitShopUI(ShopSystem shopSystem, CreditComponent component)
+        {
+            shopUI.Init(shopSystem,component);
         }
     }
 }
