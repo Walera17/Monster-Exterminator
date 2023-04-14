@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Rewards;
 using UnityEngine;
 
 namespace Shop
@@ -44,6 +45,12 @@ namespace Shop
                 if (listener.HandlePurchase(item))
                     return;
             }
+        }
+
+        public void Reward(Reward reward)
+        {
+            credit += reward.credit;
+            OnCreditChanged?.Invoke(credit);
         }
     }
 }

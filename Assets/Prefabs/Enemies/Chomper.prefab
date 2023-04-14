@@ -3369,6 +3369,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2721689003775664049, guid: ef6b4f17eafe02a4498e48014f63c35b,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5955243954387921632, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: mesh
@@ -3433,6 +3438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chomper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8056398509645479824, guid: ef6b4f17eafe02a4498e48014f63c35b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509654854738, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
@@ -3538,6 +3548,10 @@ MonoBehaviour:
   movementComponent: {fileID: 735606281169126896}
   behaviorTree: {fileID: 8215722457237752456}
   teamRelation: 2
+  killReward:
+    health: 0
+    credit: 20
+    stamina: 10
   damageComponent: {fileID: 4172685394276947772}
 --- !u!114 &8215722457237752456
 MonoBehaviour:

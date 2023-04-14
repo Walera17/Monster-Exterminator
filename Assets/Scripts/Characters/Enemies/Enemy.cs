@@ -2,6 +2,7 @@
 using AI.Perception;
 using Characters.Damage;
 using Characters.Health;
+using Rewards;
 using UnityEngine;
 
 namespace Characters.Enemies
@@ -15,6 +16,7 @@ namespace Characters.Enemies
         [SerializeField] MovementComponent movementComponent;
         [SerializeField] BehaviorTree behaviorTree;
         [SerializeField] TeamRelation teamRelation;
+        [SerializeField] private Reward killReward;
 
         private float speed;
         private Vector3 prevPosition;
@@ -75,9 +77,11 @@ namespace Characters.Enemies
             prevPosition = transform.position;
         }
 
-        private void HealthComponent_OnDead()
+        private void HealthComponent_OnDead(GameObject instigator)
         {
             TriggerDeathAnimation();
+            if(instigator.TryGetComponent(out IReward reward))
+                reward.Reward(killReward);
         }
 
         private void TriggerDeathAnimation()

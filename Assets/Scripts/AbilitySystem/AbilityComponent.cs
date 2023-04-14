@@ -1,6 +1,7 @@
 ﻿using Characters.Health;
 using Shop;
 using System.Collections.Generic;
+using Rewards;
 using UnityEngine;
 
 namespace AbilitySystem
@@ -17,7 +18,7 @@ namespace AbilitySystem
         public delegate void OnNewAbilityAddedDelegate(Ability ability);
 
         public event OnNewAbilityAddedDelegate OnNewAbilityAdded;
-        public event HealthComponent.OnChangeDelegate OnAbilityChange;
+        public event HealthComponent.OnChangeParameterDelegate OnAbilityChange;
 
         public IAbilityInterface AbilityOwner => abilityInterface;
 
@@ -65,6 +66,12 @@ namespace AbilitySystem
 
             GiveAbility(ability);
             return true;
+        }
+
+        public void Reward(Reward reward)
+        {
+            stamina = Mathf.Clamp(stamina + reward.stamina, 0, maxStamina);
+            OnAbilityChange?.Invoke(stamina, maxStamina, reward.stamina);
         }
     }
 }

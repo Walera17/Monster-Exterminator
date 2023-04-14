@@ -1,4 +1,5 @@
 using System.Collections;
+using Rewards;
 using UnityEngine;
 
 namespace Characters.Health
@@ -8,13 +9,12 @@ namespace Characters.Health
         [SerializeField] float health = 100;
         [SerializeField] float maxHealth = 100;
 
-        public delegate void OnChangeDelegate(float value, float maxValue, float delta);
-        public delegate void OnTakeDamageDelegate(GameObject instigator);
-        public delegate void OnDeadDelegate();
+        public delegate void OnChangeParameterDelegate(float value, float maxValue, float delta);
+        public delegate void OnTakeDamageDelegate(GameObject instigator);   
             
-        public event OnChangeDelegate OnHealthChange;
+        public event OnChangeParameterDelegate OnHealthChange;
         public event OnTakeDamageDelegate OnTakeDamage;
-        public event OnDeadDelegate OnDead;
+        public event OnTakeDamageDelegate OnDead;
 
         public void BroadcastHealthValueImmediately()
         {
@@ -35,7 +35,7 @@ namespace Characters.Health
             OnHealthChange?.Invoke(health, maxHealth, delta);
 
             if (health == 0)
-                OnDead?.Invoke();
+                OnDead?.Invoke(instigator);
         }
 
         public void HealthRegenerate(float healthRegenerateAmount, float speedRegenerate)
@@ -72,6 +72,11 @@ namespace Characters.Health
                 deltaHealth = healthRegenerateAmount;
 
             return deltaHealth;
+        }
+
+        public void Reward(Reward reward)
+        {
+            ChangeHealth(reward.health, null);
         }
     }
 }

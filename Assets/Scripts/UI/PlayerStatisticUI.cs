@@ -39,6 +39,7 @@ namespace UI
         public void SetAbilityValue(float staminaValue, float maxStamina, float delta)
         {
             staminaBar.fillAmount = staminaValue / maxStamina;
+            deltaStamina.color = delta > 0 ? Color.green : Color.red;
             if (staminaValue > 0) stamina.text = staminaValue + "";
             else stamina.text = "";
 

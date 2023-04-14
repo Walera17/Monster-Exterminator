@@ -1,6 +1,7 @@
 using AbilitySystem;
 using Characters.Damage;
 using Characters.Health;
+using Rewards;
 using Shop;
 using UI;
 using UnityEngine;
@@ -8,7 +9,7 @@ using Weapons;
 
 namespace Characters.Player
 {
-    public class Player : MonoBehaviour, ITeamInterface, IAbilityInterface
+    public class Player : MonoBehaviour, ITeamInterface, IAbilityInterface, IReward
     {
         [SerializeField] CharacterController characterController;
         [SerializeField] MovementComponent movementComponent;
@@ -20,7 +21,8 @@ namespace Characters.Player
         [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
-        [Header("Health and Ability")] [SerializeField]
+        [Header("Health and Ability")]
+        [SerializeField]
         HealthComponent healthComponent;
 
         [SerializeField] AbilityComponent abilityComponent;
@@ -54,7 +56,7 @@ namespace Characters.Player
             healthComponent.OnHealthChange += HealthComponent_OnHealthChange;
             healthComponent.OnDead += HealthComponent_OnDead;
             abilityComponent.OnAbilityChange += AbilityComponent_OnAbilityChange;
-            uiManager.InitShop(shopSystem,creditComponent);
+            uiManager.InitShop(shopSystem, creditComponent);
             healthComponent.BroadcastHealthValueImmediately();
             abilityComponent.BroadcastStaminaValueImmediately();
             damageVisualWithShake.Construct(cameraController.Shaker);
@@ -70,7 +72,7 @@ namespace Characters.Player
             abilityComponent.OnAbilityChange -= AbilityComponent_OnAbilityChange;
         }
 
-        private void HealthComponent_OnDead()
+        private void HealthComponent_OnDead(GameObject instigator)
         {
             animator.SetLayerWeight(2, 1);
             animator.SetTrigger(Death);
@@ -172,5 +174,15 @@ namespace Characters.Player
 
         public float GetDeltaHealth(float healthRegenerateAmount) =>
             healthComponent.GetDeltaHealth(healthRegenerateAmount);
+
+        public void Reward(Reward reward)
+        {
+            if (reward.health != 0)
+                healthComponent.Reward(reward);
+            if (reward.stamina != 0)
+                abilityComponent.Reward(reward);
+            if (reward.credit != 0)
+                creditComponent.Reward(reward);
+        }
     }
 }

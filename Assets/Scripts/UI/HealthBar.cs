@@ -23,7 +23,7 @@ namespace UI
             _healthComponent.OnDead += HealthComponent_OnDead;
         }
 
-        private void HealthComponent_OnDead()
+        private void HealthComponent_OnDead(GameObject instigator)
         {
             _healthComponent.OnHealthChange -= SetHealthValue;
             _healthComponent.OnDead -= HealthComponent_OnDead;

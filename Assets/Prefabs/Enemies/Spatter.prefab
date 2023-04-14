@@ -3403,6 +3403,11 @@ PrefabInstance:
       propertyPath: sightDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2721689003775664049, guid: ef6b4f17eafe02a4498e48014f63c35b,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2731250199034443886, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: awareDistance
@@ -3416,12 +3421,12 @@ PrefabInstance:
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
@@ -3431,7 +3436,7 @@ PrefabInstance:
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
@@ -3548,6 +3553,10 @@ MonoBehaviour:
   movementComponent: {fileID: 5646519800554413862}
   behaviorTree: {fileID: 1702997757204619431}
   teamRelation: 2
+  killReward:
+    health: 0
+    credit: 25
+    stamina: 30
   projectilePrefab: {fileID: 8144702061887143726, guid: baf97e6b23d060e4392146e8237138be,
     type: 3}
   launchPoint: {fileID: 3489250311289727407}
