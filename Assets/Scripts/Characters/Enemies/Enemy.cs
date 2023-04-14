@@ -63,7 +63,10 @@ namespace Characters.Enemies
             if (movementComponent == null) return;
 
             Vector3 posDelta = transform.position - prevPosition;
-            float deltaMagnitude = posDelta.magnitude / Time.deltaTime;
+
+            float deltaMagnitude = 0;
+            if (Time.deltaTime > 0)
+                deltaMagnitude = posDelta.magnitude / Time.deltaTime;
 
             speed = Mathf.Lerp(speed, deltaMagnitude, 5f * Time.deltaTime);
 

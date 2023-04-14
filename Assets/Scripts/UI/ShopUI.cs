@@ -38,11 +38,14 @@ namespace UI
 
         private void TryPurchaseItem()
         {
-            if (selectedItem != null && shopSystem.TryPurchase(selectedItem.Item, creditComponent))
-            {
-                shopItems.Remove(selectedItem);
-                Destroy(selectedItem.gameObject);
-            }
+            if (selectedItem != null && shopSystem.TryPurchase(selectedItem.Item, creditComponent)) 
+                RemoveItem(selectedItem);
+        }
+
+        private void RemoveItem(ShopItemUI item)
+        {
+            shopItems.Remove(item);
+            Destroy(item.gameObject);
         }
 
         public void RefreshShop(int credit)

@@ -217,8 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a74eb7b9622bba4582213efe92927e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initWeaponsPrefabs:
-  - {fileID: 6541715272194841544, guid: 5442004b40702974f81176881584dc5f, type: 3}
+  initWeaponsPrefabs: []
   weaponSlots:
   - {fileID: 487262469}
   - {fileID: 855928829}
@@ -261,9 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519b9ef7703350c4aac3058c0b61b3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialAbilities:
-  - {fileID: 11400000, guid: 77e3905c46d0de744aea222190e48e9e, type: 2}
-  - {fileID: 11400000, guid: 77a452aef90c6f04299b13107797a109, type: 2}
+  initialAbilities: []
   stamina: 200
   maxStamina: 200
 --- !u!114 &3958636288691184433
@@ -278,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2082ba4cb04b305479a2c5c85be3dc30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credit: 250
+  credit: 180
   purchaseListenerComponents:
   - {fileID: 4056283712627685523}
   - {fileID: 2513006049675784915}

@@ -76,6 +76,7 @@ namespace Weapons
             if (weapon == null) return false;
 
             GiveNewWeapon(weapon);
+            EquipWeapon(weapons.Count - 1);
             return true;
         }
     }

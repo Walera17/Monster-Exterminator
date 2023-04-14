@@ -19,7 +19,9 @@ namespace Characters
                 Quaternion currentRot = transform.rotation;
                 float dir = Vector3.Dot(aimDirection, transform.right) > 0 ? 1 : -1;
                 float rotationDelta = Quaternion.Angle(prevRot, currentRot) * dir;
-                currentTurnSpeed = rotationDelta / Time.deltaTime;
+
+                if (Time.deltaTime > 0)
+                    currentTurnSpeed = rotationDelta / Time.deltaTime;
             }
 
             return currentTurnSpeed;
