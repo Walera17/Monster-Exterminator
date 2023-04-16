@@ -1052,3 +1052,5 @@ MonoBehaviour:
   resumeButton: {fileID: 5816630698897876552}
   restartButton: {fileID: 3570330768456142794}
   menuButton: {fileID: 14029898729664171}
+  uiManager: {fileID: 0}
+  levelManager: {fileID: 11400000, guid: eceeb98f014f5ea499748547da9a1ce5, type: 2}

@@ -51,22 +51,11 @@ namespace UI
             canvasGroup.alpha = visible ? 1 : 0;
         }
 
-        //public void SetGamePlayControlEnabled(bool enabledParam)
-        //{
-        //    SetCanvasGroupEnabled(gamePlayControl, enabledParam);
-        //}
-
         public void SwitchToPauseMenu()
         {
             SetCurrentActiveGroup(pauseMenu);
             GamePlayStatics.SetGamePaused(true);
         }
-
-        //public void SetCanvasGroupEnabled(CanvasGroup canvasGroup, bool enabledParam)
-        //{
-        //    canvasGroup.interactable = enabledParam;
-        //    canvasGroup.blocksRaycasts = enabledParam;
-        //}
 
         public void SetHealthValue(float health, float maxHealth, float delta)
         {

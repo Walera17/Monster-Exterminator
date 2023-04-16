@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Level;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
@@ -9,6 +10,7 @@ namespace UI
         [SerializeField] private Button restartButton;
         [SerializeField] private Button menuButton;
         [SerializeField] private UIManager uiManager;
+        [SerializeField] LevelManager levelManager;
 
         private void Start()
         {
@@ -24,12 +26,12 @@ namespace UI
 
         private void RestartLevel()
         {
-            throw new System.NotImplementedException();
+            levelManager.RestartCurrentLevel();
         }
 
         private void BackToMainMenu()
         {
-            
+            levelManager.GoToMainMenu();
         }
     }
 }
