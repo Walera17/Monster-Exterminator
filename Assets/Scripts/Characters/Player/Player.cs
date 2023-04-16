@@ -76,7 +76,7 @@ namespace Characters.Player
         {
             animator.SetLayerWeight(2, 1);
             animator.SetTrigger(Death);
-            uiManager.SetGamePlayControlEnabled(false);
+            uiManager.SwitchToGamePlayControl();
         }
 
         private void AbilityComponent_OnAbilityChange(float value, float maxValue, float delta)

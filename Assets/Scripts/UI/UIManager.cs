@@ -7,7 +7,7 @@ namespace UI
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private CanvasGroup gamePlayControl;
-        [SerializeField] private CanvasGroup gamePlayMenu;
+        [SerializeField] private CanvasGroup pauseMenu;
         [SerializeField] private CanvasGroup shop;
         [SerializeField] PlayerStatisticUI statisticUI;
         [SerializeField] private ShopUI shopUI;
@@ -51,21 +51,22 @@ namespace UI
             canvasGroup.alpha = visible ? 1 : 0;
         }
 
-        public void SetGamePlayControlEnabled(bool enabledParam)
+        //public void SetGamePlayControlEnabled(bool enabledParam)
+        //{
+        //    SetCanvasGroupEnabled(gamePlayControl, enabledParam);
+        //}
+
+        public void SwitchToPauseMenu()
         {
-            SetCanvasGroupEnabled(gamePlayControl, enabledParam);
+            SetCurrentActiveGroup(pauseMenu);
+            GamePlayStatics.SetGamePaused(true);
         }
 
-        public void SetGamePlayMenuEnabled(bool enabledParam)
-        {
-            SetCanvasGroupEnabled(gamePlayControl, enabledParam);
-        }
-
-        public void SetCanvasGroupEnabled(CanvasGroup canvasGroup, bool enabledParam)
-        {
-            canvasGroup.interactable = enabledParam;
-            canvasGroup.blocksRaycasts = enabledParam;
-        }
+        //public void SetCanvasGroupEnabled(CanvasGroup canvasGroup, bool enabledParam)
+        //{
+        //    canvasGroup.interactable = enabledParam;
+        //    canvasGroup.blocksRaycasts = enabledParam;
+        //}
 
         public void SetHealthValue(float health, float maxHealth, float delta)
         {
