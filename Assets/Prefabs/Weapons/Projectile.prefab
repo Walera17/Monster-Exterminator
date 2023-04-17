@@ -90,6 +90,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriggerDamager
       objectReference: {fileID: 0}
+    - target: {fileID: 3313663951685211237, guid: 6b52a2ca496839c43b1687276224f9c1,
+        type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3884020248376179636, guid: 6b52a2ca496839c43b1687276224f9c1,
         type: 3}
       propertyPath: m_RootOrder

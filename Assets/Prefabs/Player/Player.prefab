@@ -246,8 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e7d0211f5b8b4aaf31bb52790a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
-  maxHealth: 200
+  health: 100
+  maxHealth: 100
 --- !u!114 &4056283712627685523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2082ba4cb04b305479a2c5c85be3dc30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credit: 180
+  credit: 30
   purchaseListenerComponents:
   - {fileID: 4056283712627685523}
   - {fileID: 2513006049675784915}

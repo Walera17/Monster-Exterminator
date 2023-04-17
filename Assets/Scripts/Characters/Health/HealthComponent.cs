@@ -1,20 +1,26 @@
-using System.Collections;
 using Rewards;
+using System.Collections;
 using UnityEngine;
 
 namespace Characters.Health
 {
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField] float health = 100;
         [SerializeField] float maxHealth = 100;
+        float health;
 
         public delegate void OnChangeParameterDelegate(float value, float maxValue, float delta);
-        public delegate void OnTakeDamageDelegate(GameObject instigator);   
-            
+
+        public delegate void OnTakeDamageDelegate(GameObject instigator);
+
         public event OnChangeParameterDelegate OnHealthChange;
         public event OnTakeDamageDelegate OnTakeDamage;
         public event OnTakeDamageDelegate OnDead;
+
+        private void Awake()    
+        {
+            health = maxHealth;
+        }
 
         public void BroadcastHealthValueImmediately()
         {
@@ -62,6 +68,7 @@ namespace Characters.Health
                 BroadcastHealthValueImmediately();
                 yield return null;
             }
+
             health = Mathf.FloorToInt(health);
         }
 

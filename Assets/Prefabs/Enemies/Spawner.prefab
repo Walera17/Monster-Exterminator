@@ -821,7 +821,7 @@ Transform:
   - {fileID: 3757365981754602283}
   - {fileID: 3022139350210905733}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -905,8 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e7d0211f5b8b4aaf31bb52790a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
-  maxHealth: 300
+  maxHealth: 100
 --- !u!114 &1447878861479084258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,9 +1016,9 @@ MonoBehaviour:
   behaviorTree: {fileID: 2252663269267125706}
   teamRelation: 2
   killReward:
-    health: 20
-    credit: 30
-    stamina: 20
+    health: 25
+    credit: 35
+    stamina: 35
   spawnerComponent: {fileID: 1843524759553470678}
   deathVFX:
   - particleSystem: {fileID: 4021103657954561960, guid: 75a6158003a14fb458242020f110fb4e,

@@ -94,11 +94,19 @@ namespace Characters.Player
             uiManager.SetHealthValue(health, maxHealth, delta);
         }
 
-        private void StartSwitchWeapon() => animator.SetTrigger(SwitchWeapon);
+        private void StartSwitchWeapon()
+        {
+            if (inventory.CurrentWeapon != null)
+                animator.SetTrigger(SwitchWeapon);
+        }
 
         public void AnimatorSwitchWeapon() => inventory.NextWeapon();
 
-        public void AnimatorAttackPoint() => inventory.CurrentWeapon.Attack();
+        public void AnimatorAttackPoint()
+        {
+            if (inventory.CurrentWeapon != null)
+                inventory.CurrentWeapon.Attack();
+        }
 
         private void MoveStick_OnStickInputValueChanged(Vector2 value) => moveInput = value;
 
@@ -106,7 +114,8 @@ namespace Characters.Player
         {
             aimInput = value;
 
-            animator.SetBool(Attacking, aimInput.magnitude > 0);
+            if (inventory.CurrentWeapon != null)
+                animator.SetBool(Attacking, aimInput.magnitude > 0);
         }
 
         Vector3 StickInputToWorldDirection(Vector2 inputValue)
