@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 679345434521744373}
   - component: {fileID: -8674167787941630829}
   m_Layer: 5
-  m_Name: InGameMenu
+  m_Name: InPauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,7 +985,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 800, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7571419746386616009
 CanvasRenderer:
