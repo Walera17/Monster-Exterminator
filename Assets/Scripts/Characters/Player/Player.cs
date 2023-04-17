@@ -79,6 +79,11 @@ namespace Characters.Player
             uiManager.SwitchToGamePlayControl();
         }
 
+        public void AnimatorDeathFinished()
+        {
+            uiManager.SwitchToDeathMenu();
+        }
+
         private void AbilityComponent_OnAbilityChange(float value, float maxValue, float delta)
         {
             uiManager.SetAbilityValue(value, maxValue, delta);

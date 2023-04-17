@@ -8,6 +8,7 @@ namespace UI
     {
         [SerializeField] private CanvasGroup gamePlayControl;
         [SerializeField] private CanvasGroup pauseMenu;
+        [SerializeField] private CanvasGroup deathMenu;
         [SerializeField] private CanvasGroup shop;
         [SerializeField] PlayerStatisticUI statisticUI;
         [SerializeField] private ShopUI shopUI;
@@ -76,13 +77,19 @@ namespace UI
         public void SwitchToShop()
         {
             SetCurrentActiveGroup(shop);
-            GamePlayStatics.SetGamePaused(false);
+            GamePlayStatics.SetGamePaused(true);
         }
 
         public void SwitchToGamePlayControl()
         {
             SetCurrentActiveGroup(gamePlayControl);
+            GamePlayStatics.SetGamePaused(false);
+        }
+
+        public void SwitchToDeathMenu()
+        {
+            SetCurrentActiveGroup(deathMenu);
             GamePlayStatics.SetGamePaused(true);
-        }   
+        }
     }
 }
