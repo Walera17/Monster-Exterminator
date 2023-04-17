@@ -404,7 +404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7713637328846253586}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1c5bab0a388809f439f556d03757fbda, type: 2}
+        m_TargetAssemblyTypeName: UI.UIAudioPlayer, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6807418188636191639
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +808,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3518115171187380589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1c5bab0a388809f439f556d03757fbda, type: 2}
+        m_TargetAssemblyTypeName: UI.UIAudioPlayer, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8501650336307423876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,4 +1077,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7445386826241759246}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1c5bab0a388809f439f556d03757fbda, type: 2}
+        m_TargetAssemblyTypeName: UI.UIAudioPlayer, Assembly-CSharp
+        m_MethodName: PlayCommit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

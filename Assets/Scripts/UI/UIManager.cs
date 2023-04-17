@@ -15,6 +15,7 @@ namespace UI
         [SerializeField] private PlayerCreditUI playerCreditUI;
         [SerializeField] private JoyStick moveStick;
         [SerializeField] private JoyStick aimStick;
+
         public JoyStick MoveStick => moveStick;
         public JoyStick AimStick => aimStick;
 

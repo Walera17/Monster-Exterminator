@@ -38,13 +38,17 @@ namespace UI
 
         private void TryPurchaseItem()
         {
-            if (selectedItem != null && shopSystem.TryPurchase(selectedItem.Item, creditComponent)) 
+            if (selectedItem != null && shopSystem.TryPurchase(selectedItem.Item, creditComponent))
+            {
                 RemoveItem(selectedItem);
+                buyButton.interactable = false;
+            }
         }
 
         private void RemoveItem(ShopItemUI item)
         {
             shopItems.Remove(item);
+            selectedItem = null;
             Destroy(item.gameObject);
         }
 
@@ -53,6 +57,8 @@ namespace UI
             creditText.text = credit.ToString();
 
             RefreshItems(credit);
+
+            buyButton.interactable = selectedItem != null;
         }
 
         private void RefreshItems(int credit)
@@ -78,7 +84,11 @@ namespace UI
             shopItems.Add(shopItemUI);
         }
 
-        private void ShopItemUI_OnItemSelected(ShopItemUI item) =>
+        private void ShopItemUI_OnItemSelected(ShopItemUI item)
+        {
             selectedItem = item;
+
+            buyButton.interactable = selectedItem != null;
+        }
     }
 }
