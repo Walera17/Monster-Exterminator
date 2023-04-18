@@ -11,6 +11,7 @@ namespace Characters.Health
         [SerializeField] private float volumeClip = 1f;
         [SerializeField] float maxHealth = 100;
         float health;
+        private bool isPlayingHitClip;
 
         public delegate void OnChangeParameterDelegate(float value, float maxValue, float delta);
 
@@ -42,7 +43,12 @@ namespace Characters.Health
             {
                 OnTakeDamage?.Invoke(instigator);
                 Vector3 loc = transform.position;
-                GamePlayStatics.PlayAudioAtLocation(hitClip, loc, volumeClip);
+                if (!isPlayingHitClip)
+                {
+                    isPlayingHitClip = true;
+                    GamePlayStatics.PlayAudioAtLocation(hitClip, loc, volumeClip);
+                    Invoke(nameof(IsPlayingStop), hitClip.length);
+                }
             }
 
             OnHealthChange?.Invoke(health, maxHealth, delta);
@@ -53,6 +59,11 @@ namespace Characters.Health
                 Vector3 loc = transform.position;
                 GamePlayStatics.PlayAudioAtLocation(deathClip, loc, volumeClip);
             }
+        }
+
+        void IsPlayingStop()
+        {
+            isPlayingHitClip = false;
         }
 
         public void HealthRegenerate(float healthRegenerateAmount, float speedRegenerate)

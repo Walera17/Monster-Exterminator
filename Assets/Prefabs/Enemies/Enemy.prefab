@@ -180,7 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e7d0211f5b8b4aaf31bb52790a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  hitClip: {fileID: 8300000, guid: c1c63d14bc9d9497b8f9b39c4ea3b1c7, type: 3}
+  deathClip: {fileID: 8300000, guid: b63b23c284dc045fcbccd1131f3242bc, type: 3}
+  volumeClip: 0.3
   maxHealth: 100
 --- !u!114 &1447878861479084258
 MonoBehaviour:
@@ -223,7 +225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forgettingTime: 2
-  healthComponent: {fileID: 1954059283183157669}
 --- !u!114 &1195545778478197545
 MonoBehaviour:
   m_ObjectHideFlags: 0

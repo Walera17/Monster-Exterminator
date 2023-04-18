@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
+using Object = UnityEngine.Object;
 
 public static class GamePlayStatics
 {
@@ -8,11 +9,11 @@ public static class GamePlayStatics
     {
     }
 
-    static readonly ObjectPool<AudioSource> audioPool = new(CreateAudioSource, null, null, DestroyAudioSource, false, 5, 10);
+    static readonly ObjectPool<AudioSource> audioPool = new(CreateAudioSource, null, null, DestroyAudioSource, false, 5, 7);
 
     private static void DestroyAudioSource(AudioSource obj)
     {
-        Object.Destroy(obj);
+        Object.Destroy(obj.gameObject);
     }
 
     private static AudioSource CreateAudioSource()

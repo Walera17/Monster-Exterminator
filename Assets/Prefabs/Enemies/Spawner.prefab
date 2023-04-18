@@ -821,7 +821,7 @@ Transform:
   - {fileID: 3757365981754602283}
   - {fileID: 3022139350210905733}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8056398509654854738
 Animator:
@@ -905,6 +905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e7d0211f5b8b4aaf31bb52790a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitClip: {fileID: 8300000, guid: c1c63d14bc9d9497b8f9b39c4ea3b1c7, type: 3}
+  deathClip: {fileID: 8300000, guid: b63b23c284dc045fcbccd1131f3242bc, type: 3}
+  volumeClip: 0.35
   maxHealth: 100
 --- !u!114 &1447878861479084258
 MonoBehaviour:
