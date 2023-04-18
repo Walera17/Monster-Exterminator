@@ -3392,7 +3392,7 @@ PrefabInstance:
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8056398509644981168, guid: ef6b4f17eafe02a4498e48014f63c35b,
         type: 3}
@@ -3558,6 +3558,8 @@ MonoBehaviour:
   movementComponent: {fileID: 735606281169126896}
   behaviorTree: {fileID: 8215722457237752456}
   teamRelation: 2
+  detectionClip: {fileID: 8300000, guid: b63b23c284dc045fcbccd1131f3242bc, type: 3}
+  volume: 0.3
   killReward:
     health: 0
     credit: 15

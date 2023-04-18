@@ -5,7 +5,7 @@ namespace AI.Perception
 {
     public class PerceptionComponent : MonoBehaviour
     {
-        [SerializeField] private Sense[] senses;
+        [SerializeField] private Sense[] senses;    
 
         public delegate void OnPerceptionTargetChangedDelegate(Transform target, bool sensed);
 

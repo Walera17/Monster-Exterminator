@@ -16,6 +16,8 @@ namespace Characters.Enemies
         [SerializeField] MovementComponent movementComponent;
         [SerializeField] BehaviorTree behaviorTree;
         [SerializeField] TeamRelation teamRelation;
+        [SerializeField] private AudioClip detectionClip;
+        [SerializeField] private float volume = 1f;
         [SerializeField] private Reward killReward;
 
         private float speed;
@@ -40,7 +42,11 @@ namespace Characters.Enemies
         private void PerceptionComponent_OnPerceptionTargetChanged(Transform targetTransform, bool sensed)
         {
             if (sensed)
+            {
                 behaviorTree.Blackboard.SetOrAddData("Target", targetTransform);
+                Vector3 pos= transform.position;
+                GamePlayStatics.PlayAudioAtLocation(detectionClip, pos,volume);
+            }
             else
             {
                 behaviorTree.Blackboard.SetOrAddData("LastSeenLocation", targetTransform.position);
@@ -80,7 +86,7 @@ namespace Characters.Enemies
         private void HealthComponent_OnDead(GameObject instigator)
         {
             TriggerDeathAnimation();
-            if(instigator.TryGetComponent(out IReward reward))
+            if (instigator.TryGetComponent(out IReward reward))
                 reward.Reward(killReward);
         }
 

@@ -8,6 +8,8 @@ namespace AbilitySystem
         [SerializeField] private Sprite icon;
         [SerializeField] private float staminaCost = 10;
         [SerializeField] private float cooldownDuration = 2f;
+        [SerializeField] private AudioClip abilityClip;
+        [SerializeField] private float volume = 1f;
 
         public delegate void OnCooldownStartedDelegate();
         public event OnCooldownStartedDelegate OnCooldownStarted;
@@ -46,6 +48,8 @@ namespace AbilitySystem
             if (abilityOnCooldown) return false;
 
             if (abilityComponent == null || !abilityComponent.TryConsumeStamina(staminaCost)) return false;
+
+            GamePlayStatics.PlayAudioAtPlayer(abilityClip, volume);
 
             return true;
         }

@@ -61,10 +61,7 @@ namespace Characters.Health
             }
         }
 
-        void IsPlayingStop()
-        {
-            isPlayingHitClip = false;
-        }
+        void IsPlayingStop() => isPlayingHitClip = false;
 
         public void HealthRegenerate(float healthRegenerateAmount, float speedRegenerate)
         {

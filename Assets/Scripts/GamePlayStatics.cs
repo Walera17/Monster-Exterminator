@@ -9,7 +9,15 @@ public static class GamePlayStatics
     {
     }
 
-    static readonly ObjectPool<AudioSource> audioPool = new(CreateAudioSource, null, null, DestroyAudioSource, false, 5, 7);
+    private static readonly ObjectPool<AudioSource> audioPool; 
+
+    static readonly AudioContext parentAudioPool;
+
+    static GamePlayStatics()
+    {
+        parentAudioPool = new GameObject("PoolAudio").AddComponent<AudioContext>();
+        audioPool = new(CreateAudioSource, null, null, DestroyAudioSource, false, 5, 7);
+    }
 
     private static void DestroyAudioSource(AudioSource obj)
     {
@@ -18,8 +26,8 @@ public static class GamePlayStatics
 
     private static AudioSource CreateAudioSource()
     {
-        GameObject newAudioGameObject = new GameObject("AudioSource", typeof(AudioSource), typeof(AudioContext));
-        AudioSource audioSource = newAudioGameObject.GetComponent<AudioSource>();
+        AudioSource audioSource = new GameObject("AudioSource").AddComponent<AudioSource>();
+        audioSource.transform.SetParent(parentAudioPool.transform);
 
         audioSource.volume = 1.0f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;
@@ -34,7 +42,7 @@ public static class GamePlayStatics
         audioSource.volume = volume;
         audioSource.transform.position = position;
         audioSource.PlayOneShot(clip);
-        audioSource.GetComponent<AudioContext>().StartCoroutine(ReleaseAudioSource(audioSource, clip.length));
+        parentAudioPool.StartCoroutine(ReleaseAudioSource(audioSource, clip.length));
     }
 
     private static IEnumerator ReleaseAudioSource(AudioSource audioSource, float clipLength)
@@ -46,5 +54,10 @@ public static class GamePlayStatics
     public static void SetGamePaused(bool paused)
     {
         Time.timeScale = paused ? 0 : 1;
+    }
+
+    public static void PlayAudioAtPlayer(AudioClip clip, float volume)
+    {
+        PlayAudioAtLocation(clip, Camera.main!.transform.position, volume);
     }
 }

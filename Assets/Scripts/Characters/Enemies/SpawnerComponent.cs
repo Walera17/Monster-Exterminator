@@ -6,6 +6,8 @@ namespace Characters.Enemies
     {
         [SerializeField] Transform spawnTransform;
         [SerializeField] Animator animator;
+        [SerializeField] private AudioClip spawnClip;
+        [SerializeField] private float volume = 1f;
         [SerializeField] GameObject[] objectsToSpawn;
 
         private static readonly int Spawn = Animator.StringToHash("spawn");
@@ -18,6 +20,9 @@ namespace Characters.Enemies
                 animator.SetTrigger(Spawn);
             else
                 AnimatorSpawnImpl();
+
+            Vector3 pos = transform.position;
+            GamePlayStatics.PlayAudioAtLocation(spawnClip, pos, volume);
 
             return true;
         }

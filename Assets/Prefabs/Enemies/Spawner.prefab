@@ -906,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitClip: {fileID: 8300000, guid: c1c63d14bc9d9497b8f9b39c4ea3b1c7, type: 3}
-  deathClip: {fileID: 8300000, guid: b63b23c284dc045fcbccd1131f3242bc, type: 3}
+  deathClip: {fileID: 8300000, guid: cffda6ad1acd25d4ea5c01c05566f82a, type: 3}
   volumeClip: 0.35
   maxHealth: 100
 --- !u!114 &1447878861479084258
@@ -1018,6 +1018,8 @@ MonoBehaviour:
   movementComponent: {fileID: 0}
   behaviorTree: {fileID: 2252663269267125706}
   teamRelation: 2
+  detectionClip: {fileID: 8300000, guid: b63b23c284dc045fcbccd1131f3242bc, type: 3}
+  volume: 0.3
   killReward:
     health: 25
     credit: 35
@@ -1047,6 +1049,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTransform: {fileID: 3022139350210905733}
   animator: {fileID: 8056398509654854738}
+  spawnClip: {fileID: 8300000, guid: 9bc93063a4e0f674bbd0c6b63011d87b, type: 3}
+  volume: 0.7
   objectsToSpawn:
   - {fileID: 3382781549764127497, guid: f934a06b5c1a2bb48b24a21dba30817d, type: 3}
   - {fileID: 7681764590091186655, guid: 6e54e9c752f5e184f81ef9c55a9bff74, type: 3}
