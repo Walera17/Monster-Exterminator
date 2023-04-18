@@ -6,6 +6,9 @@ namespace Characters.Health
 {
     public class HealthComponent : MonoBehaviour
     {
+        [SerializeField] AudioClip hitClip;
+        [SerializeField] AudioClip deathClip;
+        [SerializeField] private float volumeClip = 1f;
         [SerializeField] float maxHealth = 100;
         float health;
 
@@ -17,7 +20,7 @@ namespace Characters.Health
         public event OnTakeDamageDelegate OnTakeDamage;
         public event OnTakeDamageDelegate OnDead;
 
-        private void Awake()    
+        private void Awake()
         {
             health = maxHealth;
         }
@@ -36,12 +39,20 @@ namespace Characters.Health
             health = Mathf.Clamp(health, 0, maxHealth);
 
             if (delta < 0)
+            {
                 OnTakeDamage?.Invoke(instigator);
+                Vector3 loc = transform.position;
+                GamePlayStatics.PlayAudioAtLocation(hitClip, loc, volumeClip);
+            }
 
             OnHealthChange?.Invoke(health, maxHealth, delta);
 
             if (health == 0)
+            {
                 OnDead?.Invoke(instigator);
+                Vector3 loc = transform.position;
+                GamePlayStatics.PlayAudioAtLocation(deathClip, loc, volumeClip);
+            }
         }
 
         public void HealthRegenerate(float healthRegenerateAmount, float speedRegenerate)
