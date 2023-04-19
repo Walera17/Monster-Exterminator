@@ -17,12 +17,12 @@ namespace AI.BehaviorTree
         protected override NodeResult Execute()
         {
             // first execution - первое исполнение
-            if (cooldownTime == 0) 
+            if (cooldownTime == 0)
                 return NodeResult.Inprogress;
 
             if (lastExecutionTime < 0)
             {
-                lastExecutionTime = Time.time;
+                lastExecutionTime = Time.timeSinceLevelLoad;
                 return NodeResult.Inprogress;
             }
 
