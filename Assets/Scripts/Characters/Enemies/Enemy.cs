@@ -37,6 +37,7 @@ namespace Characters.Enemies
             healthComponent.OnTakeDamage += HealthComponent_OnTakeDamage;
             healthComponent.OnDead += HealthComponent_OnDead;
             prevPosition = transform.position;
+            GamePlayStatics.EnemyCount++;
         }
 
         private void PerceptionComponent_OnPerceptionTargetChanged(Transform targetTransform, bool sensed)
@@ -59,6 +60,7 @@ namespace Characters.Enemies
             perceptionComponent.OnPerceptionTargetChanged -= PerceptionComponent_OnPerceptionTargetChanged;
             healthComponent.OnTakeDamage -= HealthComponent_OnTakeDamage;
             healthComponent.OnDead -= HealthComponent_OnDead;
+            GamePlayStatics.EnemyCount--;
         }
 
         private void Update()

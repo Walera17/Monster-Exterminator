@@ -8,6 +8,7 @@ namespace UI
         [SerializeField] private AudioClip clickAudioClip;
         [SerializeField] private AudioClip commitAudioClip;
         [SerializeField] private AudioClip selectedAudioClip;
+        [SerializeField] private AudioClip winAudioClip;
         private AudioSource audioSource;
 
         public void PlayClick()
@@ -27,10 +28,15 @@ namespace UI
 
         void PlayAudio(AudioClip clip)
         {
-            if (audioSource == null)
-                audioSource = Camera.main!.transform.GetComponent<AudioSource>();
+            if (audioSource == null && Camera.main != null)
+                audioSource = Camera.main.transform.GetComponent<AudioSource>();
 
             audioSource.PlayOneShot(clip);
+        }
+
+        public void PlayWinAudio()
+        {
+            PlayAudio(winAudioClip);
         }
     }
 }

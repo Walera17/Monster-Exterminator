@@ -9,18 +9,19 @@ namespace UI
         [SerializeField] private CanvasGroup gamePlayControl;
         [SerializeField] private CanvasGroup pauseMenu;
         [SerializeField] private CanvasGroup deathMenu;
+        [SerializeField] private CanvasGroup winMenu;
         [SerializeField] private CanvasGroup shop;
         [SerializeField] PlayerStatisticUI statisticUI;
         [SerializeField] private ShopUI shopUI;
         [SerializeField] private PlayerCreditUI playerCreditUI;
         [SerializeField] private JoyStick moveStick;
         [SerializeField] private JoyStick aimStick;
+        [SerializeField] private UIAudioPlayer uiAudioPlayer;
 
         public JoyStick MoveStick => moveStick;
         public JoyStick AimStick => aimStick;
 
         readonly List<CanvasGroup> allChildren = new();
-        private CanvasGroup currentCanvasGroup;
 
         private void Start()
         {
@@ -28,11 +29,25 @@ namespace UI
             GetComponentsInChildren(true, allCanvasGroups);
             foreach (CanvasGroup child in allCanvasGroups)
             {
-                if (child.transform.parent == transform) 
+                if (child.transform.parent == transform)
                     allChildren.Add(child);
             }
 
             SetCurrentActiveGroup(gamePlayControl);
+
+            GamePlayStatics.OnLevelFinished += GamePlayStatics_OnLevelFinished;
+        }
+
+        private void OnDestroy()
+        {
+            GamePlayStatics.OnLevelFinished -= GamePlayStatics_OnLevelFinished;
+        }
+
+        private void GamePlayStatics_OnLevelFinished()
+        {
+            SetCurrentActiveGroup(winMenu);
+            GamePlayStatics.SetGamePaused(true);
+            uiAudioPlayer.PlayWinAudio();
         }
 
         public void SetCurrentActiveGroup(CanvasGroup group)
@@ -41,7 +56,7 @@ namespace UI
             {
                 if (child == group)
                     SetVisibleGroup(child, true, true);
-                else 
+                else
                     SetVisibleGroup(child, false, false);
             }
         }
@@ -71,9 +86,9 @@ namespace UI
 
         public void InitShop(ShopSystem shopSystem, CreditComponent component)
         {
-            shopUI.Init(this,shopSystem, component);
+            shopUI.Init(this, shopSystem, component);
             playerCreditUI.Init(this, component);
-       }
+        }
 
         public void SwitchToShop()
         {

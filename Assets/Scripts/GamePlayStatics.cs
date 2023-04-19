@@ -9,14 +9,29 @@ public static class GamePlayStatics
     {
     }
 
-    private static readonly ObjectPool<AudioSource> audioPool; 
+    static ObjectPool<AudioSource> audioPool;
+    static AudioContext parentAudioPool;
+    static int enemyCount;
 
-    static readonly AudioContext parentAudioPool;
+    public delegate void OnLevelFinishedDelegate();
 
-    static GamePlayStatics()
+    public static event OnLevelFinishedDelegate OnLevelFinished;
+
+    public static void Restart()
     {
         parentAudioPool = new GameObject("PoolAudio").AddComponent<AudioContext>();
         audioPool = new(CreateAudioSource, null, null, DestroyAudioSource, false, 5, 7);
+    }
+
+    public static int EnemyCount
+    {
+        get => enemyCount;
+        set
+        {
+            enemyCount = value;
+            if (enemyCount == 0)
+                OnLevelFinished?.Invoke();
+        }
     }
 
     private static void DestroyAudioSource(AudioSource obj)

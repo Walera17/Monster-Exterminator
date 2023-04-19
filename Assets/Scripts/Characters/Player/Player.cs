@@ -21,8 +21,7 @@ namespace Characters.Player
         [SerializeField] private float animTurnSpeed = 15f;
         [SerializeField] TeamRelation teamRelation;
 
-        [Header("Health and Ability")]
-        [SerializeField]
+        [Header("Health and Ability")] [SerializeField]
         HealthComponent healthComponent;
 
         [SerializeField] AbilityComponent abilityComponent;
@@ -43,6 +42,11 @@ namespace Characters.Player
         private static readonly int Death = Animator.StringToHash("death");
 
         public int GetTeamID() => (int)teamRelation;
+
+        private void Awake()
+        {
+            GamePlayStatics.Restart();
+        }
 
         void Start()
         {

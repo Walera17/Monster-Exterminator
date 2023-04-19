@@ -4,6 +4,7 @@ namespace Characters.Enemies
 {
     public class SpawnerComponent : MonoBehaviour
     {
+        [SerializeField] Transform parentTransform;
         [SerializeField] Transform spawnTransform;
         [SerializeField] Animator animator;
         [SerializeField] private AudioClip spawnClip;
@@ -29,7 +30,7 @@ namespace Characters.Enemies
 
         public void AnimatorSpawnImpl()
         {
-            GameObject newSpawn = Instantiate(objectsToSpawn[Random.Range(0, objectsToSpawn.Length)], spawnTransform.position, spawnTransform.rotation);
+            GameObject newSpawn = Instantiate(objectsToSpawn[Random.Range(0, objectsToSpawn.Length)], spawnTransform.position, spawnTransform.rotation, parentTransform);
 
             if (newSpawn.TryGetComponent(out ISpawnInterface newSpawnInterface))
                 newSpawnInterface.SpawnedBy(gameObject);
